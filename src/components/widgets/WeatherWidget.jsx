@@ -24,6 +24,7 @@ import {APIClient} from "../../utils/Helpers/api_helper";
 import moment from "moment";
 import 'moment/locale/ru';
 import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export const WeatherWidget = ({apiKey, cityID, className}) => {
 
@@ -155,22 +156,22 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
     return (
         <div
             className={classnames(weather.bg || "bg-indigo-700/50", "rounded-md drop-shadow-md overflow-hidden relative h-28 w-80", className)}>
-            {!weather ? <Skeleton count={3}/> :
-                <>
-                    <div className="p-3 flex flex-col justify-between">
-                        <p className="text-gray-700 dark:text-gray-200 relative z-10 mb-1"><span
-                            className="capitalize text-base mr-4">{date.dayOfWeek}</span><span
-                            className="text-sm">{date.day}</span></p>
-                        <p className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max}<span
-                            className="font-medium">C</span></p>
-                        <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
-                            <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity}%</span>
-                            <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind} м/с</span>
-                        </p>
-                    </div>
-                    <img src={weather.icon} alt={weather.description} title={weather.description}
-                         className="absolute bottom-2 right-1 h-16"/>
-                </>}
+            <div className="p-3 flex flex-col justify-between">
+                <p className="text-gray-700 dark:text-gray-200 relative z-10 mb-1"><span
+                    className="capitalize text-base mr-4">{date.dayOfWeek}</span><span
+                    className="text-sm">{date.day}</span></p>
+                <p className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max || <Skeleton />}<span
+                    className="font-medium">C</span></p>
+                <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
+                    <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity || <Skeleton />}%</span>
+                    <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind || <Skeleton />} м/с</span>
+                </p>
+            </div>
+            {weather.icon
+                ? <img src={weather.icon} alt={weather.description} title={weather.description}
+                 className="absolute bottom-2 right-1 h-16"/>
+                : <Skeleton />
+            }
         </div>
     );
 };
