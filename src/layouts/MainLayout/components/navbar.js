@@ -3,14 +3,11 @@ import classNames from "classnames";
 import {MenuIcon} from "@heroicons/react/outline";
 import {ChevronDownIcon, SearchIcon} from "@heroicons/react/solid";
 import {Menu, Transition} from "@headlessui/react";
-import {AvatarBasic} from "../../../components/elements/AvatarBasic";
-import {
-    AvatarCircularWithPlaceholderInitials
-} from "../../../components/elements/AvatarCircularWithPlaceholderInitials";
 import {getInitials} from "../../../utils";
 import {Link} from "react-router-dom";
 import {Moon, Sun} from "react-feather";
 import {useSkin} from "../../../utils/Hooks/useSkin";
+import {Avatar} from "../../../components/elements/Avatar";
 
 const NavBar = (props) => {
 
@@ -108,10 +105,7 @@ const NavBar = (props) => {
                     <div>
                         <Menu.Button
                             className="max-w-xs bg-white dark:bg-gray-900 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 lg:p-1 lg:rounded-md lg:hover:bg-gray-50 dark:lg:hover:bg-gray-800">
-                            {user.avatar ?
-                                <AvatarBasic size="10" item={user}/> :
-                                <AvatarCircularWithPlaceholderInitials item={user} size="10"
-                                                                       color={user.color || "indigo"}/>}
+                                <Avatar size="10" item={user}/>
                             <span
                                 className="hidden ml-3 text-gray-700 dark:text-gray-300 text-sm font-medium lg:block">
                                                 <span className="sr-only">
