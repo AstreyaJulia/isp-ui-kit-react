@@ -1,0 +1,22 @@
+/** Шрифты */
+@import "../assets/fonts/opensans/opensans";
+
+/** Иконочные шрифты  */
+@import "../assets/fonts/mdi/mdifont";
+
+/** Tailwind  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** Компоненты  */
+@import "./components/components";
+
+/** Раскладки */
+@import "./layouts/layouts";
+
+/** npm модули */
+@import "./modules/modules";
+
+/** Страницы */
+@import "./pages/pages";
