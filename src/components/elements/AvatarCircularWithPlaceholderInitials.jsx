@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getInitialsOnly} from "../../utils";
 
 /** Круглый аватар с инициалами (без изображения)
  * @param item - объект с данными {avatar: аватар, name: имя пользователя}
@@ -83,7 +84,7 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
         <span
             className={["font-medium leading-none", AvatarGroupSize[size].nameFont, AvatarColor[color || "indigo"].text].join(" ")}
         >
-            {item.name.split(" ").slice(1).map((n) => n[0]).join("").toUpperCase()}
+            {getInitialsOnly(item.name)}
         </span>
       </span>
     </>);

@@ -1,4 +1,4 @@
-/** Навигация для сайдбара, для локального тестирования
+﻿/** Навигация для сайдбара, для локального тестирования
  * @type {[{header: string},{name: string, icon: string, id: string, href: string},{name: string, icon: string, id: string, href: string},{badgeColor: string, name: string, icon: string, badgeClassName: string, id: string, href: string, badgeText: string},{children: [{name: string, icon: string, id: string, href: string}], name: string, icon: string, id: string},null,null,null,null,null]}
  */
 export const navigation = [
@@ -110,7 +110,7 @@ export const users = [
         instagram: "https://instagram.com/id&=1",
         site1: "",
         site2: "",
-        avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
     {
         id: "2",
