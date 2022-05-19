@@ -24,7 +24,13 @@ const DefaultRoute = "/home";
 const Home = lazy(() => import("../pages/Home"));
 const MyInfo = lazy(() => import("../pages/MyInfo"));
 const Staff = lazy(() => import("../pages/Staff"));
-
+const Admin = lazy(() => import("../pages/Admin"));
+const Faq = lazy(() => import("../pages/Faq"));
+const Grade = lazy(() => import("../pages/Grade"));
+const Phonebook = lazy(() => import("../pages/Phonebook"));
+const Proxylist = lazy(() => import("../pages/Proxylist"));
+const Stat = lazy(() => import("../pages/Stat"));
+const Test = lazy(() => import("../pages/Test"));
 const Calendar = lazy(() => import("../pages/apps/Calendar"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Register = lazy(() => import("../pages/auth/Register"));
@@ -42,6 +48,34 @@ const Routes = [
     {
         path: "/home",
         element: <Home/>
+    },
+    {
+        path: "/admin",
+        element: <Admin/>
+    },
+    {
+        path: "/faq",
+        element: <Faq/>
+    },
+    {
+        path: "/grade",
+        element: <Grade/>
+    },
+    {
+        path: "/phonebook",
+        element: <Phonebook/>
+    },
+    {
+        path: "/proxylist",
+        element: <Proxylist/>
+    },
+    {
+        path: "/stats",
+        element: <Stat/>
+    },
+    {
+        path: "/test",
+        element: <Test/>
     },
     {
         path: "/staff",

@@ -73,12 +73,6 @@ export const navigation = [
         name: "Панель управления",
         icon: "mdi-view-dashboard-outline",
         href: "/admin",
-    },
-    {
-        id: "13",
-        name: "Тестовая страница",
-        icon: "mdi-view-dashboard-outline",
-        href: "/test",
     }
 ]
 
