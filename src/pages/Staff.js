@@ -10,6 +10,7 @@ import {
     PencilIcon,
 } from "@heroicons/react/solid";
 import Table from "../components/table/Table";
+import {Link} from "react-router-dom";
 
 const breadcrumbs = [{name: "Администрирование", href: "#", current: false}, {
     name: "Управление пользователями",
@@ -87,9 +88,9 @@ const Staff = () => {
                             <div className="hidden sm:block">
                                 <div className="border-b border-gray-200 dark:border-gray-600">
                                     <nav className="mt-2 -mb-px flex space-x-8" aria-label="Tabs">
-                                        {tabs.map((tab) => (<a
+                                        {tabs.map((tab) => (<Link
                                             key={tab.name}
-                                            href={tab.href}
+                                            to={tab.href}
                                             className={classNames(tab.current ? "border-indigo-500 dark:border-indigo-300 text-indigo-600 dark:text-indigo-300" : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700", "whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm")}
                                         >
                                             {tab.name}
@@ -98,7 +99,7 @@ const Staff = () => {
                                             >
                             {tab.count}
                           </span>) : null}
-                                        </a>))}
+                                        </Link>))}
                                     </nav>
                                 </div>
                             </div>
@@ -113,62 +114,62 @@ const Staff = () => {
                         aria-label="Pagination"
                     >
                         <div className="-mt-px w-0 flex-1 flex">
-                            <a
-                                href="#"
+                            <Link
+                                to="#"
                                 className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700"
                             >
                                 <ArrowNarrowLeftIcon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true"/>
                                 Previous
-                            </a>
+                            </Link>
                         </div>
                         <div className="hidden md:-mt-px md:flex">
-                            <a
-                                href="#"
+                            <Link
+                                to="#"
                                 className="border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                             >
                                 1
-                            </a>
+                            </Link>
                             {/* Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200" */}
-                            <a
-                                href="#"
+                            <Link
+                                to="#"
                                 className="border-indigo-500 dark:border-indigo-300 text-indigo-600 dark:text-indigo-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                                 aria-current="page"
                             >
                                 2
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to="#"
                                 className="border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                             >
                                 3
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to="#"
                                 className="border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                             >
                                 4
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to="#"
                                 className="border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                             >
                                 5
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                to="#"
                                 className="border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
                             >
                                 6
-                            </a>
+                            </Link>
                         </div>
                         <div className="-mt-px w-0 flex-1 flex justify-end">
-                            <a
-                                href="#"
+                            <Link
+                                to="#"
                                 className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700"
                             >
                                 Next
                                 <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true"/>
-                            </a>
+                            </Link>
                         </div>
                     </nav>
                 </div>

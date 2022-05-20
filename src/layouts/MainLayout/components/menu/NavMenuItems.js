@@ -3,9 +3,9 @@ import NavMenuGroup from "./NavMenuGroup";
 import NavMenuSectionHeader from "./NavMenuSectionHeader";
 import React from "react";
 
-/**
- * Return which component to render based on it's data/context
- * @param {Object} item nav menu item
+/** Возвращает заголовок, если указан header, группу, если children, иначе ссылку
+ * @param item - элемент
+ * @returns {string}
  */
 export const resolveNavItemComponent = (item) => {
     if (item.header) return "NavMenuSectionHeader";
@@ -14,14 +14,17 @@ export const resolveNavItemComponent = (item) => {
 };
 
 const MenuNavItems = (props) => {
-    // ** Components Object
+
+    /** Объект компонентов
+     * @type {{NavMenuSectionHeader: (function({item: *, menuCollapsed?: *}): JSX.Element), NavMenuLink: (function({item: *, menuCollapsed?: *}): JSX.Element), NavMenuGroup: (function({item?: *, groupOpen: *, activeItem: *, parentItem?: *, groupActive?: *, setGroupOpen: *, menuCollapsed?: *, setGroupActive: *, currentActiveGroup: *, setCurrentActiveGroup: *, [p: string]: *}): JSX.Element)}}
+     */
     const Components = {
         NavMenuLink: NavMenuLink,
         NavMenuGroup: NavMenuGroup,
         NavMenuSectionHeader: NavMenuSectionHeader,
     };
 
-    // ** Render Nav Menu Items
+    /** Рендер элементов меню */
     return props.items.map((item, index) => {
         const TagName = Components[resolveNavItemComponent(item)];
         if (item.children) {

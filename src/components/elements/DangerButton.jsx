@@ -35,7 +35,7 @@ DangerButton.propTypes = {
     /** Лейбл (надпись) кнопки */
     label: PropTypes.string.isRequired,
     /** Тип кнопки */
-    type: PropTypes.oneOf(['button', 'submit']),
+    type: PropTypes.oneOf(["button", "submit"]),
     /** Обработчик клика */
     onClick: PropTypes.func,
 };

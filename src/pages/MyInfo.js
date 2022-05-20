@@ -111,6 +111,7 @@ const MyInfo = () => {
      */
     const handleColorChange = (value) => {
         setUserData(prevState => ({
+            // eslint-disable-next-line
             ...prevState, ["color"]: value
         }));
     };
@@ -120,6 +121,7 @@ const MyInfo = () => {
      */
     const handleGenderChange = (value) => {
         setUserData(prevState => ({
+            // eslint-disable-next-line
             ...prevState, ["gender"]: value
         }));
     };
@@ -129,6 +131,7 @@ const MyInfo = () => {
      */
     const handleBirthDayChange = (value) => {
         setUserData(prevState => ({
+            // eslint-disable-next-line
             ...prevState, ["birthday"]: value
         }));
     };
@@ -136,6 +139,7 @@ const MyInfo = () => {
     /** Хандл удаления аватара */
     const handleAvatarReset = () => {
         setUserData(prevState => ({
+            // eslint-disable-next-line
             ...prevState, ["avatar"]: ""
         }));
     };

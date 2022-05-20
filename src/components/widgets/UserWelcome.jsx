@@ -9,7 +9,7 @@ import classnames from "classnames";
 import Icon from "@mdi/react";
 import {mdiStar, mdiStarFourPoints} from "@mdi/js";
 import {getInitials} from "../../utils";
-import Skeleton from 'react-loading-skeleton';
+import Skeleton from "react-loading-skeleton";
 
 /** Виджет приветствия пользователя
  * @param userName - имя пользователя, строка
@@ -22,7 +22,7 @@ export const UserWelcome = ({userName, birthDayDate, className}) => {
 
     let isBirthDay;
 
-    moment().locale('ru').format('YYYY-MM-DD').toString() === birthDayDate.toString() ? isBirthDay = true : isBirthDay = false;
+    moment().locale("ru").format("YYYY-MM-DD").toString() === birthDayDate.toString() ? isBirthDay = true : isBirthDay = false;
 
     const commonAnimation = () => {
         return (
@@ -58,7 +58,7 @@ export const UserWelcome = ({userName, birthDayDate, className}) => {
                 <div className="flex items-center justify-between">
                     <div>
                         <div className={classnames(isBirthDay ? "text-gray-900" : "text-white", "text-sm")}>
-                            <p className="font-bold uppercase">{isBirthDay ? 'С Днём рождения,' : 'С возвращением,'}</p>
+                            <p className="font-bold uppercase">{isBirthDay ? "С Днём рождения," : "С возвращением,"}</p>
                             <p className="font-medium mb-2">{getInitials(userName) || <Skeleton />}</p>
                             {isBirthDay ? (
                                 <p className="font-size-15">Желаем долгой и прекрасной жизни в кругу любящих людей!

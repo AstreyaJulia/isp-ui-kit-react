@@ -1,5 +1,9 @@
 import React from "react";
 
+/** Спиннер на всю страницу
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const PageLoadingSpinner = () => {
     return (
         <div className="page-spinner h-full flex items-center justify-center h-screen flex-col">

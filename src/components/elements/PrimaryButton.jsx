@@ -31,17 +31,17 @@ export const PrimaryButton = ({size, label, onClick, type, ...props}) => {
 
 PrimaryButton.propTypes = {
     /** Размер кнопки */
-    size: PropTypes.oneOf(['small', 'medium', 'large']).isRequired,
+    size: PropTypes.oneOf(["small", "medium", "large"]).isRequired,
     /** Лейбл (надпись) кнопки */
     label: PropTypes.string.isRequired,
     /** Тип кнопки */
-    type: PropTypes.oneOf(['button', 'submit']),
+    type: PropTypes.oneOf(["button", "submit"]),
     /** Обработчик клика */
     onClick: PropTypes.func,
 };
 
 PrimaryButton.defaultProps = {
-    size: 'medium',
+    size: "medium",
     type: "button",
     label: "button",
     onClick: undefined,

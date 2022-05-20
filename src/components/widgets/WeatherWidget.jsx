@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from "react";
 import classnames from "classnames";
 import icon01 from "../../assets/images/weathericons/01.png";
 import icon10 from "../../assets/images/weathericons/10.png";
@@ -22,9 +22,8 @@ import icon02 from "../../assets/images/weathericons/02.png";
 import {Droplet, Wind} from "react-feather";
 import {APIClient} from "../../utils/Helpers/api_helper";
 import moment from "moment";
-import 'moment/locale/ru';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import "moment/locale/ru";
+import Skeleton from "react-loading-skeleton";
 
 export const WeatherWidget = ({apiKey, cityID, className}) => {
 
@@ -53,8 +52,8 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
     };
 
     function getDate() {
-        currentDate.dayOfWeek = moment().locale('ru').format('dddd');
-        currentDate.day = moment().locale('ru').format('DD.MM.YYYY');
+        currentDate.dayOfWeek = moment().locale("ru").format("dddd");
+        currentDate.day = moment().locale("ru").format("DD.MM.YYYY");
         setDate(currentDate);
     }
 
@@ -133,7 +132,7 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
                 currentWeather.description = description;
                 currentWeather.icon = weatherStates[response.weather[0].id].icon;
                 currentWeather.temp_max = Math.round(temp_max).toString();
-                currentWeather.temp_max > 0 ? currentWeather.temp_max = "+" + currentWeather.temp_max + '°' : currentWeather.temp_max = currentWeather.temp_max + '°';
+                currentWeather.temp_max > 0 ? currentWeather.temp_max = "+" + currentWeather.temp_max + "°" : currentWeather.temp_max = currentWeather.temp_max + "°";
                 currentWeather.wind = Math.round(speed).toString();
                 currentWeather.humidity = Math.round(humidity).toString();
                 currentWeather.city = response.name;
@@ -150,7 +149,7 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
             getWeather();
             getDate();
         }, 300000);
-
+        // eslint-disable-next-line
     }, []);
 
     return (
@@ -160,18 +159,17 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
                 <p className="text-gray-700 dark:text-gray-200 relative z-10 mb-1"><span
                     className="capitalize text-base mr-4">{date.dayOfWeek}</span><span
                     className="text-sm">{date.day}</span></p>
-                <p className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max || <Skeleton />}<span
-                    className="font-medium">C</span></p>
-                <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
-                    <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity || <Skeleton />}%</span>
-                    <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind || <Skeleton />} м/с</span>
-                </p>
+                {weather.temp_max
+                ? <><p className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max}<span
+                        className="font-medium">C</span></p>
+                    <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
+                        <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity}%</span>
+                        <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind} м/с</span>
+                    </p></>
+                : <Skeleton count="2" className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10" />}
             </div>
-            {weather.icon
-                ? <img src={weather.icon} alt={weather.description} title={weather.description}
+            <img src={weather.icon} alt={weather.description} title={weather.description}
                  className="absolute bottom-2 right-1 h-16"/>
-                : <Skeleton />
-            }
         </div>
     );
 };

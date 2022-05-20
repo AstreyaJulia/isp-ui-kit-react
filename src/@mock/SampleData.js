@@ -1,4 +1,4 @@
-﻿/** Навигация для сайдбара, для локального тестирования
+/** Навигация для сайдбара, для локального тестирования
  * @type {[{header: string},{name: string, icon: string, id: string, href: string},{name: string, icon: string, id: string, href: string},{badgeColor: string, name: string, icon: string, badgeClassName: string, id: string, href: string, badgeText: string},{children: [{name: string, icon: string, id: string, href: string}], name: string, icon: string, id: string},null,null,null,null,null]}
  */
 export const navigation = [

@@ -21,14 +21,15 @@ export const CalendarWidget = () => {
 
     useEffect(() => {
         getEvents();
+        // eslint-disable-next-line
     }, []);
 
 
     /*const events = [
-        {title: "today's event", date: new Date()},
-        {title: "today's event", date: new Date()},
-        {title: "today's event", start: "2022-05-09", end: "2022-05-09", allDay: false},
-        {title: "today's event", start: "2022-05-05", end: "2022-05-07", allDay: true}
+        {title: "today"s event", date: new Date()},
+        {title: "today"s event", date: new Date()},
+        {title: "today"s event", start: "2022-05-09", end: "2022-05-09", allDay: false},
+        {title: "today"s event", start: "2022-05-05", end: "2022-05-07", allDay: true}
     ];*/
 
     return (

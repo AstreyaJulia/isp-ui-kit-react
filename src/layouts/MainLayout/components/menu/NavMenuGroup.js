@@ -4,12 +4,10 @@ import classnames from "classnames";
 import MenuNavItems from "./NavMenuItems";
 import classNames from "classnames";
 
-/**
- * Check if the given item has the given url
- * in one of its children
- *
- * @param item
- * @param currentUrl
+/** Проверяет, есть ли у потомков элемента текущий url
+ * @param item - элемент
+ * @param currentUrl - текущий url
+ * @returns {boolean}
  */
 export const hasActiveChild = (item, currentUrl) => {
     const {children} = item;
@@ -25,7 +23,7 @@ export const hasActiveChild = (item, currentUrl) => {
             }
         }
 
-        // Check if the child has a link and is active
+        /** Проверяет, если ли у потомка ссылка, и активна ли она */
         if (
             child &&
             child.href &&
@@ -35,17 +33,14 @@ export const hasActiveChild = (item, currentUrl) => {
             return true;
         }
     }
-
     return false;
 };
 
-/**
- * Check if this is a children
- * of the given item
- *
- * @param children
- * @param openGroup
- * @param currentActiveGroup
+/** Проверяет, является ли элемент потомком
+ * заданного элемента
+ * @param children - потомок
+ * @param openGroup - группа
+ * @param currentActiveGroup - текущая активная группа
  */
 export const removeChildren = (children, openGroup, currentActiveGroup) => {
     children.forEach((child) => {
@@ -71,22 +66,22 @@ const NavMenuGroup = ({
                           setCurrentActiveGroup,
                           ...rest
                       }) => {
-    // ** Hooks
     const location = useLocation();
-
-    // ** Current Val
     const currentURL = useLocation().pathname;
 
-    // ** Toggle Open Group
+    /** Переключает открытие группы
+     * @param item - элемент
+     * @param parent - родитель
+     */
     const toggleOpenGroup = (item, parent) => {
         let openGroup = groupOpen;
         const activeGroup = groupActive;
 
-        // ** If Group is already open and clicked, close the group
+        /** Если группа открыта и нажата, закрыть группу */
         if (openGroup.includes(item.id)) {
             openGroup.splice(openGroup.indexOf(item.id), 1);
 
-            // ** If clicked Group has open group children, Also remove those children to close those groups
+            /** Если у нажатой группы есть открытые потомки, удалить их, чтобы закрыть группу */
             if (item.children) {
                 removeChildren(item.children, openGroup, groupActive);
             }
@@ -94,9 +89,9 @@ const NavMenuGroup = ({
             activeGroup.includes(item.id) ||
             currentActiveGroup.includes(item.id)
         ) {
-            // ** If Group clicked is Active Group
+            /** Если нажатая группа активна */
 
-            // ** If Active group is closed and clicked again, we should open active group else close active group
+            /** Если активная группа закрыта и нажата снова, нужно открыть активную группу, иначе закрыть активную группу */
             if (
                 !activeGroup.includes(item.id) &&
                 currentActiveGroup.includes(item.id)
@@ -106,15 +101,15 @@ const NavMenuGroup = ({
                 activeGroup.splice(activeGroup.indexOf(item.id), 1);
             }
 
-            // ** Update Active Group
+            /** Обновить активную группу */
             setGroupActive([...activeGroup]);
         } else if (parent) {
-            // ** If Group clicked is the child of a open group, first remove all the open groups under that parent
+            /** Если нажатая группа - потомок открытой группы, вначале удалить все открытые группы в этом родителе */
             if (parent.children) {
                 removeChildren(parent.children, openGroup, groupActive);
             }
 
-            // ** After removing all the open groups under that parent, add the clicked group to open group array
+            /** После удаления всех открытых групп под этим родителем, добавить нажатую группу в массив открытых групп */
             if (!openGroup.includes(item.id)) {
                 openGroup.push(item.id);
             }
@@ -170,59 +165,59 @@ const NavMenuGroup = ({
 
     return (
         <div key={item.id} className="space-y-1 w-full">
-                <>
-                    <div className="w-full">
-                        <a
-                            className={classNames({open: openClassCondition(item.id)},
-                                groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
-                                    ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
-                                    : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
-                                "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
-                                menuCollapsed
-                                    ? "justify-end pr-1"
-                                    : "px-2 justify-between"
-                            )}
-                            aria-current={
-                                groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "page" : undefined
-                            }
-                            onClick={e => onCollapseClick(e, item)}
-                        >
-                            <div className="flex items-center">
-                                <i className={classnames(menuCollapsed ? "" : "mr-4",
-                                    "flex-shrink-0 flex items-center text-2xl mdi", item.icon)}/>
-                                {!menuCollapsed ? item.name : ""}
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 className={classNames(
-                                     groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "text-gray-400 rotate-90" : "text-gray-300",
-                                     "flex-shrink-0 h-4 w-4 transform group-hover:text-gray-400 transition-colors ease-in-out duration-150"
-                                 )}
-                                 viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd"
-                                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                      clipRule="evenodd"/>
-                            </svg>
-                        </a>
+            <>
+                <div className="w-full">
+                    <a href="/"
+                       className={classNames({open: openClassCondition(item.id)},
+                           groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
+                               ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
+                               : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
+                           "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
+                           menuCollapsed
+                               ? "justify-end pr-1"
+                               : "px-2 justify-between"
+                       )}
+                       aria-current={
+                           groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "page" : undefined
+                       }
+                       onClick={e => onCollapseClick(e, item)}
+                    >
+                        <div className="flex items-center">
+                            <i className={classnames(menuCollapsed ? "" : "mr-4",
+                                "flex-shrink-0 flex items-center text-2xl mdi", item.icon)}/>
+                            {!menuCollapsed ? item.name : ""}
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             className={classNames(
+                                 groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "text-gray-400 rotate-90" : "text-gray-300",
+                                 "flex-shrink-0 h-4 w-4 transform group-hover:text-gray-400 transition-colors ease-in-out duration-150"
+                             )}
+                             viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd"
+                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                  clipRule="evenodd"/>
+                        </svg>
+                    </a>
 
-                    </div>
-                    <div className="space-y-1">
-                        {groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? (
-                            <MenuNavItems
-                                {...rest}
-                                items={item.children}
-                                groupActive={groupActive}
-                                setGroupActive={setGroupActive}
-                                currentActiveGroup={currentActiveGroup}
-                                setCurrentActiveGroup={setCurrentActiveGroup}
-                                groupOpen={groupOpen}
-                                setGroupOpen={setGroupOpen}
-                                parentItem={item}
-                                menuCollapsed={menuCollapsed}
-                                activeItem={activeItem}
-                            />
-                        ):""}
-                    </div>
-                </>
+                </div>
+                <div className="space-y-1">
+                    {groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? (
+                        <MenuNavItems
+                            {...rest}
+                            items={item.children}
+                            groupActive={groupActive}
+                            setGroupActive={setGroupActive}
+                            currentActiveGroup={currentActiveGroup}
+                            setCurrentActiveGroup={setCurrentActiveGroup}
+                            groupOpen={groupOpen}
+                            setGroupOpen={setGroupOpen}
+                            parentItem={item}
+                            menuCollapsed={menuCollapsed}
+                            activeItem={activeItem}
+                        />
+                    ) : ""}
+                </div>
+            </>
 
         </div>
     );

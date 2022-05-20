@@ -17,7 +17,7 @@ const Home = () => {
             </Helmet>
 
             <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs} />
+                <PageHeader pages={breadcrumbs}/>
 
                 <div className="flex-1 flex mt-4">
                     <aside className="hidden overflow-y-auto lg:block">
@@ -32,7 +32,6 @@ const Home = () => {
 
                     <main className="flex-1 overflow-y-auto">
                         <section className="min-w-0 flex-1 h-full flex flex-col overflow-hidden lg:order-last">
-
                         </section>
                     </main>
 

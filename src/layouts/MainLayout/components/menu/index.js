@@ -18,30 +18,32 @@ const Sidebar = (props) => {
     } = props;
 
     /** Стейты */
-        const [groupOpen, setGroupOpen] = useState([])
-        const [groupActive, setGroupActive] = useState([])
-        const [currentActiveGroup, setCurrentActiveGroup] = useState([])
+    const [groupOpen, setGroupOpen] = useState([])
+    const [groupActive, setGroupActive] = useState([])
+    const [currentActiveGroup, setCurrentActiveGroup] = useState([])
 
+    /** Кнопка-переключатель узкого/широкого меню */
     const MenuToggler = () => {
-            if (menuCollapsed) {
-                return (
-                    <Circle
-                        className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
-                        onClick={() => setMenuCollapsed(false)}
-                    />
-                );
-            } else {
-                return (
-                    <Disc
-                        className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
-                        onClick={() => setMenuCollapsed(true)}
-                    />
-                );
-            }
-        };
+        if (menuCollapsed) {
+            return (
+                <Circle
+                    className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
+                    onClick={() => setMenuCollapsed(false)}
+                />
+            );
+        } else {
+            return (
+                <Disc
+                    className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
+                    onClick={() => setMenuCollapsed(true)}
+                />
+            );
+        }
+    };
 
     return (
         <>
+            {/** Мобильное меню */}
             <Transition.Root show={menuVisibility} as={Fragment}>
                 <Dialog
                     as="div"
@@ -127,12 +129,12 @@ const Sidebar = (props) => {
                         </div>
                     </Transition.Child>
                     <div className="flex-shrink-0 w-14" aria-hidden="true">
-                        {/* Dummy element to force sidebar to shrink to fit close icon */}
+                        {/** Заглушка, не позволяющая меню схлопываться, чтобы вместить кнопку меню */}
                     </div>
                 </Dialog>
             </Transition.Root>
 
-            {/* Десктопное меню */}
+            {/** Десктопное меню */}
             <div
                 className={classNames(
                     menuCollapsed ? "lg:w-20" : "lg:w-64",
@@ -178,7 +180,7 @@ const Sidebar = (props) => {
                                     setGroupActive={setGroupActive}
                                     currentActiveGroup={currentActiveGroup}
                                     setCurrentActiveGroup={setCurrentActiveGroup}
-                                />                            </div>
+                                /></div>
                         </PerfectScrollbar>
                     </nav>
                 </div>

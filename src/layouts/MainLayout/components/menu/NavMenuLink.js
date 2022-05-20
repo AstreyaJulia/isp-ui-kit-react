@@ -16,6 +16,7 @@ const NavMenuLink = ({item, menuCollapsed}) => {
 
     useEffect(() => {
         setActiveItem(currentURL)
+        // eslint-disable-next-line
     }, [location])
 
     return (
@@ -48,7 +49,7 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                     }
                 }}
             >
-                {/* Значок элемента, если меню узкое, отступ убирается */}
+                {/** Значок элемента, если меню узкое, отступ убирается */}
                 <i className={classnames(
                     menuCollapsed
                         ? ""
@@ -72,11 +73,11 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                         : null
                     }
                 </i>
-                {/* Название элемента меню, если меню узкое, не отрисовывается */}
+                {/** Название элемента меню, если меню узкое, не отрисовывается */}
                 {!menuCollapsed
                     ? item.name
                     : ""}
-                {/* Отрисовка бейджа для меню */}
+                {/** Отрисовка бейджа для меню */}
 
             </Link>
         </div>

@@ -1,20 +1,17 @@
-/** React Imports */
-import React, {useEffect, useState} from 'react'
-
-/** Third Party Components */
-import Proptypes from 'prop-types'
+import React, {useEffect, useState} from "react";
+import Proptypes from "prop-types";
 import {ArrowUp} from "react-feather";
 
 const ScrollTop = props => {
-    /** Props */
+
     const {showOffset, scrollBehaviour, ...rest} = props
 
-    /** State */
+    /** Стейт видимости */
     const [visible, setVisible] = useState(false)
 
     useEffect(() => {
         if (window) {
-            window.addEventListener('scroll', () => {
+            window.addEventListener("scroll", () => {
                 if (window.pageYOffset >= showOffset) {
                     setVisible(true)
                 } else {
@@ -40,12 +37,11 @@ const ScrollTop = props => {
 
 export default ScrollTop
 
-/** PropTypes */
 ScrollTop.propTypes = {
     showOffset: Proptypes.number,
-    scrollBehaviour: Proptypes.oneOf(['smooth', 'instant', 'auto'])
+    scrollBehaviour: Proptypes.oneOf(["smooth", "instant", "auto"])
 }
 
 ScrollTop.defaultProps = {
-    scrollBehaviour: 'smooth'
+    scrollBehaviour: "smooth"
 }

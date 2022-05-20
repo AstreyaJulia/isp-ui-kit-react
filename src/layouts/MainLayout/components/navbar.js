@@ -85,7 +85,7 @@ const NavBar = (props) => {
                 </div>
             </div>
 
-            {/* Правая часть заголовка */}
+            {/** Правая часть заголовка */}
             <div className="ml-4 flex items-center md:ml-6">
                 <button
                     type="button"
@@ -100,7 +100,7 @@ const NavBar = (props) => {
                     />
                 </button>
 
-                {/* Меню пользователя */}
+                {/** Меню пользователя */}
                 <Menu as="div" className="ml-3 relative">
                     <div>
                         <Menu.Button
