@@ -209,6 +209,36 @@ export const users = [
         site1: "https://site1.com",
         site2: "https://site2.com",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    },
+    {
+        id: "6",
+        sudo: "1",
+        login: "Chainikov_OV",
+        name: "Чайников Олег Васильевич",
+        color: "blue",
+        gender: "male",
+        profession: "Администратор",
+        judge: "",
+        role: "Admin",
+        email: "chainikovov@example.com",
+        cabinet: "Каб. 2",
+        place: "АРМ 1",
+        work_phone: "3-13-97",
+        mobile_phone: "7-903-124-12-34",
+        address: "Город, улица, дом, квартира",
+        birthday: "1994-08-23",
+        ip: "192.168.2.6",
+        vkontakte: "https://vk.com/id&=6",
+        odnoklassniki: "https://ok.ru/id&=6",
+        facebook: "https://facebook.com/id&=6",
+        instagram: "https://instagram.com/id&=6",
+        site1: "https://site1.com",
+        site2: "https://site2.com",
+        avatar: ""
     }
+
+]
+
+export const messages = [
 
 ]

@@ -11,7 +11,7 @@ import classNames from "classnames";
  * @returns {JSX.Element}
  * @constructor
  */
-export const PageHeader = ({pages, classname, header, children}) => {
+const PageHeader = ({pages, classname, header, children}) => {
 
     return (
         <div>
@@ -75,3 +75,5 @@ export const PageHeader = ({pages, classname, header, children}) => {
         </div>
     )
 };
+
+export default PageHeader;

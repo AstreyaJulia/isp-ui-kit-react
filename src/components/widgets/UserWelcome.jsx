@@ -18,7 +18,7 @@ import Skeleton from "react-loading-skeleton";
  * @returns {JSX.Element}
  * @constructor
  */
-export const UserWelcome = ({userName, birthDayDate, className}) => {
+const UserWelcome = ({userName, birthDayDate, className}) => {
 
     let isBirthDay;
 
@@ -75,3 +75,5 @@ export const UserWelcome = ({userName, birthDayDate, className}) => {
         </div>
     );
 };
+
+export default UserWelcome

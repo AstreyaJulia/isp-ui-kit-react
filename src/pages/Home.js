@@ -1,9 +1,9 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {UserWelcome} from "../components/widgets/UserWelcome";
-import {CalendarWidget} from "../components/widgets/CalendarWidget";
-import {WeatherWidget} from "../components/widgets/WeatherWidget";
-import {PageHeader} from "../components/PageHeader";
+import UserWelcome from "../components/widgets/UserWelcome";
+import CalendarWidget from "../components/widgets/CalendarWidget";
+import WeatherWidget from "../components/widgets/WeatherWidget";
+import PageHeader from "../components/PageHeader";
 import {users} from "../@mock/SampleData"
 import config from "../config";
 

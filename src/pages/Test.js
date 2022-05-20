@@ -1,6 +1,6 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {PageHeader} from "../components/PageHeader";
+import PageHeader from "../components/PageHeader";
 import config from "../config";
 
 const breadcrumbs = [{ name: "Тестовая страница", href: "#", current: true }];

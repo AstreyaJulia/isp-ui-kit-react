@@ -11,7 +11,7 @@ import classNames from "classnames";
  * @returns {JSX.Element}
  * @constructor
  */
-export const BasicButton = ({size, label, onClick, type, ...props}) => {
+const BasicButton = ({size, label, onClick, type, ...props}) => {
 
     const sizes = {
         "small": "px-3 py-1.5 text-xs",
@@ -50,3 +50,5 @@ BasicButton.defaultProps = {
     label: "button",
     onClick: undefined,
 };
+
+export default BasicButton;

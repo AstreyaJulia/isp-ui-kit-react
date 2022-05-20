@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserWelcome} from '../components/widgets/UserWelcome';
+import UserWelcome from '../components/widgets/UserWelcome';
 
 export default {
     title: 'Widgets/UserWelcome',

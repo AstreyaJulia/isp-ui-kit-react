@@ -25,7 +25,7 @@ import moment from "moment";
 import "moment/locale/ru";
 import Skeleton from "react-loading-skeleton";
 
-export const WeatherWidget = ({apiKey, cityID, className}) => {
+const WeatherWidget = ({apiKey, cityID, className}) => {
 
     /** Адрес Open Weather
      * @type {string}
@@ -173,3 +173,5 @@ export const WeatherWidget = ({apiKey, cityID, className}) => {
         </div>
     );
 };
+
+export default WeatherWidget

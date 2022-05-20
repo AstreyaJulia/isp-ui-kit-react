@@ -6,7 +6,7 @@ import {APIClient} from "../../utils/Helpers/api_helper";
 
 const fetch = new APIClient();
 
-export const CalendarWidget = () => {
+const CalendarWidget = () => {
 
     /** Стейты погоды и даты */
     const [events, setEvents] = useState({});
@@ -54,3 +54,5 @@ export const CalendarWidget = () => {
         </div>
     );
 };
+
+export default CalendarWidget;

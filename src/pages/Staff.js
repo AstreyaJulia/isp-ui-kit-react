@@ -1,6 +1,6 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {PageHeader} from "../components/PageHeader";
+import PageHeader from "../components/PageHeader";
 import {users} from "../@mock/SampleData";
 import config from "../config";
 import classNames from "classnames";
