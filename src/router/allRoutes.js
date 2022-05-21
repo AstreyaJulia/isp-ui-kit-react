@@ -1,6 +1,7 @@
 import React, {Fragment, lazy} from "react";
 import {Navigate} from "react-router-dom";
 import LayoutWrapper from "../layouts/layout-wrapper";
+import {getLoggedinUser} from "../utils/Helpers/api_helper";
 
 /** Раскладки */
 import BlankLayout from "../layouts/BlankLayout";
@@ -8,6 +9,7 @@ import MainLayout from "../layouts/MainLayout";
 
 /** Роутинг */
 import PublicRoute from "./PublicRoute";
+import PrivateRoute from './PrivateRoute'
 import {isObjEmpty} from "../utils";
 
 /* Узкое содержимое<main className="max-w-7xl mx-auto md:px-8 xl:px-0 lg:p-4 px-0 py-4">*/
@@ -18,7 +20,15 @@ const getLayout = {
 }
 
 /** Дефолтный роут */
-const DefaultRoute = "/home";
+//const DefaultRoute = "/home";
+const DefaultRoute = () => {
+    const user = getLoggedinUser()
+    if (user) {
+        return '/home'
+    } else {
+        return '/auth'
+    }
+}
 
 /** Импорт страниц */
 const Home = lazy(() => import("../pages/Home"));
@@ -43,7 +53,7 @@ const Routes = [
     {
         path: "/",
         index: true,
-        element: <Navigate replace to={DefaultRoute}/>
+        element: <Navigate replace to={DefaultRoute()}/>
     },
     {
         path: "/home",
@@ -93,14 +103,18 @@ const Routes = [
         path: "/auth",
         element: <Login/>,
         meta: {
-            layout: "blank"
+            layout: "blank",
+            publicRoute: true,
+            restricted: true
         }
     },
     {
         path: "/reg",
         element: <Register/>,
         meta: {
-            layout: "blank"
+            layout: "blank",
+            publicRoute: true,
+            restricted: true
         }
     },
     {
@@ -132,11 +146,12 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
                 (route.meta && route.meta.layout && route.meta.layout === layout) ||
                 ((route.meta === undefined || route.meta.layout === undefined) && defaultLayout === layout)
             ) {
-                const RouteTag = PublicRoute;
+                let RouteTag = PublicRoute;
 
                 /** Проверяет, приватный или общий роут */
                 if (route.meta) {
                     route.meta.layout === "blank" ? (isBlank = true) : (isBlank = false)
+                    RouteTag = route.meta.publicRoute ? PublicRoute : PrivateRoute
                 }
 
                 if (route.element) {

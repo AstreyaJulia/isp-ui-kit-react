@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import layout from "./layout";
+import auth from './authentication'
 
 /** Корневое хранилище, объединяем все хранилища
  * FIXME добавлять новые хранилища сюда
@@ -7,7 +8,8 @@ import layout from "./layout";
  */
 const rootReducer = combineReducers({
     /** Публичные */
-    layout
+    layout,
+    auth
 });
 
 export default rootReducer;

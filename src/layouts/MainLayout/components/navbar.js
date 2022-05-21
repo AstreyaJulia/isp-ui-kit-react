@@ -9,8 +9,12 @@ import {Moon, Sun} from "react-feather";
 import {useSkin} from "../../../utils/Hooks/useSkin";
 import {Avatar} from "../../../components/elements/Avatar";
 import MessageDropdown from "./menu/MessageDropdown";
+import {useDispatch} from 'react-redux'
+import {handleLogout} from '../../../store/authentication';
 
 const NavBar = (props) => {
+
+    const dispatch = useDispatch()
 
     const {
         user,
@@ -102,7 +106,7 @@ const NavBar = (props) => {
                     </button>
 
                     {/** Сообщения */}
-                    <MessageDropdown />
+                    <MessageDropdown/>
 
                     {/** Меню пользователя */}
                     <Menu as="div" className="ml-4 relative">
@@ -150,12 +154,14 @@ const NavBar = (props) => {
                                 </div>
                                 <div className="py-1">
                                     <Menu.Item>
-                                        {({active}) => (<Link
-                                            to="#"
-                                            className={classNames(active ? "bg-gray-100 dark:bg-gray-700" : "", "block px-4 py-2 text-sm text-gray-700 dark:text-gray-400")}
-                                        >
-                                            Выход
-                                        </Link>)}
+                                        {({active}) => (
+                                            <Link
+                                                to="/auth"
+                                                onClick={() => dispatch(handleLogout())}
+                                                className={classNames(active ? "bg-gray-100 dark:bg-gray-700" : "", "block px-4 py-2 text-sm text-gray-700 dark:text-gray-400")}
+                                            >
+                                                Выход
+                                            </Link>)}
                                     </Menu.Item>
                                 </div>
                             </Menu.Items>

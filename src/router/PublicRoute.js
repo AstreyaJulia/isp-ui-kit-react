@@ -2,7 +2,7 @@
 import React, {Suspense} from "react";
 import {Navigate} from "react-router-dom";
 
-const user = JSON.parse(localStorage.getItem("userData"));
+const user = JSON.parse(localStorage.getItem("authUser"));
 
 const PublicRoute = ({children, route}) => {
     if (route) {

@@ -7,7 +7,8 @@ axios.defaults.baseURL = config.API_URL;
 
 /** Заголовок контента для API-запросов
  * @type {string} */
-axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.post["Content-Type"] = "application/json; charset=UTF-8";
+axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 /** Сбор ошибок */
 axios.interceptors.response.use(
