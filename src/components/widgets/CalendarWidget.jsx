@@ -2,9 +2,11 @@ import React, {useEffect, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import ruLocale from "@fullcalendar/core/locales/ru";
-import {APIClient} from "../../utils/Helpers/api_helper";
+import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";
 
 const fetch = new APIClient();
+setAuthorization(localStorage.getItem("jwt").toString());
+console.log(localStorage.getItem("jwt"))
 
 const CalendarWidget = () => {
 
@@ -12,7 +14,7 @@ const CalendarWidget = () => {
     const [events, setEvents] = useState({});
 
     const getEvents = () => {
-        fetch.get("/components/fullcalendar/events.php?startParam=2022-04-25&endParam=2022-06-06&calendars=primary,success,info,warning,danger,pink,blue,orange,teal,azure&private=0", "")
+        fetch.get("components/fullcalendar/events.php?startParam=2022-04-25&endParam=2022-06-06&calendars=primary,success,info,warning,danger,pink,blue,orange,teal,azure&private=0", "")
             .then((response) => {
                 setEvents(response);
             })
