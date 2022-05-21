@@ -1,16 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import InputPasswordToggle from "../../components/elements/PasswordShow"
 import {Form, Label, Input, Button} from "reactstrap"
-import cloud1 from "../../assets/images/pages/cloud1.svg";
-import cloud2 from "../../assets/images/pages/cloud2.svg";
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
 import React from "react";
 import toast from 'react-hot-toast'
 import {useDispatch} from 'react-redux'
 import {useForm, Controller} from 'react-hook-form'
 import {handleLogin} from '../../store/authentication'
-import NotificationSimple from "../../components/elements/NotificationSimple";
-import {CheckCircleIcon} from "@heroicons/react/outline";
+import {CheckCircleIcon, XIcon} from "@heroicons/react/outline";
 //import {APIClient} from "../../utils/Helpers/api_helper";
 
 //const fetch = new APIClient();
@@ -18,6 +15,29 @@ import {CheckCircleIcon} from "@heroicons/react/outline";
 const defaultValues = {
     login: 'chainik',
     password: 'qwer'
+}
+
+const ToastContent = ({t, name}) => {
+    return (
+        <div className="flex items-start">
+            <div className="flex-shrink-0">
+                <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
+            </div>
+            <div className="ml-3 flex-1 pt-0.5">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{name}</p>
+                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Вы успешно вошли в систему.</p>
+            </div>
+            <div className="ml-4 flex-shrink-0 flex">
+                <button
+                    className="bg-white dark:bg-gray-900 rounded-md inline-flex text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    onClick={() => toast.dismiss(t.id)}
+                >
+                    <span className="sr-only">Закрыть</span>
+                    <XIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+            </div>
+        </div>
+    )
 }
 
 const Login = () => {
@@ -43,17 +63,8 @@ const Login = () => {
             dispatch(handleLogin(data));
             navigate("/home");
             toast(t => (
-                <NotificationSimple onClick={() => toast.dismiss(t.id)}>
-                    <div className="flex-shrink-0">
-                        <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true"/>
-                    </div>
-                    <div className="ml-3 w-0 flex-1 pt-0.5">
-                        <p className="text-sm font-medium text-gray-900">{data.login}</p>
-                        <p className="mt-1 text-sm text-gray-500">You have successfully logged in as an user to Vuexy.
-                            Now you can start to explore. Enjoy!</p>
-                    </div>
-                </NotificationSimple>
-            ));
+                <ToastContent t={t} name={data.login} />
+            ), {className: "bg-white dark:bg-gray-800 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-5 overflow-hidden"});
 
             /*fetch.get("api/autorization/login.php", data)
                 .then(res => {
@@ -83,16 +94,15 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-full flex bg-white">
-            <div className="hidden lg:flex relative w-0 flex-1 content-center items-center justify-center">
-                <img className="cloud absolute animation-cloud w-1/4 -top-7 right-1/4 opacity-70" src={cloud1} alt=""/>
-                <img className="cloud absolute animation-cloud w-1/3 -top-1/3 opacity-80" src={cloud2} alt=""/>
-                <img className="cloud absolute animation-cloud w-1/4 top-1/3 left-1/4" src={cloud1} alt=""/>
-                <img
-                    className="w-1/3 bg-cyan-400 rounded-full p-6"
-                    src={rocket}
-                    alt=""
-                />
+        <div className="min-h-full flex bg-white dark:bg-gray-900">
+            <div className="hidden lg:flex relative w-0 flex-1 content-center items-center justify-center rounded-full">
+                <div className="w-1/3 bg-cyan-400 rounded-full overflow-hidden">
+                    <img
+                        className="w-full"
+                        src={rocket}
+                        alt=""
+                    />
+                </div>
             </div>
             <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
                 <div className="mx-auto w-full max-w-sm lg:w-96">
@@ -102,15 +112,14 @@ const Login = () => {
                             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                             alt="Workflow"
                         />
-                        <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Добро пожаловать! 👋</h2>
+                        <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-gray-50">Добро пожаловать! 👋</h2>
                     </div>
 
                     <div className="mt-8">
-
                         <div className="mt-6">
                             <Form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                                 <div>
-                                    <Label className="block text-sm font-medium text-gray-700" for="login">
+                                    <Label className="block text-sm font-medium text-gray-700 dark:text-gray-200" for="login">
                                         Имя пользователя
                                     </Label>
                                     <div className="mt-1">
@@ -120,7 +129,7 @@ const Login = () => {
                                             control={control}
                                             render={({field}) => (
                                                 <Input
-                                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                    className="bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     type="text"
                                                     placeholder="Ivanov_II"
                                                     autoFocus
@@ -132,7 +141,7 @@ const Login = () => {
                                 </div>
 
                                 <div className="space-y-1">
-                                    <Label className="block text-sm font-medium text-gray-700" for="password">
+                                    <Label className="block text-sm font-medium text-gray-700 dark:text-gray-200" for="password">
                                         Пароль
                                     </Label>
 

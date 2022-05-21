@@ -17,14 +17,16 @@ export const authSlice = createSlice({
     reducers: {
         handleLogin: (state, action) => {
             state.authUser = action.payload;
-            state.jwt = action.payload.jwt;
+            state["jwt"] = action.payload["jwt"];
             localStorage.setItem("authUser", JSON.stringify(action.payload));
+            localStorage.setItem("jwt", JSON.stringify(action.payload.jwt));
         },
         handleLogout: state => {
             state.authUser = {};
             state["jwt"] = null;
             /** Удалить пользователя, токен из localStorage */
-            localStorage.removeItem("authUser")
+            localStorage.removeItem("authUser");
+            localStorage.removeItem("jwt");
         }
     }
 })
