@@ -57,47 +57,80 @@ const Routes = [
     },
     {
         path: "/home",
-        element: <Home/>
+        element: <Home/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/admin",
-        element: <Admin/>
+        element: <Admin/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/faq",
-        element: <Faq/>
+        element: <Faq/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/grade",
-        element: <Grade/>
+        element: <Grade/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/phonebook",
-        element: <Phonebook/>
+        element: <Phonebook/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/proxylist",
-        element: <Proxylist/>
+        element: <Proxylist/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/stats",
-        element: <Stat/>
+        element: <Stat/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/test",
-        element: <Test/>
+        element: <Test/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/staff",
-        element: <Staff/>
+        element: <Staff/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/myprofile",
-        element: <MyInfo/>
+        element: <MyInfo/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/calendar",
-        element: <Calendar/>
+        element: <Calendar/>,
+        meta: {
+            publicRoute: false
+        }
     },
     {
         path: "/auth",
@@ -120,7 +153,10 @@ const Routes = [
     {
         path: "*",
         element: <Error404/>,
-        children: [{path: "*", element: <Error404/>}]
+        children: [{path: "*", element: <Error404/>}],
+        meta: {
+            publicRoute: false
+        }
     }
 ]
 

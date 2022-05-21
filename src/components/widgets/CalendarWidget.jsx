@@ -5,8 +5,9 @@ import ruLocale from "@fullcalendar/core/locales/ru";
 import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";
 
 const fetch = new APIClient();
-setAuthorization(localStorage.getItem("jwt").toString());
-console.log(localStorage.getItem("jwt"))
+if (localStorage.getItem("jwt")) {
+    setAuthorization(localStorage.getItem("jwt").toString())
+}
 
 const CalendarWidget = () => {
 

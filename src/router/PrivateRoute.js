@@ -2,20 +2,21 @@ import {Navigate} from 'react-router-dom'
 import {Suspense} from 'react'
 
 const PrivateRoute = ({children, route}) => {
-    // ** Hooks & Vars
-    const user = JSON.parse(localStorage.getItem('userData'))
+    const user = JSON.parse(localStorage.getItem("authUser"));
 
     if (route) {
-        let restrictedRoute = false
+        let restrictedRoute = false;
 
         if (route.meta) {
-            restrictedRoute = route.meta.restricted
+            restrictedRoute = route.meta.restricted;
         }
+
         if (!user) {
-            return <Navigate to='/auth'/>
+            return <Navigate to='/auth'/>;
         }
+
         if (user && restrictedRoute) {
-            return <Navigate to='/'/>
+            return <Navigate to='/'/>;
         }
     }
 
