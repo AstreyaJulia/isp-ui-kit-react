@@ -62,7 +62,7 @@ const PageHeader = ({pages, classname, header, children}) => {
             ?             <div className={classNames("mt-2 md:flex md:items-center", header ? "md:justify-between" : "md:justify-end")}>
                     {header
                         ? <div className="flex-1 min-w-0">
-                            <h2 className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-3xl sm:truncate">
+                            <h2 className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">
                                 {header}
                             </h2>
                         </div>

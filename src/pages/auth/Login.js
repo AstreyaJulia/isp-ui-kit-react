@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import InputPasswordToggle from "../../components/elements/PasswordShow"
 import {Form, Label, Input, Button} from "reactstrap"
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
@@ -107,11 +107,6 @@ const Login = () => {
             <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
                 <div className="mx-auto w-full max-w-sm lg:w-96">
                     <div>
-                        <img
-                            className="h-12 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                            alt="Workflow"
-                        />
                         <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-gray-50">Добро пожаловать! 👋</h2>
                     </div>
 
@@ -155,6 +150,13 @@ const Login = () => {
                                                                      invalid={errors.password && true} {...field} />
                                             )}
                                         />
+                                    </div>
+                                </div>
+                                <div className="flex items-center justify-end">
+                                    <div className="text-sm">
+                                        <Link to="/reg" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                            У меня нет пароля
+                                        </Link>
                                     </div>
                                 </div>
                                 <div>

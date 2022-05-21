@@ -20,7 +20,6 @@ const getLayout = {
 }
 
 /** Дефолтный роут */
-//const DefaultRoute = "/home";
 const DefaultRoute = () => {
     const user = getLoggedinUser()
     if (user) {

@@ -242,3 +242,8 @@ export const users = [
 export const messages = [
     {id: "1", user: users[5], time: "2022-05-21 11:05:00", message: "Hey John, I am looking for the best admin template. Could you please help me to find it out?"}
 ]
+
+export const birthdaysToday = [
+    {user: users[5], age: "36"},
+    {user: users[3], age: "24"}
+]

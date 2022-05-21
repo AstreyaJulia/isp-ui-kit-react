@@ -4,8 +4,9 @@ import UserWelcome from "../components/widgets/UserWelcome";
 import CalendarWidget from "../components/widgets/CalendarWidget";
 import WeatherWidget from "../components/widgets/WeatherWidget";
 import PageHeader from "../components/PageHeader";
-import {users} from "../@mock/SampleData"
+import {users, birthdaysToday} from "../@mock/SampleData"
 import config from "../config";
+import TodayBirthdays from "../components/widgets/TodayBirthdays";
 
 const breadcrumbs = [{ name: "Главная", href: "#", current: true }];
 
@@ -40,6 +41,7 @@ const Home = () => {
                             <div
                                 className="block h-full w-full text-gray-200">
                                 <CalendarWidget />
+                                <TodayBirthdays birthdays={birthdaysToday} />
                             </div>
                         </div>
                     </aside>

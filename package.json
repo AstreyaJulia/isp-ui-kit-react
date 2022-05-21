@@ -50,7 +50,6 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "build tailwind": "postcss ./src/scss/base.scss -o ./src/scss/App.scss",
-        "watch tailwind": "npx tailwindcss -i ./src/scss/base.scss -o ./src/scss/App.scss --watch",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public",
         "update modules": "npm update"
