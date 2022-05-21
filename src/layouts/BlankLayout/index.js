@@ -19,7 +19,7 @@ const BlankLayout = () => {
     }
 
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-screen bg-white dark:bg-gray-900">
             <Outlet/>
         </div>
     );

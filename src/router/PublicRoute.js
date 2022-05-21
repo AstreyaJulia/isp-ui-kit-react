@@ -2,12 +2,16 @@
 import React, {Suspense} from "react";
 import {Navigate} from "react-router-dom";
 
-const user = JSON.parse(localStorage.getItem("authUser"));
-
 const PublicRoute = ({children, route}) => {
+    const user = JSON.parse(localStorage.getItem("authUser"));
+
     if (route) {
 
-        const restrictedRoute = route.meta && route.meta.restricted
+        let restrictedRoute = false;
+
+        if (route.meta) {
+            restrictedRoute = route.meta.restricted;
+        }
 
         if (user && restrictedRoute) {
             return <Navigate to="/"/>
