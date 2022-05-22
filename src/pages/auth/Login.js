@@ -8,6 +8,8 @@ import {useDispatch} from 'react-redux'
 import {useForm, Controller} from 'react-hook-form'
 import {handleLogin} from '../../store/authentication'
 import {CheckCircleIcon, XIcon} from "@heroicons/react/outline";
+import {Helmet} from "react-helmet";
+import config from "../../config";
 //import {APIClient} from "../../utils/Helpers/api_helper";
 
 //const fetch = new APIClient();
@@ -94,6 +96,11 @@ const Login = () => {
     }
 
     return (
+        <React.Fragment>
+            <Helmet>
+                <title>{config.APP_NAME} - Вход</title>
+            </Helmet>
+
         <div className="min-h-full flex bg-white dark:bg-gray-900">
             <div className="hidden lg:flex relative w-0 flex-1 content-center items-center justify-center rounded-full">
                 <div className="w-1/3 bg-cyan-400 rounded-full overflow-hidden">
@@ -172,6 +179,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+        </React.Fragment>
     )
 }
 

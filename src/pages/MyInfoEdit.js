@@ -89,9 +89,10 @@ const genders = [{
 /** Навигация вверху страницы
  * @type {[{current: boolean, name: string, href: string}]}
  */
-const breadcrumbs = [{name: "Мой Профиль", href: "#", current: true}];
+const breadcrumbs = [{name: "Мой профиль", href: "/myprofile", current: false},
+    {name: "Редактирование моего профиля", href: "/myprofile/edit", current: true}];
 
-const MyInfo = () => {
+const MyInfoEdit = () => {
     /** Стейт пользовательских данных */
     const [userData, setUserData] = useState(users[0]);
 
@@ -157,7 +158,7 @@ const MyInfo = () => {
     return (<React.Fragment>
         {/** Заголовок страницы */}
         <Helmet>
-            <title>{config.APP_NAME} - Мой Профиль</title>
+            <title>{config.APP_NAME} - Редактирование моего профиля</title>
         </Helmet>
 
         <div className="p-4 justify-self-stretch justify-center relative">
@@ -519,4 +520,4 @@ const MyInfo = () => {
     </React.Fragment>);
 };
 
-export default MyInfo;
+export default MyInfoEdit;

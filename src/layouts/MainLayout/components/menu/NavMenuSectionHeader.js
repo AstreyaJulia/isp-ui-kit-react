@@ -8,7 +8,7 @@ import React from "react";
  * @constructor */
 const NavMenuSectionHeader = ({item, menuCollapsed}) => {
     return (
-        <div className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase font-medium py-1"
+        <div className="text-gray-400 text-xs font-medium uppercase tracking-wide my-3"
             key={item.header}>
             {/* Если узкое, название скрывается */}
             {!menuCollapsed

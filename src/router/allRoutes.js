@@ -32,6 +32,7 @@ const DefaultRoute = () => {
 /** Импорт страниц */
 const Home = lazy(() => import("../pages/Home"));
 const MyInfo = lazy(() => import("../pages/MyInfo"));
+const MyInfoEdit = lazy(() => import("../pages/MyInfoEdit"));
 const Staff = lazy(() => import("../pages/Staff"));
 const Admin = lazy(() => import("../pages/Admin"));
 const Faq = lazy(() => import("../pages/Faq"));
@@ -120,6 +121,13 @@ const Routes = [
     {
         path: "/myprofile",
         element: <MyInfo/>,
+        meta: {
+            publicRoute: false
+        }
+    },
+    {
+        path: "/myprofile/edit",
+        element: <MyInfoEdit/>,
         meta: {
             publicRoute: false
         }
