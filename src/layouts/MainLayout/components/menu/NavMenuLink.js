@@ -25,9 +25,9 @@ const NavMenuLink = ({item, menuCollapsed}) => {
         >
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <Link
-                to={item.href}
-                className={classNames({active: item.href === activeItem},
-                    item.href === activeItem
+                to={item.alias}
+                className={classNames({active: item.alias === activeItem},
+                    item.alias === activeItem
                         ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
                         : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
                     "group flex items-center py-4 text-base leading-6 rounded-md",
@@ -41,8 +41,8 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                 }
                 onClick={(e) => {
                     if (
-                        item.href.length === 0 ||
-                        item.href === "#" ||
+                        item.alias.length === 0 ||
+                        item.alias === "#" ||
                         item.disabled === true
                     ) {
                         e.preventDefault();
@@ -75,7 +75,7 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                 </i>
                 {/** Название элемента меню, если меню узкое, не отрисовывается */}
                 {!menuCollapsed
-                    ? item.name
+                    ? item.pagetitle
                     : ""}
                 {/** Отрисовка бейджа для меню */}
 

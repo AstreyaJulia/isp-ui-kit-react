@@ -16,9 +16,9 @@ export const authSlice = createSlice({
     },
     reducers: {
         handleLogin: (state, action) => {
-            state.authUser = action.payload;
+            state.authUser = action.payload["authUser"];
             state["jwt"] = action.payload["jwt"];
-            localStorage.setItem("authUser", JSON.stringify(action.payload));
+            localStorage.setItem("authUser", JSON.stringify(action.payload.authUser));
             localStorage.setItem("jwt", JSON.stringify(action.payload.jwt));
         },
         handleLogout: state => {

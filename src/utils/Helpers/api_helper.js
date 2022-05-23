@@ -39,7 +39,7 @@ axios.interceptors.response.use(
  * @param token - токен
  */
 const setAuthorization = (token) => {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 };
 
 /** API-клиент */
@@ -108,4 +108,6 @@ const getLoggedinUser = () => {
     }
 };
 
-export {APIClient, setAuthorization, getLoggedinUser};
+const fetch = new APIClient();
+
+export {APIClient, setAuthorization, getLoggedinUser, fetch};

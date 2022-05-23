@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import classnames from "classnames";
 import MenuNavItems from "./NavMenuItems";
 import classNames from "classnames";
+import {makeArrayFromObj} from "../../../../utils";
 
 /** Проверяет, есть ли у потомков элемента текущий url
  * @param item - элемент
@@ -16,7 +17,7 @@ export const hasActiveChild = (item, currentUrl) => {
         return false;
     }
 
-    for (const child of children) {
+    for (const child of makeArrayFromObj(children)) {
         if (child.children) {
             if (hasActiveChild(child, currentUrl)) {
                 return true;
@@ -185,7 +186,7 @@ const NavMenuGroup = ({
                         <div className="flex items-center">
                             <i className={classnames(menuCollapsed ? "" : "mr-4",
                                 "flex-shrink-0 flex items-center text-2xl mdi", item.icon)}/>
-                            {!menuCollapsed ? item.name : ""}
+                            {!menuCollapsed ? item.pagetitle : ""}
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg"
                              className={classNames(
@@ -204,7 +205,7 @@ const NavMenuGroup = ({
                     {groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? (
                         <MenuNavItems
                             {...rest}
-                            items={item.children}
+                            items={makeArrayFromObj(item.children)}
                             groupActive={groupActive}
                             setGroupActive={setGroupActive}
                             currentActiveGroup={currentActiveGroup}

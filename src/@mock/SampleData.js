@@ -96,7 +96,7 @@ export const users = [
         work_phone: "3-13-28",
         mobile_phone: "7-910-123-12-12",
         address: "Город, улица, дом, квартира",
-        birthday: "1970-07-22",
+        birthday: "1970-05-23",
         ip: "192.168.2.1",
         vkontakte: "https://vk.com/id&=1",
         odnoklassniki: "https://ok.ru/id&=1",

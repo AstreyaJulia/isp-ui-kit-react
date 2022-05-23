@@ -21,3 +21,15 @@ export const getInitials = name => name.split(" ").slice(0, 1) + " " + name.spli
  * @returns {string}
  */
 export const getInitialsOnly = name => name.split(" ").slice(1).map((n) => n[0]).join("").toUpperCase();
+
+/** Делает из объекта массив
+ * @returns {[]}
+ * @param object
+ */
+export const makeArrayFromObj = (object) => {
+    let array = [];
+    Object.keys(object).map(function(key, index) {
+        array.push(object[key]);
+    });
+    return array;
+}

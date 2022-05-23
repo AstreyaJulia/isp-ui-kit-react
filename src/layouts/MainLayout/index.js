@@ -6,8 +6,13 @@ import ScrollToTop from "./components/scrolltop";
 import classNames from "classnames";
 import Sidebar from "./components/menu";
 import NavBar from "./components/navbar";
+import config from "../../config";
+import Skeleton from "react-loading-skeleton";
 
-import {users, navigation} from "../../@mock/SampleData"; // FIXME sample
+import {fetch, setAuthorization} from "../../utils/Helpers/api_helper";
+
+import {users, navigation} from "../../@mock/SampleData";
+import {makeArrayFromObj} from "../../utils"; // FIXME sample
 
 /** Основная раскладка с меню и заголовком
  * @param props
@@ -15,6 +20,10 @@ import {users, navigation} from "../../@mock/SampleData"; // FIXME sample
  * @constructor
  */
 const MainLayout = (props) => {
+
+    if (localStorage.getItem("jwt")) {
+        setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
+    }
 
     /** Пропсы */
     const {children} = props;
@@ -24,7 +33,7 @@ const MainLayout = (props) => {
     const [menuVisibility, setMenuVisibility] = useState(false);
 
     /** Для серверной навигации */
-    //const [menuData, setMenuData] = useState([]);
+    const [menuData, setMenuData] = useState([]);
 
     /** Переменные */
     const dispatch = useDispatch();
@@ -37,9 +46,14 @@ const MainLayout = (props) => {
     const setMenuCollapsed = (val) => dispatch(handleMenuCollapsed(val));
 
     /** Для серверной навигации */
-    // useEffect(() => {
-    //   axios.get(URL).then(response => setMenuData(response.data))
-    // }, [])
+    useEffect(() => {
+        fetch.get("api/v1/sidebar", "")
+            .then(response => {
+                if (response.data || response.data !== []) {
+                    setMenuData(makeArrayFromObj(response.data))
+                }
+            })
+    }, [])
 
     /** ComponentDidMount */
     useEffect(() => {
@@ -52,38 +66,42 @@ const MainLayout = (props) => {
     }
 
     return (<>
-            <div className="h-full">
-                {/* Сайдбар меню */}
-                <Sidebar
+        <div className="h-full">
+            {/* Сайдбар меню */}
+            {menuData !== []
+                ? <Sidebar
                     menuVisibility={menuVisibility}
-                    menuData={navigation}
+                    menuData={menuData}
                     setMenuVisibility={setMenuVisibility}
                     menuCollapsed={menuCollapsed}
                     setMenuCollapsed={setMenuCollapsed}
                 />
-                <div
-                    className={classNames(menuCollapsed ? "lg:pl-20 pl-0" : "lg:pl-64", "h-full")}
-                >
-                    {/* Заголовок */}
-                    <NavBar
-                        user={users[0]}
-                        menuCollapsed={menuCollapsed}
-                        setMenuVisibility={setMenuVisibility}
-                    />
+                : <Skeleton count="5"
+                            className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
 
-                    {/* Основное содержимое */}
-                    <div
-                        className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "left-0 text-gray-900 dark:text-gray-200 fixed top-16 right-0 bottom-0 overflow-hidden")}
-                    >
-                        {/* Содержимое страницы */}
-                        <Outlet/>
-                        {children}
-                    </div>
+            <div
+                className={classNames(menuCollapsed ? "lg:pl-20 pl-0" : "lg:pl-64", "h-full")}
+            >
+                {/* Заголовок */}
+                <NavBar
+                    user={users[0]}
+                    menuCollapsed={menuCollapsed}
+                    setMenuVisibility={setMenuVisibility}
+                />
+
+                {/* Основное содержимое */}
+                <div
+                    className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "left-0 text-gray-900 dark:text-gray-200 fixed top-16 right-0 bottom-0 overflow-hidden")}
+                >
+                    {/* Содержимое страницы */}
+                    <Outlet/>
+                    {children}
                 </div>
-                {/* Кнопка назад наверх */}
-                <ScrollToTop showOffset={300}/>
             </div>
-        </>);
+            {/* Кнопка назад наверх */}
+            <ScrollToTop showOffset={300}/>
+        </div>
+    </>);
 };
 
 export default MainLayout;

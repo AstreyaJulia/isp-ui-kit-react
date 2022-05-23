@@ -1,6 +1,5 @@
 import React from "react";
 import {Avatar} from "../elements/Avatar";
-import Badge from "../elements/Badge";
 import {getInitials} from "../../utils";
 import CardHeader from "../elements/CardHeader";
 import {CakeIcon} from "@heroicons/react/outline";
@@ -8,7 +7,7 @@ import {CakeIcon} from "@heroicons/react/outline";
 const TodayBirthdays = ({birthdays}) => {
     return (
         <div className="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg mb-3 p-4">
-            <CardHeader title="Дни рождения сегодня"/>
+            <CardHeader title="Дни рождения сегодня" className=""/>
             <div className="flow-root mt-4">
                 <ul role="list" className="-my-5 divide-y divide-gray-200 dark:divide-gray-600">
                     {birthdays.map((birthday) => (

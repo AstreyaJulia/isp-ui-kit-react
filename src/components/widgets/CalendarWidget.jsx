@@ -6,7 +6,7 @@ import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";
 
 const fetch = new APIClient();
 if (localStorage.getItem("jwt")) {
-    setAuthorization(localStorage.getItem("jwt").toString())
+    setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
 }
 
 const CalendarWidget = () => {
