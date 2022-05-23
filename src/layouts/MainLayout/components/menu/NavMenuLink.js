@@ -1,8 +1,6 @@
-import {Link} from "react-router-dom";
-import classnames from "classnames";
-import React, {useEffect, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
 import classNames from "classnames";
-import {useLocation} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 
 const NavMenuLink = ({item, menuCollapsed}) => {
     /** Текущий элемент меню */

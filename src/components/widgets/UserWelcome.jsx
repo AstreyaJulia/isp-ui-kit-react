@@ -27,12 +27,16 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
     const commonAnimation = () => {
         return (
             <>
-                <Icon path={mdiStar} size={1} className="text-white absolute left-75 bottom-15 left-10 animation-star-1"/>
+                <Icon path={mdiStar} size={1}
+                      className="text-white absolute left-75 bottom-15 left-10 animation-star-1"/>
                 <Icon path={mdiStar} size={1} className="text-white absolute bottom-30 right-40 animation-star-2"/>
                 <Icon path={mdiStar} size={1} className="text-white absolute bottom-54 left-30 animation-star-3"/>
-                <Icon path={mdiStarFourPoints} size={1} className="text-white absolute bottom-5 right-6 animation-star-4"/>
-                <Icon path={mdiStarFourPoints} size={1} className="text-white absolute bottom-60 right-35 animation-star-5"/>
-                <Icon path={mdiStarFourPoints} size={1} className="text-white absolute animation-star-6 bottom-1 left-10"/>
+                <Icon path={mdiStarFourPoints} size={1}
+                      className="text-white absolute bottom-5 right-6 animation-star-4"/>
+                <Icon path={mdiStarFourPoints} size={1}
+                      className="text-white absolute bottom-60 right-35 animation-star-5"/>
+                <Icon path={mdiStarFourPoints} size={1}
+                      className="text-white absolute animation-star-6 bottom-1 left-10"/>
                 <div className="animation-circle-1 w-1.5 h-1.5 rounded-full bg-white absolute bottom-1/4 left-1/4"/>
                 <div className="animation-circle-2 w-1.5 h-1.5 rounded-full bg-white absolute bottom-1/4 right-1/2"/>
                 <div className="animation-circle-3 w-1.5 h-1.5 rounded-full bg-white absolute bottom-2/4 right-0"/>
@@ -43,8 +47,10 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
     const bDayAnimation = () => {
         return (
             <>
-                <img className="cloud absolute -top-37 right-20 opacity-70 w-24 animation-cloud" src={cloud1} alt="Cloud"/>
-                <img className="cloud absolute -top-200 left-10 opacity-80 w-36 animation-cloud" src={cloud2} alt="Cloud"/>
+                <img className="cloud absolute -top-37 right-20 opacity-70 w-24 animation-cloud" src={cloud1}
+                     alt="Cloud"/>
+                <img className="cloud absolute -top-200 left-10 opacity-80 w-36 animation-cloud" src={cloud2}
+                     alt="Cloud"/>
                 <img className="cloud absolute -top-180 left-70 w-28 animation-cloud" src={cloud1} alt="Cloud"/>
             </>
         )
@@ -59,7 +65,7 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
                     <div>
                         <div className={classnames(isBirthDay ? "text-gray-900" : "text-white", "text-sm")}>
                             <p className="font-bold uppercase">{isBirthDay ? "С Днём рождения," : "С возвращением,"}</p>
-                            <p className="font-medium mb-2">{getInitials(userName) || <Skeleton />}</p>
+                            <p className="font-medium mb-2">{getInitials(userName) || <Skeleton/>}</p>
                             {isBirthDay ? (
                                 <p className="font-size-15">Желаем долгой и прекрасной жизни в кругу любящих людей!
                                     Профессиональных успехов
@@ -67,7 +73,8 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
                         </div>
                     </div>
                     <div className="flex items-center justify-content shrink-0">
-                        <img src={isBirthDay ? cosmonautBalloon : cosmonautFlag} className={isBirthDay ? "w-24 animation-cosmonaut-balloon" : "w-28"}
+                        <img src={isBirthDay ? cosmonautBalloon : cosmonautFlag}
+                             className={isBirthDay ? "w-24 animation-cosmonaut-balloon" : "w-28"}
                              alt="Cosmonaut"/>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ export const isObjEmpty = obj => Object.keys(obj).length === 0
  * @param string - конвертируемая строка
  * @returns {*}
  */
-export const kebabToCamel = string => string.replace(/-./g, x=>x[1].toUpperCase());
+export const kebabToCamel = string => string.replace(/-./g, x => x[1].toUpperCase());
 
 /** Получает из полного ФИО, фамилию + инициалы
  * @param name - фамилия имя отчество
@@ -28,7 +28,7 @@ export const getInitialsOnly = name => name.split(" ").slice(1).map((n) => n[0])
  */
 export const makeArrayFromObj = (object) => {
     let array = [];
-    Object.keys(object).map(function(key, index) {
+    Object.keys(object).map(function (key, index) {
         array.push(object[key]);
     });
     return array;

@@ -1,8 +1,8 @@
-import {Fragment, useState, forwardRef} from "react";
+import {forwardRef, Fragment, useState} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import {Eye, EyeOff} from "react-feather";
-import {InputGroup, Input, InputGroupText, Label} from "reactstrap";
+import {Input, InputGroup, InputGroupText, Label} from "reactstrap";
 
 /** Инпут с кнопкой Показать/скрыть пароль
  * @type {React.ForwardRefExoticComponent<React.PropsWithoutRef<{}> & React.RefAttributes<unknown>>}
@@ -66,7 +66,9 @@ const InputPasswordToggle = forwardRef((props, ref) => {
                     {...rest}
                     /*eslint-enable */
                 />
-                <InputGroupText className="cursor-pointer inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 sm:text-sm" onClick={() => setInputVisibility(!inputVisibility)}>
+                <InputGroupText
+                    className="cursor-pointer inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 sm:text-sm"
+                    onClick={() => setInputVisibility(!inputVisibility)}>
                     {renderIcon()}
                 </InputGroupText>
             </InputGroup>

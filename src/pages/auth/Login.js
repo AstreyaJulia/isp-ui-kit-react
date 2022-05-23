@@ -1,13 +1,13 @@
-import {useNavigate, Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import InputPasswordToggle from "../../components/elements/PasswordShow"
-import {Form, Label, Input, Button} from "reactstrap"
+import {Button, Form, Input, Label} from "reactstrap"
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
-import React from "react";
+import {Fragment} from "react";
 import toast from 'react-hot-toast'
 import {useDispatch} from 'react-redux'
-import {useForm, Controller} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {handleLogin} from '../../store/authentication'
-import {CheckCircleIcon, XIcon, ExclamationCircleIcon} from "@heroicons/react/outline";
+import {CheckCircleIcon, ExclamationCircleIcon, XIcon} from "@heroicons/react/outline";
 import {Helmet} from "react-helmet";
 import config from "../../config";
 import {fetch} from "../../utils/Helpers/api_helper";
@@ -89,7 +89,7 @@ const Login = () => {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <Helmet>
                 <title>{config.APP_NAME} - Вход</title>
             </Helmet>
@@ -177,7 +177,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 

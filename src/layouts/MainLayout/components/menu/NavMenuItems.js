@@ -29,7 +29,8 @@ const MenuNavItems = (props) => {
         const TagName = Components[resolveNavItemComponent(item)];
         if (item.children) {
             return (
-                <TagName key={item.id || item.header} item={item} index={index} menuCollapsed={props.menuCollapsed} {...props} />
+                <TagName key={item.id || item.header} item={item} index={index}
+                         menuCollapsed={props.menuCollapsed} {...props} />
             );
         }
         return <TagName key={item.id || item.header} item={item} menuCollapsed={props.menuCollapsed} {...props} />;

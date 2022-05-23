@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Outlet} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {handleMenuCollapsed} from "../../store/layout";
 import ScrollToTop from "./components/scrolltop";
 import classNames from "classnames";
 import Sidebar from "./components/menu";
 import NavBar from "./components/navbar";
-import config from "../../config";
 import Skeleton from "react-loading-skeleton";
-
+import {makeArrayFromObj} from "../../utils";
 import {fetch, setAuthorization} from "../../utils/Helpers/api_helper";
 
-import {users, navigation} from "../../@mock/SampleData";
-import {makeArrayFromObj} from "../../utils"; // FIXME sample
+import {users} from "../../@mock/SampleData";
+//import {navigation} from "../../@mock/SampleData"; // FIXME sample
+//import config from "../../config";
 
 /** Основная раскладка с меню и заголовком
  * @param props
@@ -47,6 +47,7 @@ const MainLayout = (props) => {
 
     /** Для серверной навигации */
     useEffect(() => {
+        /* setMenuData(navigation); */
         fetch.get("api/v1/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {

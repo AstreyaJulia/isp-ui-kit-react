@@ -4,7 +4,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import logo from "../../../../assets/images/logo/isp-logo.svg";
 import classNames from "classnames";
-import {Disc, Circle} from "react-feather";
+import {Circle, Disc} from "react-feather";
 import config from "../../../../config";
 import NavMenuItems from "./NavMenuItems";
 

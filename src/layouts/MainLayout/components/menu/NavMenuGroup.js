@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import classnames from "classnames";
-import MenuNavItems from "./NavMenuItems";
 import classNames from "classnames";
+import MenuNavItems from "./NavMenuItems";
 import {makeArrayFromObj} from "../../../../utils";
 
 /** Проверяет, есть ли у потомков элемента текущий url

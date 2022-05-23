@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useRef, useState} from "react";
 import {Helmet} from "react-helmet";
 import PageHeader from "../components/PageHeader";
 import config from "../config";
@@ -8,15 +8,17 @@ import {AvatarCircularWithPlaceholderInitials} from "../components/elements/Avat
 import DatePicker, {registerLocale} from "react-datepicker";
 import ru from "date-fns/locale/ru";
 import moment from "moment";
+
 /** Импорт компонентов */
 import BasicButton from "../components/elements/BasicButton";
 import DangerButton from "../components/elements/DangerButton";
 import PrimaryButton from "../components/elements/PrimaryButton";
 import CardWithFooter from "../components/elements/CardWithFooter";
-/** Для образца*/
-import {users} from "../@mock/SampleData";
 import CardHeader from "../components/elements/CardHeader";
 import CardSubHeader from "../components/elements/CardSubHeader";
+
+/** Для образца*/
+import {users} from "../@mock/SampleData";
 
 registerLocale("ru", ru);
 

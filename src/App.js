@@ -1,6 +1,6 @@
 import Router from "./router";
 import {getRoutes} from "./router/allRoutes";
-import React, {useState, Suspense, useEffect} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import {useLayout} from "./utils/Hooks/useLayout";
 import "./scss/App.scss";
 

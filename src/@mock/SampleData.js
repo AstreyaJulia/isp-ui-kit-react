@@ -5,74 +5,74 @@ export const navigation = [
     {header: "Главное меню"},
     {
         id: "1",
-        name: "Главная",
+        pagetitle: "Главная",
         icon: "mdi-apps",
-        href: "/home",
+        alias: "/home",
     },
     {
         id: "2",
-        name: "Каталог ссылок",
+        pagetitle: "Каталог ссылок",
         icon: "mdi-folder-table-outline",
-        href: "/proxylist",
+        alias: "/proxylist",
     },
     {
         id: "3",
-        name: "Календарь",
+        pagetitle: "Календарь",
         icon: "mdi-calendar",
-        href: "/calendar",
+        alias: "/calendar",
         badgeColor: "bg-red-500"
     },
     {
         id: "4",
-        name: "Информация",
+        pagetitle: "Информация",
         icon: "mdi-information-outline",
         children: [
             {
                 id: "5",
-                name: "Телефонный справочник",
+                pagetitle: "Телефонный справочник",
                 icon: "mdi-phone-classic",
-                href: "/phonebook",
+                alias: "/phonebook",
             }
         ]
     },
     {
         id: "6",
-        name: "Статистика",
+        pagetitle: "Статистика",
         icon: "mdi-chart-arc",
         children: [
             {
                 id: "7",
-                name: "Графики",
+                pagetitle: "Графики",
                 icon: "mdi-chart-arc",
-                href: "/stats",
+                alias: "/stats",
             },
             {
                 id: "8",
-                name: "Качество",
+                pagetitle: "Качество",
                 icon: "mdi-finance",
-                href: "/grade",
+                alias: "/grade",
             }
         ]
     },
     {
         id: "9",
-        name: "Помощь",
+        pagetitle: "Помощь",
         icon: "mdi-help-circle-outline",
         children: [
             {
                 id: "10",
-                name: "База знаний",
+                pagetitle: "База знаний",
                 icon: "mdi-lightbulb-on-outline",
-                href: "/faq",
+                alias: "/faq",
             }
         ]
     },
     {header: "Администрирование"},
     {
         id: "12",
-        name: "Панель управления",
+        pagetitle: "Панель управления",
         icon: "mdi-view-dashboard-outline",
-        href: "/admin",
+        alias: "/admin",
     }
 ]
 
@@ -240,7 +240,12 @@ export const users = [
 ]
 
 export const messages = [
-    {id: "1", user: users[5], time: "2022-05-21 11:05:00", message: "Hey John, I am looking for the best admin template. Could you please help me to find it out?"}
+    {
+        id: "1",
+        user: users[5],
+        time: "2022-05-21 11:05:00",
+        message: "Hey John, I am looking for the best admin template. Could you please help me to find it out?"
+    }
 ]
 
 export const birthdaysToday = [

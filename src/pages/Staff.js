@@ -4,11 +4,7 @@ import PageHeader from "../components/PageHeader";
 import {users} from "../@mock/SampleData";
 import config from "../config";
 import classNames from "classnames";
-import {
-    ArrowNarrowLeftIcon,
-    ArrowNarrowRightIcon,
-    PencilIcon,
-} from "@heroicons/react/solid";
+import {ArrowNarrowLeftIcon, ArrowNarrowRightIcon, PencilIcon,} from "@heroicons/react/solid";
 import Table from "../components/table/Table";
 import {Link} from "react-router-dom";
 
@@ -105,7 +101,7 @@ const Staff = () => {
                             </div>
                         </div>
 
-                        <Table data={users} columns={columns} />
+                        <Table data={users} columns={columns}/>
 
                     </div>
                     {/* Pagination */}
@@ -118,7 +114,8 @@ const Staff = () => {
                                 to="#"
                                 className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700"
                             >
-                                <ArrowNarrowLeftIcon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true"/>
+                                <ArrowNarrowLeftIcon className="mr-3 h-5 w-5 text-gray-400 dark:text-gray-500"
+                                                     aria-hidden="true"/>
                                 Previous
                             </Link>
                         </div>
@@ -168,7 +165,8 @@ const Staff = () => {
                                 className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-200 dark:hover:border-gray-700"
                             >
                                 Next
-                                <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true"/>
+                                <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400 dark:text-gray-500"
+                                                      aria-hidden="true"/>
                             </Link>
                         </div>
                     </nav>

@@ -4,11 +4,11 @@ import UserWelcome from "../components/widgets/UserWelcome";
 import CalendarWidget from "../components/widgets/CalendarWidget";
 import WeatherWidget from "../components/widgets/WeatherWidget";
 import PageHeader from "../components/PageHeader";
-import {users, birthdaysToday} from "../@mock/SampleData"
+import {birthdaysToday, users} from "../@mock/SampleData"
 import config from "../config";
 import TodayBirthdays from "../components/widgets/TodayBirthdays";
 
-const breadcrumbs = [{ name: "Главная", href: "#", current: true }];
+const breadcrumbs = [{name: "Главная", href: "#", current: true}];
 
 const Home = () => {
     return (
@@ -25,8 +25,10 @@ const Home = () => {
                         <div className="h-full">
                             <div
                                 className="block h-full w-full text-gray-200">
-                                <UserWelcome birthDayDate={users[0].birthday} userName={users[0].name} className="mb-4"/>
-                                <WeatherWidget apiKey={config.OPEN_WEATHER_API_KEY} cityID={config.OPEN_WEATHER_CITY_ID} />
+                                <UserWelcome birthDayDate={users[0].birthday} userName={users[0].name}
+                                             className="mb-4"/>
+                                <WeatherWidget apiKey={config.OPEN_WEATHER_API_KEY}
+                                               cityID={config.OPEN_WEATHER_CITY_ID}/>
                             </div>
                         </div>
                     </aside>
@@ -40,8 +42,8 @@ const Home = () => {
                         <div className="h-full">
                             <div
                                 className="block h-full w-full text-gray-200">
-                                <CalendarWidget />
-                                <TodayBirthdays birthdays={birthdaysToday} />
+                                <CalendarWidget/>
+                                <TodayBirthdays birthdays={birthdaysToday}/>
                             </div>
                         </div>
                     </aside>

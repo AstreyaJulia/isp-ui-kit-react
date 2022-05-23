@@ -9,7 +9,7 @@ import React from "react";
 const NavMenuSectionHeader = ({item, menuCollapsed}) => {
     return (
         <div className="text-gray-400 text-xs font-medium uppercase tracking-wide my-3"
-            key={item.header}>
+             key={item.header}>
             {/* Если узкое, название скрывается */}
             {!menuCollapsed
                 ? <span>{item.header}</span>
