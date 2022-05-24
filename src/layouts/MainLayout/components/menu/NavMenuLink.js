@@ -48,7 +48,7 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                 }}
             >
                 {/** Значок элемента, если меню узкое, отступ убирается */}
-                <i className={classnames(
+                <i className={classNames(
                     menuCollapsed
                         ? ""
                         : "mr-4",
@@ -58,7 +58,7 @@ const NavMenuLink = ({item, menuCollapsed}) => {
                 >
                     {item.badgeColor
                         ? (
-                            <span className={classnames(
+                            <span className={classNames(
                                 "absolute top-0.5 right-0 inline-flex items-center w-2 h-2 rounded-full text-xs font-medium",
                                 item.badgeColor,
                                 menuCollapsed

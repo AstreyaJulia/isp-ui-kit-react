@@ -11,8 +11,8 @@ import {makeArrayFromObj} from "../../utils";
 import {fetch, setAuthorization} from "../../utils/Helpers/api_helper";
 
 import {users} from "../../@mock/SampleData";
-//import {navigation} from "../../@mock/SampleData"; // FIXME sample
-//import config from "../../config";
+import {navigation} from "../../@mock/SampleData"; // FIXME sample
+import config from "../../config";
 
 /** Основная раскладка с меню и заголовком
  * @param props
@@ -47,13 +47,13 @@ const MainLayout = (props) => {
 
     /** Для серверной навигации */
     useEffect(() => {
-        /* setMenuData(navigation); */
-        fetch.get("api/v1/sidebar", "")
+        setMenuData(navigation);
+        /*fetch.get("api/v1/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {
                     setMenuData(makeArrayFromObj(response.data))
                 }
-            })
+            })*/
     }, [])
 
     /** ComponentDidMount */

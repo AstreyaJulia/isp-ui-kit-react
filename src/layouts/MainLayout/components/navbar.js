@@ -1,11 +1,11 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import classNames from "classnames";
 import {MenuIcon} from "@heroicons/react/outline";
 import {ChevronDownIcon, SearchIcon} from "@heroicons/react/solid";
 import {Menu, Transition} from "@headlessui/react";
 import {getInitials} from "../../../utils";
 import {Link} from "react-router-dom";
-import {Moon, Sun} from "react-feather";
+import {Moon, Sun, ZoomIn, ZoomOut} from "react-feather";
 import {useSkin} from "../../../utils/Hooks/useSkin";
 import {Avatar} from "../../../components/elements/Avatar";
 import MessageDropdown from "./menu/MessageDropdown";
@@ -25,21 +25,44 @@ const NavBar = (props) => {
     /** Хуки */
     const {skin, setSkin} = useSkin();
 
+    const [fontSize, setFontSize] = useState(1);
+
+    useEffect(() => {
+        /** Получаем тег html */
+        const element = document.getElementsByTagName('html')[0];
+
+        /** Присваиваем стиль с размером шрифта */
+        element.style.fontSize = `${fontSize * 100}%`;
+    }, [fontSize]);
+
     /** Переключалка темы
      * @returns {JSX.Element}
      * @constructor
      */
     const ThemeToggler = () => {
         if (skin === "dark") {
-            return <Sun onClick={() => setSkin("light")}/>;
+            return <Sun className="h-6 w-6" onClick={() => setSkin("light")}/>;
         } else {
-            return <Moon onClick={() => setSkin("dark")}/>;
+            return <Moon className="h-6 w-6" onClick={() => setSkin("dark")}/>;
         }
     };
 
+    /** Переключалка размера шрифта
+     * @returns {JSX.Element}
+     * @constructor
+     */
+    const FontToggler = () => {
+        if (fontSize === 1) {
+            return <ZoomIn className="h-6 w-6" onClick={() => setFontSize(1.2)}/>;
+        } else {
+            return <ZoomOut className="h-6 w-6" onClick={() => setFontSize(1)}/>;
+        }
+    };
+
+
     return (
         <div
-            className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "left-0 fixed top-0 right-0 z-10 flex-shrink-0 flex h-16 shadow-sm bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 lg:border-none")}
+            className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "left-0 fixed top-0 right-0 z-10 flex-shrink-0 flex h-16 shadow bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 lg:border-none")}
         >
             <button
                 type="button"
@@ -100,6 +123,18 @@ const NavBar = (props) => {
                                         Переключить тему
                                     </span>
                         <ThemeToggler
+                            className="h-6 w-6"
+                            aria-hidden="true"
+                        />
+                    </button>
+                    <button
+                        type="button"
+                        className="ml-4 bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                                    <span className="sr-only">
+                                        Переключить размер шрифта
+                                    </span>
+                        <FontToggler
                             className="h-6 w-6"
                             aria-hidden="true"
                         />

@@ -183,7 +183,7 @@ const NavMenuGroup = ({
                        onClick={e => onCollapseClick(e, item)}
                     >
                         <div className="flex items-center">
-                            <i className={classnames(menuCollapsed ? "" : "mr-4",
+                            <i className={classNames(menuCollapsed ? "" : "mr-4",
                                 "flex-shrink-0 flex items-center text-2xl mdi", item.icon)}/>
                             {!menuCollapsed ? item.pagetitle : ""}
                         </div>
