@@ -80,7 +80,7 @@ const NavBar = (props) => {
                         <label htmlFor="search" className="sr-only">
                             Поиск
                         </label>
-                        <div className="mt-1 relative rounded-md shadow-sm">
+                        <div className="search-input mt-1 relative rounded-md shadow-sm">
                             <div
                                 className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
                                 <SearchIcon
@@ -102,7 +102,7 @@ const NavBar = (props) => {
                                 <select
                                     id="search-type"
                                     name="search-type"
-                                    className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
+                                    className="search-select focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md"
                                 >
                                     <option>Сотрудники</option>
                                     <option>Входящая почта</option>
@@ -117,7 +117,7 @@ const NavBar = (props) => {
                 <div className="ml-4 flex items-center md:ml-6">
                     <button
                         type="button"
-                        className="bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        className="skin-toggler bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
                                     <span className="sr-only">
                                         Переключить тему

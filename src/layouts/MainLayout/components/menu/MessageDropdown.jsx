@@ -13,7 +13,7 @@ const MessageDropdown = () => {
         <Menu as="div" className="relative inline-block text-left ml-4">
             <div>
                 <Menu.Button
-                    className="bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    className="messages-dropdown-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <MessageSquare className="h-6 w-6" aria-hidden="true"/>
                 </Menu.Button>
             </div>
