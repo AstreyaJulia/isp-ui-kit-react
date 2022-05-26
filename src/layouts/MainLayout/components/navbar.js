@@ -129,7 +129,7 @@ const NavBar = (props) => {
                     </button>
                     <button
                         type="button"
-                        className="ml-4 bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        className="font-toggler ml-4 bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
                                     <span className="sr-only">
                                         Переключить размер шрифта
@@ -147,7 +147,7 @@ const NavBar = (props) => {
                     <Menu as="div" className="ml-4 relative">
                         <div>
                             <Menu.Button
-                                className="max-w-xs bg-white dark:bg-gray-900 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 lg:p-1 lg:rounded-md lg:hover:bg-gray-50 dark:lg:hover:bg-gray-800">
+                                className="user-dropdown max-w-xs bg-white dark:bg-gray-900 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 lg:p-1 lg:rounded-md lg:hover:bg-gray-50 dark:lg:hover:bg-gray-800">
                                 <Avatar size="10" item={user}/>
                                 <span
                                     className="hidden ml-3 text-gray-700 dark:text-gray-300 text-sm font-medium lg:block">

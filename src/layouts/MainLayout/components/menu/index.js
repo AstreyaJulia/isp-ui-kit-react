@@ -27,7 +27,7 @@ const Sidebar = (props) => {
         if (menuCollapsed) {
             return (
                 <button
-                    className="bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="sidebar-collapse-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     onClick={() => setMenuCollapsed(false)}
                 >
 
@@ -37,7 +37,7 @@ const Sidebar = (props) => {
         } else {
             return (
                 <button
-                    className="bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="sidebar-collapse-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     onClick={() => setMenuCollapsed(true)}
                 >
                     <Disc/>
@@ -143,7 +143,7 @@ const Sidebar = (props) => {
             <div
                 className={classNames(
                     menuCollapsed ? "lg:w-20" : "lg:w-64",
-                    "relative hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0"
+                    "sidebar-menu relative hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0"
                 )}
             >
                 <div className="absolute top-0 right-0 mr-4 pt-4">

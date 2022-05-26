@@ -43,7 +43,7 @@ const steps = [
     },
     {
         id: 'search-select',
-        title: 'Это разделы поиска.',
+        title: 'Разделы поиска.',
         text: 'Выберите раздел для поиска и начните вводить поисковой запрос.',
         attachTo: {element: '.search-select', on: 'bottom'},
         cancelIcon: {
@@ -69,9 +69,165 @@ const steps = [
     },
     {
         id: 'skin-toggler',
-        title: 'Кнопка переключения темы',
-        text: 'Это кнопка переключения светлой/тёмной темы оформления.',
+        title: 'Кнопка переключения темы.',
+        text: 'Для переключения светлой/тёмной темы оформления.',
         attachTo: {element: '.skin-toggler', on: 'bottom'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'font-toggler',
+        title: 'Кнопка переключения размера шрифта.',
+        text: 'Для переключения обычного/увеличенного шрифта.',
+        attachTo: {element: '.font-toggler', on: 'bottom'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'messages-dropdown-button',
+        title: 'Уведомления о входящих сообщениях.',
+        text: 'Для просмотра входящих сообщений от пользователей.',
+        attachTo: {element: '.messages-dropdown-button', on: 'bottom'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'user-dropdown',
+        title: 'Меню пользователя.',
+        text: 'Просмотр профиля, выход из приложения.',
+        attachTo: {element: '.user-dropdown', on: 'bottom'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'sidebar-menu',
+        title: 'Главное меню.',
+        text: 'Основная навигация приложения.',
+        attachTo: {element: '.sidebar-menu', on: 'right'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'sidebar-collapse-button',
+        title: 'Кнопка переключения узкого/широкого меню.',
+        text: 'Переключение ширины главного меню.',
+        attachTo: {element: '.sidebar-collapse-button', on: 'right'},
+        cancelIcon: {
+            enabled: true
+        },
+        buttons: [
+            {
+                text: 'Пропустить',
+                classes: backBtnClass,
+                action: () => instance.cancel()
+            },
+            {
+                text: 'Назад',
+                classes: backBtnClass,
+                action: () => instance.back()
+            },
+            {
+                text: 'Далее',
+                classes: nextBtnClass,
+                action: () => instance.next()
+            }
+        ]
+    },
+    {
+        id: 'breadcrumbs',
+        title: 'Навигация страницы.',
+        text: 'Навигация по переходам страниц.',
+        attachTo: {element: '.breadcrumbs', on: 'bottom'},
         cancelIcon: {
             enabled: true
         },
@@ -108,7 +264,7 @@ const Home = () => {
             </Helmet>
 
             <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs}/>
+                <PageHeader pages={breadcrumbs} classname="breadcrumbs"/>
 
                 <div className="flex-1 flex mt-4">
                     <aside className="hidden overflow-y-auto lg:block">
