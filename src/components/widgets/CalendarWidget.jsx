@@ -36,7 +36,7 @@ const CalendarWidget = () => {
     ];*/
 
     return (
-        <div className="bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg mb-3 p-4">
+        <div className="widget bg-white dark:bg-gray-900 overflow-hidden shadow rounded-lg mb-3 p-4">
             <div className="today-calendar">
                 <FullCalendar
                     plugins={[dayGridPlugin]}

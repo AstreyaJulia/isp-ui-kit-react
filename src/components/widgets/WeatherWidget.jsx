@@ -154,7 +154,7 @@ const WeatherWidget = ({apiKey, cityID, className}) => {
 
     return (
         <div
-            className={classnames(weather.bg || "bg-indigo-700/50", "rounded-md drop-shadow-md overflow-hidden relative h-28 w-80", className)}>
+            className={classnames(weather.bg || "bg-indigo-700/50", "widget rounded-md drop-shadow-md overflow-hidden relative h-28 w-80", className)}>
             <div className="p-3 flex flex-col justify-between">
                 <p className="text-gray-700 dark:text-gray-200 relative z-10 mb-1"><span
                     className="capitalize text-base mr-4">{date.dayOfWeek}</span><span

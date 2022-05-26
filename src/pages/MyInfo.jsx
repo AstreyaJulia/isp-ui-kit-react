@@ -36,7 +36,7 @@ const MyInfo = () => {
             <Helmet>
                 <title>{config.APP_NAME} - Мой Профиль</title>
             </Helmet>
-            <article className="bg-white dark:bg-gray-900 h-full">
+            <article className=" h-full">
                 {/* Profile header */}
                 <div className="border-b border-gray-200 pb-4">
                     <div>

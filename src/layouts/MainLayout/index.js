@@ -92,7 +92,7 @@ const MainLayout = (props) => {
 
                 {/* Основное содержимое */}
                 <div
-                    className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "left-0 text-gray-900 dark:text-gray-200 fixed top-16 right-0 bottom-0 overflow-hidden")}
+                    className={classNames(menuCollapsed ? "lg:left-20" : "lg:left-64", "main-content animate__fadeIn left-0 text-gray-900 dark:text-gray-200 fixed top-16 right-0 bottom-0 overflow-hidden")}
                 >
                     {/* Содержимое страницы */}
                     <Outlet/>
