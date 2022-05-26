@@ -2,15 +2,13 @@ import React, {useContext} from "react";
 import {Helmet} from "react-helmet";
 import UserWelcome from "../components/widgets/UserWelcome";
 import CalendarWidget from "../components/widgets/CalendarWidget";
-import WeatherWidget from "../components/widgets/WeatherWidget";
+//import WeatherWidget from "../components/widgets/WeatherWidget";
 import PageHeader from "../components/PageHeader";
 import {birthdaysToday, users} from "../@mock/SampleData"
 import config from "../config";
 import TodayBirthdays from "../components/widgets/TodayBirthdays";
-import ReactPaginate from 'react-paginate';
 import {ShepherdTour, ShepherdTourContext} from "react-shepherd";
 import PrimaryButton from "../components/elements/PrimaryButton";
-import 'shepherd.js/dist/css/shepherd.css';
 
 const breadcrumbs = [{name: "Главная", href: "#", current: true}];
 
@@ -273,8 +271,8 @@ const Home = () => {
                                 className="block h-full w-full text-gray-200">
                                 <UserWelcome birthDayDate={users[0].birthday} userName={users[0].name}
                                              className="mb-4"/>
-                                <WeatherWidget apiKey={config.OPEN_WEATHER_API_KEY}
-                                               cityID={config.OPEN_WEATHER_CITY_ID}/>
+                                {/*<WeatherWidget apiKey={config.OPEN_WEATHER_API_KEY}
+                                               cityID={config.OPEN_WEATHER_CITY_ID}/>*/}
                                 <ShepherdTour
                                     steps={steps}
                                     tourOptions={{
@@ -298,24 +296,6 @@ const Home = () => {
                                 className="block h-full w-full text-gray-200">
                                 <CalendarWidget/>
                                 <TodayBirthdays birthdays={birthdaysToday}/>
-                                <ReactPaginate
-                                    nextLabel=''
-                                    pageCount={10}
-                                    breakLabel='...'
-                                    previousLabel=''
-                                    pageRangeDisplayed={5}
-                                    marginPagesDisplayed={2}
-                                    activeClassName='active'
-                                    pageClassName='page-item'
-                                    breakClassName='page-item'
-                                    nextLinkClassName='page-link'
-                                    pageLinkClassName='page-link'
-                                    breakLinkClassName='page-link'
-                                    previousLinkClassName='page-link'
-                                    nextClassName='page-item next-item'
-                                    previousClassName='page-item prev-item'
-                                    containerClassName='pagination react-paginate no-navigation'
-                                />
                             </div>
                         </div>
                     </aside>

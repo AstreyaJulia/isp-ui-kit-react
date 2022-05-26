@@ -38,7 +38,7 @@ BasicButton.propTypes = {
     /** Лейбл (надпись) кнопки */
     label: PropTypes.string.isRequired,
     /** Тип кнопки */
-    type: PropTypes.oneOf(["button", "submit"]),
+    type: PropTypes.oneOf(["button", "submit", "reset"]),
     /** Обработчик клика */
     onClick: PropTypes.func,
 };

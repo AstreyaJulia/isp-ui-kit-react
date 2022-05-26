@@ -84,7 +84,7 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
         <span
             className={["font-medium leading-none", AvatarGroupSize[size].nameFont, AvatarColor[color || "indigo"].text].join(" ")}
         >
-            {getInitialsOnly(item.name)}
+            {getInitialsOnly(item.name || item.label)}
         </span>
       </span>
     </>);
