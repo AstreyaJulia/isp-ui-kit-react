@@ -1,13 +1,14 @@
-import {Fragment} from 'react';
+import React, {Fragment} from 'react';
 import classnames from 'classnames';
 import {CardBody, Button, Input, Label} from 'reactstrap';
+import PrimaryButton from "../../../components/elements/PrimaryButton";
 
 const filters = [
-    {label: 'События', color: 'primary', className: 'form-check-primary mb-1'},
-    {label: 'Отпуск', color: 'success', className: 'form-check-success mb-1'},
-    {label: 'Дежурство', color: 'info', className: 'form-check-info mb-1'},
-    {label: 'Важно', color: 'warning', className: 'form-check-warning mb-1'},
-    {label: 'Праздники', color: 'danger', className: 'form-check-danger mb-1'},
+    {label: 'События', color: 'indigo', className: 'form-check-primary mb-1'},
+    {label: 'Отпуск', color: 'green', className: 'form-check-success mb-1'},
+    {label: 'Дежурство', color: 'cyan', className: 'form-check-info mb-1'},
+    {label: 'Важно', color: 'yellow', className: 'form-check-warning mb-1'},
+    {label: 'Праздники', color: 'red', className: 'form-check-danger mb-1'},
     {label: 'Категория 1', color: 'pink', className: 'form-check-pink mb-1'},
     {label: 'Категория 2', color: 'blue', className: 'form-check-blue mb-1'},
     {label: 'Категория 3', color: 'orange', className: 'form-check-orange mb-1'},
@@ -33,9 +34,7 @@ const SidebarLeft = props => {
         <Fragment>
             <div className='sidebar-wrapper'>
                 <CardBody className='card-body d-flex justify-content-center my-sm-0 mb-3'>
-                    <Button color='primary' block onClick={handleAddEventClick}>
-                        <span className='align-middle'>+ Cобытие</span>
-                    </Button>
+                    <PrimaryButton label="+ Cобытие" onClick={handleAddEventClick} />
                 </CardBody>
                 <CardBody>
                     <p className='section-label mb-1'>
@@ -68,7 +67,7 @@ const SidebarLeft = props => {
                                             type='checkbox'
                                             key={filter.color}
                                             label={filter.color}
-                                            className={`input-filter bg-${filter.color} p-2`}
+                                            className={`input-filter bg-${filter.color}-500 p-2`}
                                             id={`${filter.color}-event`}
                                             checked={store.selectedCalendars.includes(filter.color)}
                                             onChange={() => {

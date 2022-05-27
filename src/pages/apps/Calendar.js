@@ -1,9 +1,10 @@
-import {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Helmet} from "react-helmet";
 import PageHeader from "../../components/PageHeader";
 import CalendarModule from './calendar/index';
 import SidebarLeft from './calendar/Sidebar';
 import AddEventSidebar from './calendar/AddEventSidebar';
+import ContentLayoutWithSidebar from "../../layouts/ContentLayouts/ContentLayoutWithSidebar";
 import {useDispatch, useSelector} from 'react-redux';
 import config from "../../config";
 import {
@@ -23,23 +24,23 @@ const breadcrumbs = [{name: 'Календарь', href: '#', current: true}];
 /** Цвета событий, названия менять в разметке, в js менять не надо */
 const calendCat = [
     {
-        color: "primary",
+        color: "indigo",
         name: "События"
     },
     {
-        color: "success",
+        color: "green",
         name: "Отпуск"
     },
     {
-        color: "info",
+        color: "cyan",
         name: "Дежурство"
     },
     {
-        color: "warning",
+        color: "yellow",
         name: "Важно"
     },
     {
-        color: "danger",
+        color: "red",
         name: "Праздники"
     },
     {
@@ -79,16 +80,16 @@ function araycal() {
 const calendarsColor = araycal();
 
 const Calendar = () => {
-    const dispatch = useDispatch()
-    const store = useSelector(state => state.calendar)
+    const dispatch = useDispatch();
+    const store = useSelector(state => state.calendar);
 
-    const [calendarApi, setCalendarApi] = useState(null)
-    const [addSidebarOpen, setAddSidebarOpen] = useState(false)
-    const [leftSidebarOpen, setLeftSidebarOpen] = useState(false)
+    const [calendarApi, setCalendarApi] = useState(null);
+    const [addSidebarOpen, setAddSidebarOpen] = useState(false);
+    const [leftSidebarOpen, setLeftSidebarOpen] = useState(false);
 
-    const handleAddEventSidebar = () => setAddSidebarOpen(!addSidebarOpen)
+    const handleAddEventSidebar = () => setAddSidebarOpen(!addSidebarOpen);
 
-    const toggleSidebar = val => setLeftSidebarOpen(val)
+    const toggleSidebar = val => setLeftSidebarOpen(val);
 
     const blankEvent = {
         title: '',
@@ -118,57 +119,57 @@ const Calendar = () => {
 
     return (
         <Fragment>
+
             <Helmet>
                 <title>{config.APP_NAME} - Календарь</title>
             </Helmet>
-            <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs}/>
 
-                <div className="flex-1 flex mt-4">
-                    <div className='app-calendar'>
-                        <SidebarLeft
-                            store={store}
-                            dispatch={dispatch}
-                            updateFilter={updateFilter}
-                            toggleSidebar={toggleSidebar}
-                            updateAllFilters={updateAllFilters}
-                            handleAddEventSidebar={handleAddEventSidebar}
-                        />
-                        <CalendarModule
-                            store={store}
-                            dispatch={dispatch}
-                            blankEvent={blankEvent}
-                            calendarApi={calendarApi}
-                            selectEvent={selectEvent}
-                            updateEvent={updateEvent}
-                            toggleSidebar={toggleSidebar}
-                            calendarsColor={calendarsColor}
-                            setCalendarApi={setCalendarApi}
-                            handleAddEventSidebar={handleAddEventSidebar}
-                        />
-                        <div
-                            className={classnames('body-content-overlay', {
-                                show: leftSidebarOpen === true
-                            })}
-                            onClick={() => toggleSidebar(false)}
-                        />
-                    </div>
-                    <AddEventSidebar
+            <ContentLayoutWithSidebar>
+                <ContentLayoutWithSidebar.Sidebar>
+                    <SidebarLeft
                         store={store}
                         dispatch={dispatch}
-                        addEvent={addEvent}
-                        open={addSidebarOpen}
-                        selectEvent={selectEvent}
-                        updateEvent={updateEvent}
-                        removeEvent={removeEvent}
-                        calendarApi={calendarApi}
-                        refetchEvents={refetchEvents}
-                        calendarsColor={calendarsColor}
+                        updateFilter={updateFilter}
+                        toggleSidebar={toggleSidebar}
+                        updateAllFilters={updateAllFilters}
                         handleAddEventSidebar={handleAddEventSidebar}
                     />
-                </div>
+                </ContentLayoutWithSidebar.Sidebar>
+                <ContentLayoutWithSidebar.Body>
+                    <CalendarModule
+                        store={store}
+                        dispatch={dispatch}
+                        blankEvent={blankEvent}
+                        calendarApi={calendarApi}
+                        selectEvent={selectEvent}
+                        updateEvent={updateEvent}
+                        toggleSidebar={toggleSidebar}
+                        calendarsColor={calendarsColor}
+                        setCalendarApi={setCalendarApi}
+                        handleAddEventSidebar={handleAddEventSidebar}
+                    />
+                    <div
+                        className={classnames('body-content-overlay', {
+                            show: leftSidebarOpen === true
+                        })}
+                        onClick={() => toggleSidebar(false)}
+                    />
+                </ContentLayoutWithSidebar.Body>
+            </ContentLayoutWithSidebar>
+            <AddEventSidebar
+                store={store}
+                dispatch={dispatch}
+                addEvent={addEvent}
+                open={addSidebarOpen}
+                selectEvent={selectEvent}
+                updateEvent={updateEvent}
+                removeEvent={removeEvent}
+                calendarApi={calendarApi}
+                refetchEvents={refetchEvents}
+                calendarsColor={calendarsColor}
+                handleAddEventSidebar={handleAddEventSidebar}
+            />
 
-            </div>
         </Fragment>
     );
 };

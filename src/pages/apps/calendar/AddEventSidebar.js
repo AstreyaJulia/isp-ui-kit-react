@@ -1,4 +1,4 @@
-import {Fragment, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import {Avatar} from '../../../components/elements/Avatar';
 import {X} from 'react-feather';
 import toast from 'react-hot-toast';
@@ -18,8 +18,9 @@ import PrimaryButton from "../../../components/elements/PrimaryButton";
 import DangerButton from "../../../components/elements/DangerButton";
 import {Dialog, Transition} from '@headlessui/react';
 import {XIcon} from "@heroicons/react/outline";
-import { Switch } from '@headlessui/react'
+import {Switch} from '@headlessui/react'
 import classNames from "classnames";
+import CardHeader from "../../../components/elements/CardHeader";
 
 const AddEventSidebar = props => {
 
@@ -52,11 +53,11 @@ const AddEventSidebar = props => {
         });
 
     const options = [
-        {value: 'primary', label: 'События', color: 'indigo'},
-        {value: 'success', label: 'Отпуск', color: 'green'},
-        {value: 'info', label: 'Дежурство', color: 'cyan'},
-        {value: 'warning', label: 'Важно', color: 'yellow'},
-        {value: 'danger', label: 'Праздники', color: 'red'},
+        {value: 'indigo', label: 'События', color: 'indigo'},
+        {value: 'green', label: 'Отпуск', color: 'green'},
+        {value: 'cyan', label: 'Дежурство', color: 'cyan'},
+        {value: 'yellow', label: 'Важно', color: 'yellow'},
+        {value: 'red', label: 'Праздники', color: 'red'},
         {value: 'pink', label: 'Категория 1', color: 'pink'},
         {value: 'blue', label: 'Категория 2', color: 'blue'},
         {value: 'orange', label: 'Категория 3', color: 'orange'},
@@ -384,7 +385,8 @@ const AddEventSidebar = props => {
                                 </Transition.Child>
                                 <div className="h-full bg-white dark:bg-gray-900 p-8 overflow-y-auto">
                                     <div className="pb-16 space-y-6">
-                                        {selectedEvent && selectedEvent.title && selectedEvent.title.length ? 'Обновление' : 'Добавление'} События
+                                        <CardHeader className=""
+                                                    title={selectedEvent && selectedEvent.title && selectedEvent.title.length ? 'Обновление События' : 'Добавление События'}/>
                                         <Form
                                             onSubmit={handleSubmit(data => {
                                                 if (data.title.length) {
@@ -404,30 +406,33 @@ const AddEventSidebar = props => {
                                             })}
                                         >
                                             <div className='mb-1'>
-                                                <Label className='form-label' for='title'>
-                                                    Название события <span className='text-danger'>*</span>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='title'>
+                                                    Название события <span className='text-red-400'>*</span>
                                                 </Label>
                                                 <Controller
                                                     name='title'
                                                     control={control}
                                                     render={({field}) => (
                                                         <Input
-                                                            className="bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                            className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                             id='title' placeholder='Введите название'
-                                                               invalid={errors.title && true} {...field} />
+                                                            invalid={errors.title && true} {...field} />
                                                     )}
                                                 />
                                             </div>
-
                                             <div className='mb-1'>
-                                                <Label className='block text-sm font-medium text-gray-700 dark:text-gray-200' for='label'>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='label'>
                                                     Категория события
                                                 </Label>
                                                 <Select
                                                     id='label'
                                                     value={calendarLabel}
                                                     options={options}
-                                                    className='react-select'
+                                                    className='mt-1 react-select'
                                                     classNamePrefix='select'
                                                     isClearable={false}
                                                     onChange={data => setCalendarLabel([data])}
@@ -436,16 +441,17 @@ const AddEventSidebar = props => {
                                                     }}
                                                 />
                                             </div>
-
                                             <div className='mb-1'>
-                                                <Label className='block text-sm font-medium text-gray-700 dark:text-gray-200' for='startDate'>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='startDate'>
                                                     Начало события
                                                 </Label>
                                                 <Flatpickr
                                                     required
                                                     id='startDate'
                                                     name='startDate'
-                                                    className="bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     onChange={date => setStartPicker(date[0])}
                                                     value={startPicker}
                                                     options={{
@@ -454,9 +460,10 @@ const AddEventSidebar = props => {
                                                     }}
                                                 />
                                             </div>
-
                                             <div className='mb-1'>
-                                                <Label className='block text-sm font-medium text-gray-700 dark:text-gray-200' for='endDate'>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='endDate'>
                                                     Конец события
                                                 </Label>
                                                 <Flatpickr
@@ -464,7 +471,7 @@ const AddEventSidebar = props => {
                                                     id='endDate'
                                                     // tag={Flatpickr}
                                                     name='endDate'
-                                                    className="bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     onChange={date => setEndPicker(date[0])}
                                                     value={endPicker}
                                                     options={{
@@ -473,15 +480,15 @@ const AddEventSidebar = props => {
                                                     }}
                                                 />
                                             </div>
-
-                                            <div className='form-switch mb-1'>
+                                            <div className='form-switch mt-1 flex items-center'>
                                                 <Switch
                                                     checked={allDay}
                                                     onChange={setAllDay}
                                                     className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 >
                                                     <span className="sr-only">Use setting</span>
-                                                    <span aria-hidden="true" className="pointer-events-none absolute bg-white w-full h-full rounded-md" />
+                                                    <span aria-hidden="true"
+                                                          className="pointer-events-none absolute bg-white w-full h-full rounded-md"/>
                                                     <span
                                                         aria-hidden="true"
                                                         className={classNames(
@@ -497,13 +504,16 @@ const AddEventSidebar = props => {
                                                         )}
                                                     />
                                                 </Switch>
-                                                <Label className='form-label' for='allDay'>
+                                                <Label
+                                                    className='ml-2 text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='allDay'>
                                                     Весь день
                                                 </Label>
                                             </div>
-
                                             <div className='mb-1'>
-                                                <Label className='block text-sm font-medium text-gray-700 dark:text-gray-200' for='users'>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='users'>
                                                     Назначить
                                                 </Label>
                                                 <Select
@@ -511,7 +521,7 @@ const AddEventSidebar = props => {
                                                     Group
                                                     placeholder='Выберите сотрудников'
                                                     id='users'
-                                                    className='react-select'
+                                                    className='mt-1 react-select'
                                                     classNamePrefix='select'
                                                     isClearable={false}
                                                     options={usersOptions}
@@ -522,13 +532,14 @@ const AddEventSidebar = props => {
                                                     }}
                                                 />
                                             </div>
-
                                             <div className='mb-1'>
-                                                <Label className='block text-sm font-medium text-gray-700 dark:text-gray-200' for='description'>
+                                                <Label
+                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                    for='description'>
                                                     Описание события
                                                 </Label>
                                                 <Input
-                                                    className="bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     type='textarea'
                                                     name='text'
                                                     id='description'
@@ -538,7 +549,7 @@ const AddEventSidebar = props => {
                                                     placeholder='Введите описание'
                                                 />
                                             </div>
-                                            <div className='d-flex mb-1'>
+                                            <div className='flex mb-1'>
                                                 <EventActions/>
                                             </div>
                                         </Form>
@@ -550,7 +561,7 @@ const AddEventSidebar = props => {
                 </div>
             </Dialog>
         </Transition.Root>
-)
+    )
 }
 
 export default AddEventSidebar

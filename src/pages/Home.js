@@ -244,7 +244,6 @@ const steps = [
     }
 ]
 
-
 const Content = () => {
     const tour = useContext(ShepherdTourContext);
     instance = tour;

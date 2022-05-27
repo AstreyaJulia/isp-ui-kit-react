@@ -89,7 +89,7 @@
 }
 
 .today-calendar .fc .fc-daygrid-day-events {
-  @apply flex items-center justify-center flex-col;
+  @apply flex items-center justify-center flex-initcol;
 }
 
 .today-calendar .fc .fc-daygrid-day-bottom {
@@ -98,4 +98,10 @@
 
 .today-calendar .fc .fc-daygrid-day-number {
   @apply px-1.5;
+}
+
+/** */
+
+.calendar-module .fc-event-indigo {
+  @apply bg-indigo-500/30 border border-indigo-500 hover:bg-indigo-600/30 hover:border-indigo-600;
 }
