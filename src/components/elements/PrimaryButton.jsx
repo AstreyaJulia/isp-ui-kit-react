@@ -7,11 +7,13 @@ import classNames from "classnames";
  * @param label - лейбл кнопки
  * @param onClick - обработчик клика
  * @param type - тип
+ * @param className
+ * @param children
  * @param props - доп. пропсы
  * @returns {JSX.Element}
  * @constructor
  */
-const PrimaryButton = ({size, label, onClick, type, ...props}) => {
+const PrimaryButton = ({size, label, onClick, type, className, children, ...props}) => {
     const sizes = {
         "small": "px-3 py-1.5 text-xs",
         "medium": "px-4 py-2 text-sm",
@@ -21,9 +23,10 @@ const PrimaryButton = ({size, label, onClick, type, ...props}) => {
         <button
             type={type}
             onClick={onClick}
-            className={classNames("bg-indigo-600 border border-transparent rounded-md shadow-sm inline-flex justify-center font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500", sizes[size])}
+            className={classNames("bg-indigo-600 border border-transparent rounded-md shadow-sm inline-flex items-center justify-center font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500", sizes[size], className)}
             {...props}
         >
+            {children}
             {label}
         </button>
     );

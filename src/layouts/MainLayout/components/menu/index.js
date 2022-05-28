@@ -76,7 +76,7 @@ const Sidebar = (props) => {
                         leaveTo="-translate-x-full"
                     >
                         <div
-                            className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white dark:bg-gray-900 shadow">
+                            className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white dark:bg-gray-900 shadow border-r border-gray-200">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-in-out duration-300"
@@ -151,7 +151,7 @@ const Sidebar = (props) => {
                 </div>
 
                 <div
-                    className="flex flex-col flex-grow shadow bg-white dark:bg-gray-900 pt-5 pb-4 overflow-y-auto">
+                    className="flex flex-col flex-grow shadow bg-white dark:bg-gray-900 pt-5 pb-4 overflow-y-auto border-r border-gray-200 dark:border-gray-600">
                     <div
                         className={classNames(
                             "flex items-center content-center flex-shrink-0 px-4 h-8"

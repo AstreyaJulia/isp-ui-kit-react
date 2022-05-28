@@ -1,34 +1,69 @@
-import React, {Fragment, useState, useContext} from 'react'
-import {Dialog, Transition} from '@headlessui/react'
-import {
-    MenuIcon,
-    XIcon,
-} from '@heroicons/react/outline';
+import React, {Fragment, useContext, useState} from "react";
+import {Dialog, Transition} from "@headlessui/react";
+import {MenuIcon, XIcon} from "@heroicons/react/outline";
+import {Helmet} from "react-helmet";
+import config from "../../../config";
+import PageHeader from "../../../components/PageHeader";
 
+/** Контекст для передачи в дочерние компоненты
+ * @type {React.Context<null>} */
 const ContextContainer = React.createContext(null);
 
-export default function ContentLayoutWithSidebar({children}) {
+/* Пример использования
+<ContentLayoutWithSidebar boxed={true}>
+    <ContentLayoutWithSidebar.Sidebar>
+    <Содержимое меню>
+    </ContentLayoutWithSidebar.Sidebar>
+    <ContentLayoutWithSidebar.Body>
+    <Содержимое страницы>
+    </ContentLayoutWithSidebar.Body>
+</ContentLayoutWithSidebar>
+*/
 
+/** Раскладка содержимого с сайдбаром
+ * @param children
+ * @param boxed - (bool) узкое содержимое / на всю ширину
+ * @param title
+ * @param breadcrumbs
+ * @returns {JSX.Element}
+ * @constructor */
+export default function ContentLayoutWithSidebar({children, boxed, title, breadcrumbs}) {
+
+    /** Стейт сайдбара */
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div className="h-screen flex overflow-hidden">
-            <ContextContainer.Provider value={{sidebarOpen, setSidebarOpen}}>
-                {/* Here we load some child components */}
-                {children}
-            </ContextContainer.Provider>
-        </div>
+        <Fragment>
+            <Helmet>
+                <title>{config.APP_NAME} - {title}</title>
+            </Helmet>
+            <div className="overflow-hidden">
+                <PageHeader pages={breadcrumbs} classname="breadcrumbs p-4 pb-0 sm:pb-4"/>
+                <div
+                className={["min-h-full flex overflow-hidden relative p-4 pt-0 xl:pt-4 rounded-lg", boxed ? "max-w-7xl mx-auto" : ""].join(" ")}>
+                {/* Контекст для передачи в дочерние элементы */}
+                <ContextContainer.Provider value={{sidebarOpen, setSidebarOpen, boxed}}>
+                    {/* Доочерние компоненты */}
+                    {children}
+                </ContextContainer.Provider>
+            </div>
+            </div>
+        </Fragment>
     )
-
 }
 
+/** Отрисовщик содержимого
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Body = (props) => {
     const {setSidebarOpen} = useContext(ContextContainer);
     return (
         <>
             <div className="flex flex-col flex-1 overflow-hidden">
-                <div className="md:pl-64 flex flex-col flex-1">
-                    <div className="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-100">
+                <div className="flex flex-col flex-1">
+                    <div className="z-10 lg:hidden p-1 bg-gray-100 dark:bg-gray-800">
                         <button
                             type="button"
                             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -38,7 +73,8 @@ const Body = (props) => {
                             <MenuIcon className="h-6 w-6" aria-hidden="true"/>
                         </button>
                     </div>
-                    <div className="flex-1 z-0 overflow-y-auto">
+                    <div
+                        className="flex-1 z-0 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded-lg lg:rounded-l-none lg:border-l-0 bg-white dark:bg-gray-900">
                         {props.children}
                     </div>
                 </div>
@@ -47,12 +83,19 @@ const Body = (props) => {
     )
 }
 
+/** Отрисовщик сайдбара
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Sidebar = (props) => {
-    const {sidebarOpen, setSidebarOpen} = useContext(ContextContainer);
+    const {sidebarOpen, setSidebarOpen, boxed} = useContext(ContextContainer);
     return (
         <>
+            {/** Мобильное меню */}
             <Transition.Root show={sidebarOpen} as={Fragment}>
-                <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
+                <Dialog as="div" className="fixed top-16 left-0 bottom-0 right-0 flex z-40 xl:hidden"
+                        onClose={setSidebarOpen}>
                     <Transition.Child
                         as={Fragment}
                         enter="transition-opacity ease-linear duration-300"
@@ -62,7 +105,7 @@ const Sidebar = (props) => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75"/>
+                        <Dialog.Overlay className="bg-gray-600 bg-opacity-75"/>
                     </Transition.Child>
                     <Transition.Child
                         as={Fragment}
@@ -73,7 +116,7 @@ const Sidebar = (props) => {
                         leaveFrom="translate-x-0"
                         leaveTo="-translate-x-full"
                     >
-                        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+                        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 shadow-lg">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-in-out duration-300"
@@ -86,27 +129,28 @@ const Sidebar = (props) => {
                                 <div className="absolute top-0 right-0 -mr-12 pt-2">
                                     <button
                                         type="button"
-                                        className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                                        className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                                         onClick={() => setSidebarOpen(false)}
                                     >
                                         <span className="sr-only">Закрыть меню</span>
-                                        <XIcon className="h-6 w-6 text-white" aria-hidden="true"/>
+                                        <XIcon className="h-6 w-6 text-gray-700 dark:text-gray-200" aria-hidden="true"/>
                                     </button>
                                 </div>
                             </Transition.Child>
-                            <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+                            <div className="flex-1 pt-5 pb-4 overflow-y-auto">
                                 {props.children}
                             </div>
                         </div>
                     </Transition.Child>
-                    <div className="flex-shrink-0 w-14">{/* Force sidebar to shrink to fit close icon */}</div>
+                    <div
+                        className="flex-shrink-0 w-14">{/** Заглушка, не позволяющая меню схлопываться, чтобы вместить кнопку меню */}</div>
                 </Dialog>
             </Transition.Root>
 
-            {/* Static sidebar for desktop */}
-            <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:top-16 md:bottom-0">
-                {/* Sidebar component, swap this element with another sidebar if you like */}
-                <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
+            {/** Десктопное меню */}
+            <div className="hidden lg:flex lg:w-64 lg:flex-col">
+                <div
+                    className={["flex-1 flex flex-col min-h-0 border-t border-b border-r border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 border-l rounded-l-lg", boxed ? "" : ""].join(" ")}>
                     <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                         {props.children}
                     </div>
@@ -116,9 +160,16 @@ const Sidebar = (props) => {
     )
 }
 
+/** Компонент меню/сайдбара, в разметке первый
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
+ContentLayoutWithSidebar.Sidebar = (props) => Sidebar(props);
 
-ContentLayoutWithSidebar.Body = (props) =>
-    Body(props);
-
-ContentLayoutWithSidebar.Sidebar = (props) =>
-    Sidebar(props);
+/** Компонент содержимого страницы
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
+ContentLayoutWithSidebar.Body = (props) => Body(props);

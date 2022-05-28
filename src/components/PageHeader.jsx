@@ -16,7 +16,7 @@ const PageHeader = ({pages, classname, header, children}) => {
 
     return (
         <div>
-            <nav className="sm:hidden" aria-label="Назад">
+            <nav className="sm:hidden p-4" aria-label="Назад">
                 <Link
                     to={-1}
                     className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700"

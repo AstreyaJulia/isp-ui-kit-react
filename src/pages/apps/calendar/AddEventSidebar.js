@@ -4,7 +4,6 @@ import {X} from 'react-feather';
 import toast from 'react-hot-toast';
 import Flatpickr from 'react-flatpickr';
 import Select, {components} from 'react-select'; // eslint-disable-line
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import {Controller, useForm} from 'react-hook-form';
 import {Form, Input, Label, Modal, ModalBody, ModalHeader} from 'reactstrap';
 import {isObjEmpty} from '../../../utils';
@@ -21,6 +20,7 @@ import {XIcon} from "@heroicons/react/outline";
 import {Switch} from '@headlessui/react'
 import classNames from "classnames";
 import CardHeader from "../../../components/elements/CardHeader";
+import Dot from "../../../components/elements/Dot";
 
 const AddEventSidebar = props => {
 
@@ -61,8 +61,8 @@ const AddEventSidebar = props => {
         {value: 'pink', label: 'Категория 1', color: 'pink'},
         {value: 'blue', label: 'Категория 2', color: 'blue'},
         {value: 'orange', label: 'Категория 3', color: 'orange'},
-        {value: 'yellow', label: 'Категория 4', color: 'yellow'},
-        {value: 'blue', label: 'Категория 5', color: 'blue'}
+        {value: 'teal', label: 'Категория 4', color: 'teal'},
+        {value: 'sky', label: 'Категория 5', color: 'sky'}
     ];
 
     //const [owner, setOwner] = useState(0); // owner
@@ -154,7 +154,7 @@ const AddEventSidebar = props => {
     const OptionComponent = ({data, ...props}) => {
         return (
             <components.Option {...props}>
-                <span className={`bullet bullet-${data.color} bullet-sm me-50`}/>
+                <Dot className="mr-2" color={data.color} size="3" />
                 {data.label}
             </components.Option>
         )
@@ -375,7 +375,7 @@ const AddEventSidebar = props => {
                                     <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
                                         <button
                                             type="button"
-                                            className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                                            className="rounded-md text-gray-700 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                             onClick={handleAddEventSidebar}
                                         >
                                             <span className="sr-only">Закрыть</span>
@@ -383,7 +383,7 @@ const AddEventSidebar = props => {
                                         </button>
                                     </div>
                                 </Transition.Child>
-                                <div className="h-full bg-white dark:bg-gray-900 p-8 overflow-y-auto">
+                                <div className="h-full bg-white dark:bg-gray-900 p-8 overflow-y-auto border-l border-gray-200 dark:border-gray-700 shadow-lg">
                                     <div className="pb-16 space-y-6">
                                         <CardHeader className=""
                                                     title={selectedEvent && selectedEvent.title && selectedEvent.title.length ? 'Обновление События' : 'Добавление События'}/>

@@ -28,3 +28,6 @@
   --highlight-color: transparent;
 }
 
+[type="checkbox"], [type="radio"] {
+  @apply bg-white dark:bg-gray-900;
+}

@@ -1,27 +1,12 @@
-import React, {useEffect, useRef, memo} from 'react';
-import FullCalendar from '@fullcalendar/react';
-import listPlugin from '@fullcalendar/list';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import toast from 'react-hot-toast';
-import {Menu} from 'react-feather';
-import {Card, CardBody} from 'reactstrap';
-import ruLocale from '@fullcalendar/core/locales/ru';
-
-const events = [
-    {title: "event", date: new Date(), calendar: "indigo"},
-    {title: "event", date: new Date(), calendar: "cyan"},
-    {title: "event", start: "2022-05-09", end: "2022-05-09", allDay: false, calendar: "red"},
-    {title: "event", start: "2022-05-05", end: "2022-05-07", allDay: true, calendar: "yellow"}
-];
-
-const colorClass = {
-    indigo: "bg-indigo-500/30 border border-indigo-500",
-    yellow: "bg-yellow-500/30 border border-yellow-500",
-    red: "bg-red-500/30 border border-red-500",
-    blue: "bg-blue-500/30 border border-blue-500 hover:bg-red-500/40",
-}
+import React, {memo, useEffect, useRef} from "react";
+import FullCalendar from "@fullcalendar/react";
+import listPlugin from "@fullcalendar/list";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import toast from "react-hot-toast";
+import ruLocale from "@fullcalendar/core/locales/ru";
+import {events} from "../../../@mock/SampleData";
 
 const CalendarModule = props => {
     const calendarRef = useRef(null);
@@ -34,7 +19,6 @@ const CalendarModule = props => {
         setCalendarApi,
         handleAddEventSidebar,
         blankEvent,
-        toggleSidebar,
         selectEvent,
         updateEvent
     } = props;
@@ -48,10 +32,10 @@ const CalendarModule = props => {
     const calendarOptions = {
         events: store.events.length ? store.events : events,
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
-        initialView: 'dayGridMonth',
+        initialView: "dayGridMonth",
         headerToolbar: {
-            start: 'sidebarToggle title',
-            end: 'dayGridMonth,timeGridWeek,timeGridDay today prev,next'
+            start: "dayGridMonth,timeGridWeek,timeGridDay today",
+            end: "prev,title,next"
         },
         editable: true,
         eventResizableFromStart: false,
@@ -70,8 +54,10 @@ const CalendarModule = props => {
         },
 
         eventClick({event: clickedEvent}) {
-            dispatch(selectEvent(clickedEvent));
-            handleAddEventSidebar();
+            if (clickedEvent._def.ui.display !== "background") {
+                dispatch(selectEvent(clickedEvent));
+                handleAddEventSidebar();
+            }
 
             // * Only grab required field otherwise it goes in infinity loop
             // ! Always grab all fields rendered by form (even if it get `undefined`) otherwise due to Vue3/Composition API you might get: "object is not extensible"
@@ -79,15 +65,6 @@ const CalendarModule = props => {
 
             // eslint-disable-next-line no-use-before-define
             // isAddNewEventSidebarActive.value = true
-        },
-
-        customButtons: {
-            sidebarToggle: {
-                text: <Menu className='d-xl-none d-block'/>,
-                click() {
-                    toggleSidebar(true)
-                }
-            }
         },
 
         dateClick(info) {
@@ -100,19 +77,19 @@ const CalendarModule = props => {
 
         eventDrop({event: droppedEvent}) {
             dispatch(updateEvent(droppedEvent))
-            toast.success('Событие обновлено')
+            toast.success("Событие обновлено")
         },
 
         eventResize({event: resizedEvent}) {
             dispatch(updateEvent(resizedEvent))
-            toast.success('Событие обновлено')
+            toast.success("Событие обновлено")
         },
 
         ref: calendarRef
     }
 
     return (
-        <div className="calendar-module">
+        <div className="calendar-module p-4">
             <FullCalendar {...calendarOptions} />
         </div>
     )

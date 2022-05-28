@@ -1,19 +1,20 @@
 import React, {Fragment} from 'react';
-import classnames from 'classnames';
-import {CardBody, Button, Input, Label} from 'reactstrap';
 import PrimaryButton from "../../../components/elements/PrimaryButton";
-
+import Checkbox from "../../../components/elements/Checkbox";
+import {PlusIcon} from "@heroicons/react/solid";
+import Dot from "../../../components/elements/Dot";
+import BasicButton from "../../../components/elements/BasicButton";
 const filters = [
-    {label: 'События', color: 'indigo', className: 'form-check-primary mb-1'},
-    {label: 'Отпуск', color: 'green', className: 'form-check-success mb-1'},
-    {label: 'Дежурство', color: 'cyan', className: 'form-check-info mb-1'},
-    {label: 'Важно', color: 'yellow', className: 'form-check-warning mb-1'},
-    {label: 'Праздники', color: 'red', className: 'form-check-danger mb-1'},
-    {label: 'Категория 1', color: 'pink', className: 'form-check-pink mb-1'},
-    {label: 'Категория 2', color: 'blue', className: 'form-check-blue mb-1'},
-    {label: 'Категория 3', color: 'orange', className: 'form-check-orange mb-1'},
-    {label: 'Категория 4', color: 'teal', className: 'form-check-teal mb-1'},
-    {label: 'Категория 5', color: 'azure', className: 'form-check-azure'}
+    {label: 'События', color: 'indigo', className: ''},
+    {label: 'Отпуск', color: 'green', className: ''},
+    {label: 'Дежурство', color: 'cyan', className: ''},
+    {label: 'Важно', color: 'yellow', className: ''},
+    {label: 'Праздники', color: 'red', className: ''},
+    {label: 'Категория 1', color: 'pink', className: ''},
+    {label: 'Категория 2', color: 'blue', className: ''},
+    {label: 'Категория 3', color: 'orange', className: ''},
+    {label: 'Категория 4', color: 'teal', className: ''},
+    {label: 'Категория 5', color: 'sky', className: ''}
 ];
 
 /** Сайдбар слева календаря
@@ -33,55 +34,43 @@ const SidebarLeft = props => {
     return (
         <Fragment>
             <div className='sidebar-wrapper'>
-                <CardBody className='card-body d-flex justify-content-center my-sm-0 mb-3'>
-                    <PrimaryButton label="+ Cобытие" onClick={handleAddEventClick} />
-                </CardBody>
-                <CardBody>
-                    <p className='section-label mb-1'>
-                        <span className='align-middle m-0 mb-3 text-uppercase fw-bold font-small-1 card-title'>Фильтр</span>
-                    </p>
-                    <div className='form-check mb-1'>
-                        <Input
-                            id='view-all'
-                            type='checkbox'
-                            label='View All'
-                            className='select-all bg-dark p-2'
-                            checked={store.selectedCalendars.length === filters.length}
-                            onChange={e => dispatch(updateAllFilters(e.target.checked))}
-                        />
-                        <Label className='form-check-label' for='view-all'>
-                            Все
-                        </Label>
-                    </div>
-                    <div className='calendar-events-filter'>
-                        {filters.length &&
-                            filters.map(filter => {
-                                return (
-                                    <div
-                                        key={`${filter.color}-key`}
-                                        className={classnames('form-check', {
-                                            [filter.className]: filter.className
-                                        })}
-                                    >
-                                        <Input
-                                            type='checkbox'
-                                            key={filter.color}
-                                            label={filter.color}
-                                            className={`input-filter bg-${filter.color}-500 p-2`}
-                                            id={`${filter.color}-event`}
-                                            checked={store.selectedCalendars.includes(filter.color)}
-                                            onChange={() => {
-                                                dispatch(updateFilter(filter.color))
-                                            }}
-                                        />
-                                        <Label className='form-check-label' for={`${filter.color}-event`}>
-                                            {filter.label}
-                                        </Label>
-                                    </div>
-                                )
-                            })}
-                    </div>
-                </CardBody>
+                <BasicButton label="Cобытие" onClick={handleAddEventClick} className="w-full mb-6">
+                    <PlusIcon className="w-4 h-4 mr-2"/>
+                </BasicButton>
+                <p className='section-label mb-4'>
+                    <span className='font-bold uppercase text-gray-600 dark:text-gray-500 text-sm'>Фильтр</span>
+                </p>
+                <Checkbox
+                    size="6"
+                    id="view-all"
+                    color="gray"
+                    onChange={e => dispatch(updateAllFilters(e.target.checked))}
+                    checked={store.selectedCalendars.length === filters.length}
+                    label="Все"
+                    className="select-all mb-3">
+                    <Dot className="mr-2" color="gray" size="4" />
+                </Checkbox>
+                <div className='calendar-events-filter'>
+                    {filters.length &&
+                        filters.map(filter => {
+                            return (
+                                <Checkbox
+                                    key={`${filter.color}-key`}
+                                    size="6"
+                                    id={`${filter.color}-event`}
+                                    color="gray"
+                                    onChange={() => {
+                                        dispatch(updateFilter(filter.color))
+                                    }}
+                                    checked={store.selectedCalendars.includes(filter.color)}
+                                    label={filter.label}
+                                    className={
+                                        [filter.className, "mb-3"].join(" ")}>
+                                    <Dot className="mr-2" color={filter.color} size="4" />
+                                </Checkbox>
+                            )
+                        })}
+                </div>
             </div>
             <div className='mt-auto'>
             </div>
