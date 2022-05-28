@@ -405,3 +405,7 @@
 .calendar-module .fc .fc-col-header-cell-cushion {
   @apply font-medium uppercase text-gray-800 dark:text-gray-200 text-sm;
 }
+
+.calendar-module .fc .fc-bg-event .fc-event-title {
+  @apply not-italic text-sm;
+}

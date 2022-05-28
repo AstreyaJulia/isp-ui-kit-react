@@ -291,5 +291,6 @@ export const events = [
     {title: "", start: "2022-05-03", end: "2022-05-03", allDay: true, calendar: "red", display: 'background'},
     {title: "", start: "2022-05-02", end: "2022-05-02", allDay: true, calendar: "red", display: 'background'},
     {title: "", start: "2022-05-01", end: "2022-05-01", allDay: true, calendar: "red", display: 'background'},
-    {title: "", start: "2022-04-30", end: "2022-04-30", allDay: true, calendar: "red", display: 'background'}
+    {title: "", start: "2022-04-30", end: "2022-04-30", allDay: true, calendar: "red", display: 'background'},
+    {title: "Сокращенный рабочий день", start: "2022-04-29", end: "2022-04-29", allDay: true, calendar: "orange", display: 'background'}
 ];

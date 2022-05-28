@@ -4,9 +4,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import ruLocale from "@fullcalendar/core/locales/ru";
 import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";
 import {events as SampleEvents} from "../../@mock/SampleData";
-import interactionPlugin from "@fullcalendar/interaction";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
 import {fetchEvents} from "../../pages/apps/calendar/store";
 import {useDispatch, useSelector} from "react-redux";
 

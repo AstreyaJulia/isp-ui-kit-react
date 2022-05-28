@@ -15,8 +15,8 @@ import classNames from "classnames";
 const PageHeader = ({pages, classname, header, children}) => {
 
     return (
-        <div>
-            <nav className="sm:hidden p-4" aria-label="Назад">
+        <div className={classname}>
+            <nav className="sm:hidden" aria-label="Назад">
                 <Link
                     to={-1}
                     className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700"
@@ -25,7 +25,7 @@ const PageHeader = ({pages, classname, header, children}) => {
                     Назад
                 </Link>
             </nav>
-            <nav className={classNames(classname, "w-full hidden sm:flex")} aria-label="Навигация">
+            <nav className={classNames("w-full hidden sm:flex")} aria-label="Навигация">
                 <ol className="flex items-center space-x-4">
                     <li>
                         <div>
@@ -69,7 +69,7 @@ const PageHeader = ({pages, classname, header, children}) => {
                             </h2>
                         </div>
                         : ""}
-                    <div className="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">
+                    <div className="mt-4 justify-end flex-shrink-0 flex md:mt-0 md:ml-4">
                         {children}
                     </div>
                 </div>

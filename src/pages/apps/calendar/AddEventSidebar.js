@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import Flatpickr from 'react-flatpickr';
 import Select, {components} from 'react-select'; // eslint-disable-line
 import {Controller, useForm} from 'react-hook-form';
-import {Form, Input, Label, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import {Form, Input, Label} from 'reactstrap';
 import {isObjEmpty} from '../../../utils';
 import img1 from '../../../assets/images/avatars/1-small.png';
 import img2 from '../../../assets/images/avatars/3-small.png';
