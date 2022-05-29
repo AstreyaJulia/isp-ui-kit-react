@@ -41,7 +41,7 @@ export default function ContentLayoutWithSidebar({children, boxed, title, breadc
                     <title>{config.APP_NAME} - {title}</title>
                 </Helmet>
                 <div className="overflow-hidden">
-                    <PageHeader pages={breadcrumbs} classname="breadcrumbs p-4 pb-0">
+                    <PageHeader pages={breadcrumbs} classname="breadcrumbs p-4 pb-4 xl:pb-0">
                         {/* Сюда можно тоже вставить разметку, например, кнопки */}
                     </PageHeader>
                     <div
@@ -142,9 +142,13 @@ const Sidebar = (props) => {
                                 </div>
                             </Transition.Child>
                             <div className="flex-1 overflow-y-auto">
-                                <div className="p-4"><h2
-                                    className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">{header}</h2>
-                                </div>
+                                {header
+                                    ? <div className="p-4">
+                                        <h2 className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">
+                                            {header}
+                                        </h2>
+                                    </div>
+                                    : null}
                                 {props.children}
                             </div>
                         </div>
@@ -155,13 +159,17 @@ const Sidebar = (props) => {
             </Transition.Root>
 
             {/** Десктопное меню */}
-            <div className="hidden lg:flex lg:w-64 lg:flex-col">
+            <div className="hidden lg:flex lg:w-60 lg:flex-col">
                 <div
                     className={["flex-1 flex flex-col min-h-0 border-t border-b border-r border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 border-l rounded-l-lg", boxed ? "" : ""].join(" ")}>
                     <div className="flex-1 flex flex-col overflow-y-auto">
-                        <div className="p-4"><h2
-                            className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">{header}</h2>
-                        </div>
+                        {header
+                            ? <div className="p-4">
+                                <h2 className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">
+                                    {header}
+                                </h2>
+                            </div>
+                            : null}
                         {props.children}
                     </div>
                 </div>
