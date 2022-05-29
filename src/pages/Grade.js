@@ -1,24 +1,19 @@
-import React from "react";
-import {Helmet} from "react-helmet";
-import PageHeader from "../components/PageHeader";
-import config from "../config";
+import ContentLayoutBlank from "../layouts/ContentLayouts/ContentLayoutBlank";
 
 const breadcrumbs = [{name: "Качество", href: "#", current: true}];
 
 const Grade = () => {
     return (
-        <React.Fragment>
-            <Helmet>
-                <title>{config.APP_NAME} - Качество</title>
-            </Helmet>
-
-            <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs}/>
-                <div className="flex-1 flex mt-4">
-
+        <ContentLayoutBlank header="Качество" breadcrumbs={breadcrumbs} title="Качество" boxed={false} >
+            <ContentLayoutBlank.Header>
+                {/* Содержимое заголовка: кнопки и т.д. */}
+            </ContentLayoutBlank.Header>
+            <ContentLayoutBlank.Body>
+                <div className="p-4">
+                    {/* Содержимое страницы */}
                 </div>
-            </div>
-        </React.Fragment>
+            </ContentLayoutBlank.Body>
+        </ContentLayoutBlank>
     );
 };
 

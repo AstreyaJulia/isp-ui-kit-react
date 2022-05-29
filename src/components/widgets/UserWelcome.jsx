@@ -58,7 +58,7 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
 
     return (
         <div
-            className={classnames(isBirthDay ? "bg-cyan-500" : "bg-indigo-800/90", "widget rounded-md drop-shadow-md p-3 h-28 overflow-hidden", className)}>
+            className={classnames(isBirthDay ? "bg-cyan-500" : "bg-indigo-800/90", "widget rounded-md drop-shadow-md p-3 h-28 overflow-hidden w-94", className)}>
             <div className="relative">
                 {isBirthDay ? bDayAnimation() : commonAnimation()}
                 <div className="flex items-center justify-between">

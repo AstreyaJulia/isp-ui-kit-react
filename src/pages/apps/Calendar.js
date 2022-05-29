@@ -1,11 +1,9 @@
 import React, {Fragment, useEffect, useState} from "react";
-import {Helmet} from "react-helmet";
 import CalendarModule from "./calendar/index";
 import SidebarLeft from "./calendar/Sidebar";
 import AddEventSidebar from "./calendar/AddEventSidebar";
 import ContentLayoutWithSidebar from "../../layouts/ContentLayouts/ContentLayoutWithSidebar";
 import {useDispatch, useSelector} from "react-redux";
-import config from "../../config";
 import {
     addEvent,
     fetchEvents,

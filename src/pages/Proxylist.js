@@ -1,24 +1,19 @@
-import React from "react";
-import {Helmet} from "react-helmet";
-import PageHeader from "../components/PageHeader";
-import config from "../config";
+import ContentLayoutCard from "../layouts/ContentLayouts/ContentLayoutCard";
 
 const breadcrumbs = [{name: "Каталог ссылок", href: "#", current: true}];
 
 const Proxylist = () => {
     return (
-        <React.Fragment>
-            <Helmet>
-                <title>{config.APP_NAME} - Каталог ссылок</title>
-            </Helmet>
-
-            <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs}/>
-                <div className="flex-1 flex mt-4">
-
+        <ContentLayoutCard header="Каталог ссылок" breadcrumbs={breadcrumbs} title="Каталог ссылок" boxed={false} >
+            <ContentLayoutCard.Header>
+                {/* Содержимое заголовка: кнопки и т.д. */}
+            </ContentLayoutCard.Header>
+            <ContentLayoutCard.Body>
+                <div className="p-4">
+                    {/* Содержимое страницы */}
                 </div>
-            </div>
-        </React.Fragment>
+            </ContentLayoutCard.Body>
+        </ContentLayoutCard>
     );
 };
 

@@ -71,7 +71,8 @@
 }
 
 /** FIXME сюда добавлять элементы для анимации */
-.main-content .widget {
+.content-body .breadcrumbs,
+.content-body .main-content {
   -webkit-animation: fadeIn .5s linear;
   animation: fadeIn .5s linear;
   animation-delay: 0s;
