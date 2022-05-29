@@ -115,60 +115,60 @@ const Calendar = () => {
 
     return (
         <Fragment>
-                <ContentLayoutWithSidebar
-                    boxed={true}
-                    title="Календарь"
-                    breadcrumbs={breadcrumbs}
-                    header="Календарь"
-                    sidebarSize="small"
-                    fullHeight={false}
-                >
-                    <ContentLayoutWithSidebar.Sidebar>
-                        <div className="p-4">
-                            <SidebarLeft
-                                store={store}
-                                dispatch={dispatch}
-                                updateFilter={updateFilter}
-                                toggleSidebar={toggleSidebar}
-                                updateAllFilters={updateAllFilters}
-                                handleAddEventSidebar={handleAddEventSidebar}
-                            />
-                        </div>
-                    </ContentLayoutWithSidebar.Sidebar>
-                    <ContentLayoutWithSidebar.Body>
-                        <CalendarModule
+            <ContentLayoutWithSidebar
+                boxed={true}
+                title="Календарь"
+                breadcrumbs={breadcrumbs}
+                header="Календарь"
+                sidebarSize="small"
+                fullHeight={false}
+            >
+                <ContentLayoutWithSidebar.Sidebar>
+                    <div className="p-4">
+                        <SidebarLeft
                             store={store}
                             dispatch={dispatch}
-                            blankEvent={blankEvent}
-                            calendarApi={calendarApi}
-                            selectEvent={selectEvent}
-                            updateEvent={updateEvent}
+                            updateFilter={updateFilter}
                             toggleSidebar={toggleSidebar}
-                            calendarsColor={calendarsColor}
-                            setCalendarApi={setCalendarApi}
+                            updateAllFilters={updateAllFilters}
                             handleAddEventSidebar={handleAddEventSidebar}
                         />
-                        <div
-                            className={classnames("body-content-overlay", {
-                                show: leftSidebarOpen === true
-                            })}
-                            onClick={() => toggleSidebar(false)}
-                        />
-                    </ContentLayoutWithSidebar.Body>
-                </ContentLayoutWithSidebar>
-                <AddEventSidebar
-                    store={store}
-                    dispatch={dispatch}
-                    addEvent={addEvent}
-                    open={addSidebarOpen}
-                    selectEvent={selectEvent}
-                    updateEvent={updateEvent}
-                    removeEvent={removeEvent}
-                    calendarApi={calendarApi}
-                    refetchEvents={refetchEvents}
-                    calendarsColor={calendarsColor}
-                    handleAddEventSidebar={handleAddEventSidebar}
-                />
+                    </div>
+                </ContentLayoutWithSidebar.Sidebar>
+                <ContentLayoutWithSidebar.Body>
+                    <CalendarModule
+                        store={store}
+                        dispatch={dispatch}
+                        blankEvent={blankEvent}
+                        calendarApi={calendarApi}
+                        selectEvent={selectEvent}
+                        updateEvent={updateEvent}
+                        toggleSidebar={toggleSidebar}
+                        calendarsColor={calendarsColor}
+                        setCalendarApi={setCalendarApi}
+                        handleAddEventSidebar={handleAddEventSidebar}
+                    />
+                    <div
+                        className={classnames("body-content-overlay", {
+                            show: leftSidebarOpen === true
+                        })}
+                        onClick={() => toggleSidebar(false)}
+                    />
+                </ContentLayoutWithSidebar.Body>
+            </ContentLayoutWithSidebar>
+            <AddEventSidebar
+                store={store}
+                dispatch={dispatch}
+                addEvent={addEvent}
+                open={addSidebarOpen}
+                selectEvent={selectEvent}
+                updateEvent={updateEvent}
+                removeEvent={removeEvent}
+                calendarApi={calendarApi}
+                refetchEvents={refetchEvents}
+                calendarsColor={calendarsColor}
+                handleAddEventSidebar={handleAddEventSidebar}
+            />
         </Fragment>
     );
 };

@@ -30,7 +30,15 @@ const ContextContainer = React.createContext(null);
  * @param fullHeight
  * @returns {JSX.Element}
  * @constructor */
-export default function ContentLayoutWithSidebar({children, boxed, title, breadcrumbs, header, sidebarSize, fullHeight}) {
+export default function ContentLayoutWithSidebar({
+                                                     children,
+                                                     boxed,
+                                                     title,
+                                                     breadcrumbs,
+                                                     header,
+                                                     sidebarSize,
+                                                     fullHeight
+                                                 }) {
 
     /** Стейт сайдбара */
     const [sidebarOpen, setSidebarOpen] = useState(false);
