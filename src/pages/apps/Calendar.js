@@ -115,7 +115,14 @@ const Calendar = () => {
 
     return (
         <Fragment>
-                <ContentLayoutWithSidebar boxed={true} title="Календарь" breadcrumbs={breadcrumbs} header="Календарь">
+                <ContentLayoutWithSidebar
+                    boxed={true}
+                    title="Календарь"
+                    breadcrumbs={breadcrumbs}
+                    header="Календарь"
+                    sidebarSize="small"
+                    fullHeight={false}
+                >
                     <ContentLayoutWithSidebar.Sidebar>
                         <div className="p-4">
                             <SidebarLeft

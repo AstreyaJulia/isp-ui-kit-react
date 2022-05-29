@@ -81,7 +81,7 @@ const MainLayout = (props) => {
                             className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
 
             <div
-                className={classNames(menuCollapsed ? "lg:pl-20 pl-0" : "lg:pl-64", "h-full")}
+                className={classNames(menuCollapsed ? "lg:pl-20 pl-0" : "lg:pl-64", "h-screen")}
             >
                 {/* Заголовок */}
                 <NavBar

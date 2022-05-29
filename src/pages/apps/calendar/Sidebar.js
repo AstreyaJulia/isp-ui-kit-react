@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import PrimaryButton from "../../../components/elements/PrimaryButton";
 import Checkbox from "../../../components/elements/Checkbox";
 import {PlusIcon} from "@heroicons/react/solid";
 import Dot from "../../../components/elements/Dot";

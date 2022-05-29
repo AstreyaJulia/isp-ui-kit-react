@@ -26,9 +26,11 @@ const ContextContainer = React.createContext(null);
  * @param title
  * @param breadcrumbs
  * @param header
+ * @param sidebarSize
+ * @param fullHeight
  * @returns {JSX.Element}
  * @constructor */
-export default function ContentLayoutWithSidebar({children, boxed, title, breadcrumbs, header}) {
+export default function ContentLayoutWithSidebar({children, boxed, title, breadcrumbs, header, sidebarSize, fullHeight}) {
 
     /** Стейт сайдбара */
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -36,16 +38,16 @@ export default function ContentLayoutWithSidebar({children, boxed, title, breadc
     return (
         <Fragment>
             {/* Контекст для передачи в дочерние элементы */}
-            <ContextContainer.Provider value={{sidebarOpen, setSidebarOpen, boxed, header}}>
+            <ContextContainer.Provider value={{sidebarOpen, setSidebarOpen, boxed, header, sidebarSize}}>
                 <Helmet>
                     <title>{config.APP_NAME} - {title}</title>
                 </Helmet>
-                <div className="overflow-hidden">
+                <div className={fullHeight ? "h-full" : "min-h-full"}>
                     <PageHeader pages={breadcrumbs} classname="breadcrumbs p-4 pb-4 xl:pb-0">
                         {/* Сюда можно тоже вставить разметку, например, кнопки */}
                     </PageHeader>
                     <div
-                        className={["main-content min-h-full flex overflow-hidden relative p-4 pt-0 xl:pt-4 rounded-lg", boxed ? "max-w-7xl mx-auto" : ""].join(" ")}>
+                        className={["main-content min-h-full flex overflow-y-auto relative p-4 pt-0 xl:pt-4 rounded-lg", boxed ? "max-w-7xl mx-auto" : ""].join(" ")}>
                         {/* Доочерние компоненты */}
                         {children}
                     </div>
@@ -77,7 +79,7 @@ const Body = (props) => {
                         </button>
                     </div>
                     <div
-                        className="flex-1 z-0 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded-lg lg:rounded-l-none lg:border-l-0 bg-white dark:bg-gray-900">
+                        className="flex-1 z-0 border border-gray-200 dark:border-gray-600 rounded-lg lg:rounded-l-none lg:border-l-0 bg-white dark:bg-gray-900">
                         {props.children}
                     </div>
                 </div>
@@ -92,7 +94,23 @@ const Body = (props) => {
  * @constructor
  */
 const Sidebar = (props) => {
-    const {sidebarOpen, setSidebarOpen, boxed, header} = useContext(ContextContainer);
+    const {sidebarOpen, setSidebarOpen, boxed, header, sidebarSize} = useContext(ContextContainer);
+
+    const sidebarSizes = {
+        small: {
+            mobile: "max-w-xs",
+            desktop: "lg:w-60"
+        },
+        medium: {
+            mobile: "max-w-sm",
+            desktop: "lg:w-72"
+        },
+        large: {
+            mobile: "max-w-md",
+            desktop: "lg:w-96"
+        }
+    }
+
     return (
         <>
             {/** Мобильное меню */}
@@ -120,7 +138,7 @@ const Sidebar = (props) => {
                         leaveTo="-translate-x-full"
                     >
                         <div
-                            className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 shadow-lg">
+                            className={["relative flex-1 flex flex-col w-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 shadow-lg", sidebarSizes[sidebarSize].mobile].join(" ")}>
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-in-out duration-300"
@@ -159,10 +177,10 @@ const Sidebar = (props) => {
             </Transition.Root>
 
             {/** Десктопное меню */}
-            <div className="hidden lg:flex lg:w-60 lg:flex-col">
+            <div className={["hidden lg:flex lg:flex-col", sidebarSizes[sidebarSize].desktop].join(" ")}>
                 <div
                     className={["flex-1 flex flex-col min-h-0 border-t border-b border-r border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 border-l rounded-l-lg", boxed ? "" : ""].join(" ")}>
-                    <div className="flex-1 flex flex-col overflow-y-auto">
+                    <div className="flex-1 flex flex-col">
                         {header
                             ? <div className="p-4">
                                 <h2 className="text-xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:text-2xl sm:truncate">
