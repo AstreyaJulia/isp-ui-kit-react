@@ -58,7 +58,7 @@ const Proxylist = () => {
                                             <a
                                                 className="focus:outline-none"
                                             >
-                                                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
                                                     {group.name}
                                                 </p>
                                             </a>
@@ -128,7 +128,7 @@ const Proxylist = () => {
                             </>
                             : null}
                     </div>
-                    <div className="grid grid-cols-1 gap-2 h-full">
+                    <div className={[selectedGroup != null ? "" : "h-full", "grid grid-cols-1 gap-2"].join(" ")}>
                         {selectedGroup != null
                             ? makeArrayFromObj(proxyListLinks[selectedGroup].children).map((link, key) => {
                                 return (
@@ -152,7 +152,7 @@ const Proxylist = () => {
                                                 <p
                                                     className="focus:outline-none"
                                                 >
-                                                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                                    <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
                                                         {link.name}
                                                     </p>
                                                 </p>
@@ -208,23 +208,23 @@ const Proxylist = () => {
                                     </a>
                                 )
                             })
-                            /* TODO пустое состояние */
                             : (
                                 <div className="text-center flex flex-col items-center justify-center">
-                                    <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor" aria-hidden="true">
-                                        <path vectorEffect="non-scaling-stroke" strokeLinecap="round"
-                                              strokeLinejoin="round" strokeWidth="2"
-                                              d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                                    </svg>
-                                    <h3 className="mt-2 text-sm font-medium text-gray-900">Нет элементов</h3>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                        Выберите группу в списке слева.
-                                    </p>
+                                    <div className="mt-1 border-2 border-gray-300 dark:border-gray-700 border-dashed rounded-md px-6 pt-5 pb-6 flex flex-col items-center justify-center">
+                                        <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor" aria-hidden="true">
+                                            <path vectorEffect="non-scaling-stroke" strokeLinecap="round"
+                                                  strokeLinejoin="round" strokeWidth="2"
+                                                  d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                        </svg>
+                                        <h3 className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">Нет элементов</h3>
+                                        <p className="mt-1 text-sm text-gray-500">
+                                            Выберите группу в списке слева.
+                                        </p>
+                                    </div>
                                 </div>
                             )
                         }
-
                     </div>
                 </div>
             </ContentLayoutWithSidebar.Body>

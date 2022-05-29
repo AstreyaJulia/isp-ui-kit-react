@@ -154,8 +154,10 @@ const AddEventSidebar = props => {
     const OptionComponent = ({data, ...props}) => {
         return (
             <components.Option {...props}>
-                <Dot className="mr-2" color={data.color} size="3" />
-                {data.label}
+                <div className='flex flex-wrap items-center'>
+                    <Dot className="mr-2" color={data.color} size="3"/>
+                    {data.label}
+                </div>
             </components.Option>
         )
     }
@@ -383,7 +385,7 @@ const AddEventSidebar = props => {
                                         </button>
                                     </div>
                                 </Transition.Child>
-                                <div className="h-full bg-white dark:bg-gray-900 p-8 overflow-y-auto border-l border-gray-200 dark:border-gray-700 shadow-lg">
+                                <div className="h-full bg-white dark:bg-gray-900 p-6 overflow-y-auto border-l border-gray-200 dark:border-gray-700 shadow-lg">
                                     <div className="pb-16 space-y-6">
                                         <CardHeader className=""
                                                     title={selectedEvent && selectedEvent.title && selectedEvent.title.length ? 'Обновление События' : 'Добавление События'}/>
@@ -405,152 +407,154 @@ const AddEventSidebar = props => {
                                                 }
                                             })}
                                         >
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='title'>
-                                                    Название события <span className='text-red-400'>*</span>
-                                                </Label>
-                                                <Controller
-                                                    name='title'
-                                                    control={control}
-                                                    render={({field}) => (
-                                                        <Input
-                                                            className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                            id='title' placeholder='Введите название'
-                                                            invalid={errors.title && true} {...field} />
-                                                    )}
-                                                />
-                                            </div>
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='label'>
-                                                    Категория события
-                                                </Label>
-                                                <Select
-                                                    id='label'
-                                                    value={calendarLabel}
-                                                    options={options}
-                                                    className='mt-1 react-select'
-                                                    classNamePrefix='select'
-                                                    isClearable={false}
-                                                    onChange={data => setCalendarLabel([data])}
-                                                    components={{
-                                                        Option: OptionComponent
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='startDate'>
-                                                    Начало события
-                                                </Label>
-                                                <Flatpickr
-                                                    required
-                                                    id='startDate'
-                                                    name='startDate'
-                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                    onChange={date => setStartPicker(date[0])}
-                                                    value={startPicker}
-                                                    options={{
-                                                        enableTime: allDay === false,
-                                                        dateFormat: 'Y-m-d H:i'
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='endDate'>
-                                                    Конец события
-                                                </Label>
-                                                <Flatpickr
-                                                    required
-                                                    id='endDate'
-                                                    // tag={Flatpickr}
-                                                    name='endDate'
-                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                    onChange={date => setEndPicker(date[0])}
-                                                    value={endPicker}
-                                                    options={{
-                                                        enableTime: allDay === false,
-                                                        dateFormat: 'Y-m-d H:i'
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className='form-switch mt-1 flex items-center'>
-                                                <Switch
-                                                    checked={allDay}
-                                                    onChange={setAllDay}
-                                                    className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                >
-                                                    <span className="sr-only">Use setting</span>
-                                                    <span aria-hidden="true"
-                                                          className="pointer-events-none absolute bg-white w-full h-full rounded-md"/>
-                                                    <span
-                                                        aria-hidden="true"
-                                                        className={classNames(
-                                                            allDay ? 'bg-indigo-600' : 'bg-gray-200',
-                                                            'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
+                                            <div className="grid gap-2">
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='title'>
+                                                        Название события <span className='text-red-400'>*</span>
+                                                    </Label>
+                                                    <Controller
+                                                        name='title'
+                                                        control={control}
+                                                        render={({field}) => (
+                                                            <Input
+                                                                className="mt-1 bg-white dark:bg-gray-900 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                                id='title' placeholder='Введите название'
+                                                                invalid={errors.title && true} {...field} />
                                                         )}
                                                     />
-                                                    <span
-                                                        aria-hidden="true"
-                                                        className={classNames(
-                                                            allDay ? 'translate-x-5' : 'translate-x-0',
-                                                            'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
-                                                        )}
+                                                </div>
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='label'>
+                                                        Категория события
+                                                    </Label>
+                                                    <Select
+                                                        id='label'
+                                                        value={calendarLabel}
+                                                        options={options}
+                                                        className='mt-1 react-select bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 sm:text-sm'
+                                                        classNamePrefix='select'
+                                                        isClearable={false}
+                                                        onChange={data => setCalendarLabel([data])}
+                                                        components={{
+                                                            Option: OptionComponent
+                                                        }}
                                                     />
-                                                </Switch>
-                                                <Label
-                                                    className='ml-2 text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='allDay'>
-                                                    Весь день
-                                                </Label>
-                                            </div>
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='users'>
-                                                    Назначить
-                                                </Label>
-                                                <Select
-                                                    isMulti
-                                                    Group
-                                                    placeholder='Выберите сотрудников'
-                                                    id='users'
-                                                    className='mt-1 react-select'
-                                                    classNamePrefix='select'
-                                                    isClearable={false}
-                                                    options={usersOptions}
-                                                    value={users.length ? [...users] : null}
-                                                    onChange={data => setUsers([...data])}
-                                                    components={{
-                                                        Option: UsersComponent
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className='mb-1'>
-                                                <Label
-                                                    className='block text-sm font-medium text-gray-700 dark:text-gray-200'
-                                                    for='description'>
-                                                    Описание события
-                                                </Label>
-                                                <Input
-                                                    className="mt-1 bg-gray-100 dark:bg-gray-800 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                    type='textarea'
-                                                    name='text'
-                                                    id='description'
-                                                    rows='3'
-                                                    value={desc}
-                                                    onChange={e => setDesc(e.target.value)}
-                                                    placeholder='Введите описание'
-                                                />
-                                            </div>
-                                            <div className='flex mb-1'>
-                                                <EventActions/>
+                                                </div>
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='startDate'>
+                                                        Начало события
+                                                    </Label>
+                                                    <Flatpickr
+                                                        required
+                                                        id='startDate'
+                                                        name='startDate'
+                                                        className="mt-1 bg-white dark:bg-gray-900 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                        onChange={date => setStartPicker(date[0])}
+                                                        value={startPicker}
+                                                        options={{
+                                                            enableTime: allDay === false,
+                                                            dateFormat: 'Y-m-d H:i'
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='endDate'>
+                                                        Конец события
+                                                    </Label>
+                                                    <Flatpickr
+                                                        required
+                                                        id='endDate'
+                                                        // tag={Flatpickr}
+                                                        name='endDate'
+                                                        className="mt-1 bg-white dark:bg-gray-900 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                        onChange={date => setEndPicker(date[0])}
+                                                        value={endPicker}
+                                                        options={{
+                                                            enableTime: allDay === false,
+                                                            dateFormat: 'Y-m-d H:i'
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className='form-switch mt-1 flex items-center'>
+                                                    <Switch
+                                                        checked={allDay}
+                                                        onChange={setAllDay}
+                                                        className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    >
+                                                        <span className="sr-only">Use setting</span>
+                                                        <span aria-hidden="true"
+                                                              className="pointer-events-none absolute bg-white w-full h-full rounded-md"/>
+                                                        <span
+                                                            aria-hidden="true"
+                                                            className={classNames(
+                                                                allDay ? 'bg-indigo-600' : 'bg-gray-200',
+                                                                'pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200'
+                                                            )}
+                                                        />
+                                                        <span
+                                                            aria-hidden="true"
+                                                            className={classNames(
+                                                                allDay ? 'translate-x-5' : 'translate-x-0',
+                                                                'pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200'
+                                                            )}
+                                                        />
+                                                    </Switch>
+                                                    <Label
+                                                        className='ml-2 text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='allDay'>
+                                                        Весь день
+                                                    </Label>
+                                                </div>
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='users'>
+                                                        Назначить
+                                                    </Label>
+                                                    <Select
+                                                        isMulti
+                                                        Group
+                                                        placeholder='Выберите сотрудников'
+                                                        id='users'
+                                                        className='mt-1 react-select bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 sm:text-sm'
+                                                        classNamePrefix='select'
+                                                        isClearable={false}
+                                                        options={usersOptions}
+                                                        value={users.length ? [...users] : null}
+                                                        onChange={data => setUsers([...data])}
+                                                        components={{
+                                                            Option: UsersComponent
+                                                        }}
+                                                    />
+                                                </div>
+                                                <div className='mb-1'>
+                                                    <Label
+                                                        className='block text-sm font-medium text-gray-700 dark:text-gray-200'
+                                                        for='description'>
+                                                        Описание события
+                                                    </Label>
+                                                    <Input
+                                                        className="mt-1 bg-white dark:bg-gray-900 appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                        type='textarea'
+                                                        name='text'
+                                                        id='description'
+                                                        rows='3'
+                                                        value={desc}
+                                                        onChange={e => setDesc(e.target.value)}
+                                                        placeholder='Введите описание'
+                                                    />
+                                                </div>
+                                                <div className='flex mt-4'>
+                                                    <EventActions/>
+                                                </div>
                                             </div>
                                         </Form>
                                     </div>
