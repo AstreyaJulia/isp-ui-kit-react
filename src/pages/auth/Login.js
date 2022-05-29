@@ -1,20 +1,20 @@
 import {Link, useNavigate} from "react-router-dom";
-import InputPasswordToggle from "../../components/elements/PasswordShow"
-import {Button, Form, Input, Label} from "reactstrap"
+import InputPasswordToggle from "../../components/elements/PasswordShow";
+import {Button, Form, Input, Label} from "reactstrap";
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
 import {Fragment} from "react";
-import toast from 'react-hot-toast'
-import {useDispatch} from 'react-redux'
-import {Controller, useForm} from 'react-hook-form'
-import {handleLogin} from '../../store/authentication'
+import toast from "react-hot-toast";
+import {useDispatch} from "react-redux";
+import {Controller, useForm} from "react-hook-form";
+import {handleLogin} from "../../store/authentication";
 import {CheckCircleIcon, ExclamationCircleIcon, XIcon} from "@heroicons/react/outline";
 import {Helmet} from "react-helmet";
 import config from "../../config";
 import {fetch} from "../../utils/Helpers/api_helper";
 
 const defaultValues = {
-    login: 'chainik',
-    password: 'qwer'
+    login: "chainik",
+    password: "qwer"
 }
 
 const ToastContent = ({t, message, type}) => {
@@ -81,7 +81,7 @@ const Login = () => {
             for (const key in userData) {
                 if (userData[key].length === 0) {
                     setError(key, {
-                        type: 'manual'
+                        type: "manual"
                     })
                 }
             }
@@ -122,8 +122,8 @@ const Login = () => {
                                         </Label>
                                         <div className="mt-1">
                                             <Controller
-                                                id='login'
-                                                name='login'
+                                                id="login"
+                                                name="login"
                                                 control={control}
                                                 render={({field}) => (
                                                     <Input
@@ -146,11 +146,11 @@ const Login = () => {
 
                                         <div className="mt-1">
                                             <Controller
-                                                id='password'
-                                                name='password'
+                                                id="password"
+                                                name="password"
                                                 control={control}
                                                 render={({field}) => (
-                                                    <InputPasswordToggle className='block'
+                                                    <InputPasswordToggle className="block"
                                                                          invalid={errors.password && true} {...field} />
                                                 )}
                                             />
@@ -165,7 +165,7 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <Button type='submit'
+                                        <Button type="submit"
                                                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 block>
                                             Войти

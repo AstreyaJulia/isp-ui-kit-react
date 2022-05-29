@@ -1,24 +1,24 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import axios from 'axios';
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async calendars => {
-    const response = await axios.get('/apps/calendar/events', {calendars});
+export const fetchEvents = createAsyncThunk("appCalendar/fetchEvents", async calendars => {
+    const response = await axios.get("/apps/calendar/events", {calendars});
     return response.data;
 });
 
-export const addEvent = createAsyncThunk('appCalendar/addEvent', async (event, {dispatch, getState}) => {
-    await axios.post('/apps/calendar/add-event', {event});
+export const addEvent = createAsyncThunk("appCalendar/addEvent", async (event, {dispatch, getState}) => {
+    await axios.post("/apps/calendar/add-event", {event});
     await dispatch(fetchEvents(getState().calendar.selectedCalendars));
     return event;
 });
 
-export const updateEvent = createAsyncThunk('appCalendar/updateEvent', async (event, {dispatch, getState}) => {
-    await axios.post('/apps/calendar/update-event', {event});
+export const updateEvent = createAsyncThunk("appCalendar/updateEvent", async (event, {dispatch, getState}) => {
+    await axios.post("/apps/calendar/update-event", {event});
     await dispatch(fetchEvents(getState().calendar.selectedCalendars));
     return event;
 });
 
-export const updateFilter = createAsyncThunk('appCalendar/updateFilter', async (filter, {dispatch, getState}) => {
+export const updateFilter = createAsyncThunk("appCalendar/updateFilter", async (filter, {dispatch, getState}) => {
     if (getState().calendar.selectedCalendars.includes(filter)) {
         await dispatch(fetchEvents(getState().calendar.selectedCalendars.filter(i => i !== filter)));
     } else {
@@ -27,26 +27,26 @@ export const updateFilter = createAsyncThunk('appCalendar/updateFilter', async (
     return filter;
 });
 
-export const updateAllFilters = createAsyncThunk('appCalendar/updateAllFilters', async (value, {dispatch}) => {
+export const updateAllFilters = createAsyncThunk("appCalendar/updateAllFilters", async (value, {dispatch}) => {
     if (value === true) {
-        await dispatch(fetchEvents(['primary', 'success', 'info', 'warning', 'danger', 'pink', 'blue', 'orange', 'teal', 'azure']));
+        await dispatch(fetchEvents(["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]));
     } else {
         await dispatch(fetchEvents([]));
     }
     return value;
 })
 
-export const removeEvent = createAsyncThunk('appCalendar/removeEvent', async id => {
-    await axios.delete('/apps/calendar/remove-event', {id})
+export const removeEvent = createAsyncThunk("appCalendar/removeEvent", async id => {
+    await axios.delete("/apps/calendar/remove-event", {id})
     return id
 })
 
 export const appCalendarSlice = createSlice({
-    name: 'appCalendar',
+    name: "appCalendar",
     initialState: {
         events: [],
         selectedEvent: {},
-        selectedCalendars: ['primary', 'success', 'info', 'warning', 'danger', 'pink', 'blue', 'orange', 'teal', 'azure']
+        selectedCalendars: ["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]
     },
     reducers: {
         selectEvent: (state, action) => {
@@ -69,7 +69,7 @@ export const appCalendarSlice = createSlice({
                 const value = action.payload
                 let selected = []
                 if (value === true) {
-                    selected = ['primary', 'success', 'info', 'warning', 'danger', 'pink', 'blue', 'orange', 'teal', 'azure']
+                    selected = ["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]
                 } else {
                     selected = []
                 }

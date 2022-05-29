@@ -1,5 +1,4 @@
-/** React Imports */
-import React, {Suspense} from "react";
+import {Suspense} from "react";
 import {Navigate} from "react-router-dom";
 
 const PublicRoute = ({children, route}) => {
