@@ -27,6 +27,7 @@ const CalendarModule = props => {
         if (calendarApi === null) {
             setCalendarApi(calendarRef.current.getApi())
         }
+        // eslint-disable-next-line
     }, [calendarApi])
 
     const calendarOptions = {
@@ -45,7 +46,7 @@ const CalendarModule = props => {
         locale: ruLocale,
 
         eventClassNames({event: calendarEvent}) {
-            const colorName = calendarsColor[calendarEvent._def.extendedProps.calendar]
+            const colorName = calendarEvent._def.extendedProps.calendar
 
             return [
                 // Фоновый цвет событий
@@ -58,31 +59,14 @@ const CalendarModule = props => {
                 dispatch(selectEvent(clickedEvent));
                 handleAddEventSidebar();
             }
-
-            // * Only grab required field otherwise it goes in infinity loop
-            // ! Always grab all fields rendered by form (even if it get `undefined`) otherwise due to Vue3/Composition API you might get: "object is not extensible"
-            // event.value = grabEventDataFromEventApi(clickedEvent)
-
-            // eslint-disable-next-line no-use-before-define
-            // isAddNewEventSidebarActive.value = true
         },
 
         dateClick(info) {
-            const ev = blankEvent
-            ev.start = info.date
-            ev.end = info.date
-            dispatch(selectEvent(ev))
-            handleAddEventSidebar()
-        },
-
-        eventDrop({event: droppedEvent}) {
-            dispatch(updateEvent(droppedEvent))
-            toast.success("Событие обновлено")
-        },
-
-        eventResize({event: resizedEvent}) {
-            dispatch(updateEvent(resizedEvent))
-            toast.success("Событие обновлено")
+            const ev = blankEvent;
+            ev.start = info.date;
+            ev.end = info.date;
+            dispatch(selectEvent(ev));
+            handleAddEventSidebar();
         },
 
         ref: calendarRef

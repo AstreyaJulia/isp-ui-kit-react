@@ -1,6 +1,5 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import {Avatar} from "../../../components/elements/Avatar";
-import {X} from "react-feather";
 import toast from "react-hot-toast";
 import Flatpickr from "react-flatpickr";
 import Select, {components} from "react-select"; // eslint-disable-line
@@ -9,16 +8,14 @@ import {Form, Input, Label} from "reactstrap";
 import {isObjEmpty} from "../../../utils";
 import PrimaryButton from "../../../components/elements/PrimaryButton";
 import DangerButton from "../../../components/elements/DangerButton";
-import {Dialog, Transition, Switch} from "@headlessui/react";
+import {Dialog, Switch, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import classNames from "classnames";
 import CardHeader from "../../../components/elements/CardHeader";
 import Dot from "../../../components/elements/Dot";
-import {usersOptions} from "../../../@mock/SampleData"
+import {usersOptions} from "../../../@mock/SampleData";
 
 const AddEventSidebar = props => {
-
-    const [enabled, setEnabled] = useState(false)
 
     const {
         open,
@@ -101,6 +98,7 @@ const AddEventSidebar = props => {
         )
     }
 
+    /** Добавление события */
     const handleAddEvent = () => {
         const obj = {
             title: getValues("title"),
@@ -117,7 +115,7 @@ const AddEventSidebar = props => {
         dispatch(addEvent(obj));
         refetchEvents();
         handleAddEventSidebar();
-        toast.success("Event Added");
+        toast.success("Событие успешно добавлено");
     }
 
     /** Сброс полей формы при закрытии */
@@ -135,11 +133,12 @@ const AddEventSidebar = props => {
     /** Установить поля сайдбара  */
     const handleSelectedEvent = () => {
         if (!isObjEmpty(selectedEvent)) {
+
             const calendar = selectedEvent.extendedProps.calendar;
 
             const resolveLabel = () => {
                 if (calendar.length) {
-                    return {label: calendar, value: calendar, color: calendarsColor[calendar]};
+                    return {label: calendarsColor[calendar], value: calendar, color: calendar};
                 } else {
                     return options[0];
                 }
@@ -256,14 +255,19 @@ const AddEventSidebar = props => {
         }
     }
 
-    /** Кнопка закрытия модала
-     * @type {JSX.Element}
-     */
-    const CloseBtn = <X className="cursor-pointer" size={15} onClick={handleAddEventSidebar}/>
+    useEffect(() => {
+        if (open && selectEvent) {
+            handleSelectedEvent()
+        }
+    }, [open])
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="fixed right-0 top-16 overflow-hidden" onClose={handleResetInputValues}>
+            <Dialog
+                as="div"
+                className="fixed right-0 top-16 overflow-hidden"
+                onClose={handleResetInputValues}
+            >
                 <div className="absolute right-0 top-16 overflow-hidden">
                     <Transition.Child
                         as={Fragment}

@@ -40,7 +40,7 @@ const SidebarLeft = props => {
                     <span className='font-bold uppercase text-gray-600 dark:text-gray-500 text-sm'>Фильтр</span>
                 </p>
                 <Checkbox
-                    size="6"
+                    size="4"
                     id="view-all"
                     color="gray"
                     onChange={e => dispatch(updateAllFilters(e.target.checked))}
@@ -55,7 +55,7 @@ const SidebarLeft = props => {
                             return (
                                 <Checkbox
                                     key={`${filter.color}-key`}
-                                    size="6"
+                                    size="4"
                                     id={`${filter.color}-event`}
                                     color="gray"
                                     onChange={() => {

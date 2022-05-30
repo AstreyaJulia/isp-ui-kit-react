@@ -24,10 +24,11 @@ export const getInitialsOnly = name => name.split(" ").slice(1).map((n) => n[0])
 
 /** Делает из объекта массив
  * @param object - объект
- * * @returns Array
+ * @returns {*[]}
  */
 export const makeArrayFromObj = (object) => {
     let array = [];
+    // eslint-disable-next-line
     Object.keys(object).map(function (key, index) {
         array.push(object[key]);
     });
@@ -53,6 +54,7 @@ export const makeArrayKeyValue = (object, key1, key2) => {
 export const makeOptionsForReactSelect = (object, key1, key2) => {
     const array = [];
     for (let i = 0; i < object.length; i++) {
+        // eslint-disable-next-line
         let obj = new Map;
         obj.set("value", object[i][key1]);
         obj.set("label", object[i][key2]);

@@ -441,3 +441,48 @@ export const usersOptions = [
         ]
     }
 ]
+
+/** Цвета для Fullcalendar */
+/** Цвета событий, названия менять в разметке, в js менять не надо */
+export const calendCat = [
+    {
+        color: "indigo",
+        name: "События"
+    },
+    {
+        color: "green",
+        name: "Отпуск"
+    },
+    {
+        color: "cyan",
+        name: "Дежурство"
+    },
+    {
+        color: "yellow",
+        name: "Важно"
+    },
+    {
+        color: "red",
+        name: "Праздники"
+    },
+    {
+        color: "pink",
+        name: "Категория 1"
+    },
+    {
+        color: "blue",
+        name: "Категория 2"
+    },
+    {
+        color: "orange",
+        name: "Категория 3"
+    },
+    {
+        color: "teal",
+        name: "Категория 4"
+    },
+    {
+        color: "sky",
+        name: "Категория 5"
+    }
+]

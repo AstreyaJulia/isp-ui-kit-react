@@ -1,41 +1,41 @@
 .fc .fc-bg-event.fc-event-indigo {
-  @apply bg-indigo-500/30 border-0;
+  @apply bg-indigo-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-green {
-  @apply bg-green-500/30 border-0;
+  @apply bg-green-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-cyan {
-  @apply bg-cyan-500/30 border-0;
+  @apply bg-cyan-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-yellow {
-  @apply bg-yellow-500/30 border-0;
+  @apply bg-yellow-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-red {
-  @apply bg-red-500/30 border-0;
+  @apply bg-red-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-pink {
-  @apply bg-pink-500/30 border-0;
+  @apply bg-pink-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-blue {
-  @apply bg-blue-500/30 border-0;
+  @apply bg-blue-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-orange {
-  @apply bg-orange-500/30 border-0;
+  @apply bg-orange-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-orange {
-  @apply bg-orange-500/30 border-0;
+  @apply bg-orange-500/40 border-0;
 }
 
 .fc .fc-bg-event.fc-event-sky {
-  @apply bg-sky-500/30 border-0;
+  @apply bg-sky-500/40 border-0;
 }
 
 /** calendar Widget */
@@ -208,12 +208,16 @@
   @apply mt-1;
 }
 
+.today-calendar .fc .fc-daygrid-day .fc-daygrid-day-number {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
 .today-calendar .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
-  @apply rounded-full bg-indigo-600/20 dark:bg-indigo-600/40;
+  @apply text-gray-900 dark:text-gray-50;
 }
 
 .today-calendar .fc .fc-daygrid-day.fc-day-today {
-  @apply bg-transparent;
+  @apply bg-gray-200 dark:bg-gray-700;
 }
 
 .today-calendar .fc .fc-daygrid-day-events {
@@ -318,12 +322,16 @@
 }
 
 /** Цвет фона сегодняшнего дня */
-.calendar-module .fc .fc-daygrid-day.fc-day-today {
-  background: none;
+.calendar-module .fc .fc-daygrid-day .fc-daygrid-day-number {
+  @apply text-gray-600 dark:text-gray-400;
 }
 
-.calendar-module .fc-day-today .fc-daygrid-day-number {
-  @apply rounded-full bg-indigo-500 text-white py-1 px-2 flex items-center justify-center;
+.calendar-module .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  @apply text-gray-900 dark:text-gray-50;
+}
+
+.calendar-module .fc .fc-daygrid-day.fc-day-today {
+  @apply bg-gray-200 dark:bg-gray-700;
 }
 
 .calendar-module .fc-daygrid-day-number {

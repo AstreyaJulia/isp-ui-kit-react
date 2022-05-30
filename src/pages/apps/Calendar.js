@@ -15,57 +15,12 @@ import {
 } from "./calendar/store";
 import classnames from "classnames";
 import {makeArrayKeyValue, makeOptionsForReactSelect} from "../../utils";
+import {calendCat} from "../../@mock/SampleData";
 
 const breadcrumbs = [{name: "Календарь", href: "#", current: true}];
 
-/** Цвета для Fullcalendar */
-/** Цвета событий, названия менять в разметке, в js менять не надо */
-const calendCat = [
-    {
-        color: "indigo",
-        name: "События"
-    },
-    {
-        color: "green",
-        name: "Отпуск"
-    },
-    {
-        color: "cyan",
-        name: "Дежурство"
-    },
-    {
-        color: "yellow",
-        name: "Важно"
-    },
-    {
-        color: "red",
-        name: "Праздники"
-    },
-    {
-        color: "pink",
-        name: "Категория 1"
-    },
-    {
-        color: "blue",
-        name: "Категория 2"
-    },
-    {
-        color: "orange",
-        name: "Категория 3"
-    },
-    {
-        color: "teal",
-        name: "Категория 4"
-    },
-    {
-        color: "sky",
-        name: "Категория 5"
-    }
-]
-
 /** Для использования в Fullcalendar */
-const calendarsColor = makeArrayKeyValue(calendCat, "color", "color");
-console.log(makeOptionsForReactSelect(calendCat, "name", "color"))
+const calendarsColor = makeArrayKeyValue(calendCat, "color", "name");
 
 const Calendar = () => {
     const dispatch = useDispatch();
@@ -75,10 +30,19 @@ const Calendar = () => {
     const [addSidebarOpen, setAddSidebarOpen] = useState(false);
     const [leftSidebarOpen, setLeftSidebarOpen] = useState(false);
 
-    const handleAddEventSidebar = () => setAddSidebarOpen(!addSidebarOpen);
+    /** Открывает сайдбар */
+    const handleAddEventSidebar = () => {
+        setAddSidebarOpen(!addSidebarOpen);
+    };
 
+    /** Открыает сайдбар слева (с фильтрами )
+     * @param val
+     */
     const toggleSidebar = val => setLeftSidebarOpen(val);
 
+    /** Пустое событие
+     * @type {{allDay: boolean, extendedProps: {calendar: string, guests: *[], description: string, location: string}, start: string, end: string, title: string, url: string}}
+     */
     const blankEvent = {
         title: "",
         start: "",

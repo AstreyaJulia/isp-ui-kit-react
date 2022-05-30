@@ -5,6 +5,7 @@ const PrivateRoute = ({children, route}) => {
     const user = JSON.parse(localStorage.getItem("authUser"));
 
     if (route) {
+
         let restrictedRoute = false;
 
         if (route.meta) {
