@@ -14,6 +14,7 @@ import {
     updateFilter
 } from "./calendar/store";
 import classnames from "classnames";
+import {makeArrayKeyValue, makeOptionsForReactSelect} from "../../utils";
 
 const breadcrumbs = [{name: "Календарь", href: "#", current: true}];
 
@@ -62,19 +63,9 @@ const calendCat = [
     }
 ]
 
-/** Из объекта с цветами событий и именами категорий возвращает объект с цветом
- * @returns {{[p: string]: any}}
- */
-function araycal() {
-    const array = new Map();
-    for (let i = 0; i < calendCat.length; i++) {
-        array.set(calendCat[i].color, calendCat[i].color);
-    }
-    return (Object.fromEntries(array));
-}
-
 /** Для использования в Fullcalendar */
-const calendarsColor = araycal();
+const calendarsColor = makeArrayKeyValue(calendCat, "color", "color");
+console.log(makeOptionsForReactSelect(calendCat, "name", "color"))
 
 const Calendar = () => {
     const dispatch = useDispatch();

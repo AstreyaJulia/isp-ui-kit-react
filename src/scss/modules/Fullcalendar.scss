@@ -39,46 +39,89 @@
 }
 
 /** calendar Widget */
+.today-calendar .fc .fc-daygrid-day-number {
+ @apply z-50;
+}
 
 /** Фон событий */
-.today-calendar .fc-event-indigo {
-  @apply bg-indigo-500/30 border border-indigo-500 hover:bg-indigo-600/30 hover:border-indigo-600;
+.today-calendar .fc-daygrid-block-event.fc-event-indigo {
+  @apply border-indigo-500 hover:border-indigo-600;
 }
 
-.today-calendar .fc-event-green {
-  @apply bg-green-500/30 border border-green-500 hover:bg-green-600/30 hover:border-green-600;
+.today-calendar .fc-daygrid-block-event.fc-event-green {
+  @apply border-green-500 hover:border-green-600;
 }
 
-.today-calendar .fc-event-cyan {
-  @apply bg-cyan-500/30 border border-cyan-500 hover:bg-cyan-600/30 hover:border-cyan-600;
+.today-calendar .fc-daygrid-block-event.fc-event-cyan {
+  @apply border-cyan-500 hover:border-cyan-600;
 }
 
-.today-calendar .fc-event-yellow {
-  @apply bg-yellow-500/30 border border-yellow-500 hover:bg-yellow-600/30 hover:border-yellow-600;
+.today-calendar .fc-daygrid-block-event.fc-event-yellow {
+  @apply border-yellow-500 hover:border-yellow-600;
 }
 
-.today-calendar .fc-event-red {
-  @apply bg-red-500/30 border border-red-500 hover:bg-red-600/30 hover:border-red-600;
+.today-calendar .fc-daygrid-block-event.fc-event-red {
+  @apply border-red-500 hover:border-red-600;
 }
 
-.today-calendar .fc-event-pink {
-  @apply bg-pink-500/30 border border-pink-500 hover:bg-pink-600/30 hover:border-pink-600;
+.today-calendar .fc-daygrid-block-event.fc-event-pink {
+  @apply border-pink-500 hover:border-pink-600;
 }
 
-.today-calendar .fc-event-blue {
-  @apply bg-blue-500/30 border border-blue-500 hover:bg-blue-600/30 hover:border-blue-600;
+.today-calendar .fc-daygrid-block-event.fc-event-blue {
+  @apply border-blue-500 hover:border-blue-600;
 }
 
-.today-calendar .fc-event-orange {
-  @apply bg-orange-500/30 border border-orange-500 hover:bg-orange-600/30 hover:border-orange-600;
+.today-calendar .fc-daygrid-block-event.fc-event-orange {
+  @apply border-orange-500 hover:border-orange-600;
 }
 
-.today-calendar .fc-event-teal {
-  @apply bg-teal-500/30 border border-teal-500 hover:bg-teal-600/30 hover:border-teal-600;
+.today-calendar .fc-daygrid-block-event.fc-event-teal {
+  @apply border-teal-500 hover:border-teal-600;
 }
 
-.today-calendar .fc-event-sky {
-  @apply bg-sky-500/30 border border-sky-500 hover:bg-sky-600/30 hover:border-sky-600;
+.today-calendar .fc-daygrid-block-event.fc-event-sky {
+  @apply border-sky-500 hover:border-sky-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-indigo .fc-daygrid-event-dot {
+  @apply border-indigo-500 hover:border-indigo-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-green .fc-daygrid-event-dot {
+  @apply border-green-500 hover:border-green-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-cyan .fc-daygrid-event-dot {
+  @apply border-cyan-500 hover:border-cyan-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-yellow .fc-daygrid-event-dot {
+  @apply border-yellow-500 hover:border-yellow-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-red .fc-daygrid-event-dot {
+  @apply border-red-500 hover:border-red-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-pink .fc-daygrid-event-dot {
+  @apply border-pink-500 hover:border-pink-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-blue .fc-daygrid-event-dot {
+  @apply border-blue-500 hover:border-blue-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-orange .fc-daygrid-event-dot {
+  @apply border-orange-500 hover:border-orange-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-teal .fc-daygrid-event-dot {
+  @apply border-teal-500 hover:border-teal-600;
+}
+
+.today-calendar .fc-daygrid-dot-event.fc-event-sky .fc-daygrid-event-dot {
+  @apply border-sky-500 hover:border-sky-600;
 }
 
 .today-calendar .fc-today-button.fc-button.fc-button-primary {

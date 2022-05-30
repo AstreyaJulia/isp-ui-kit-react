@@ -23,13 +23,40 @@ export const getInitials = name => name.split(" ").slice(0, 1) + " " + name.spli
 export const getInitialsOnly = name => name.split(" ").slice(1).map((n) => n[0]).join("").toUpperCase();
 
 /** Делает из объекта массив
- * @returns {[]}
- * @param object
+ * @param object - объект
+ * * @returns Array
  */
 export const makeArrayFromObj = (object) => {
     let array = [];
     Object.keys(object).map(function (key, index) {
         array.push(object[key]);
     });
+    return array;
+}
+
+/** Делает из значений объекта с разным кол-вом ключей
+ * массив вида {ключ: значение}
+ * @param object - объект
+ * @param key1 - ключ 1 объекта, значение которого станет ключом создаваемого массива
+ * @param key2 - ключ 2 объекта, значение которого станет значением создаваемого массива
+ * @returns {[p: string]: any}
+ */
+export const makeArrayKeyValue = (object, key1, key2) => {
+    const array = new Map();
+    for (let i = 0; i < object.length; i++) {
+        array.set(object[i][key1], object[i][key2]);
+    }
+    return (Object.fromEntries(array));
+}
+
+
+export const makeOptionsForReactSelect = (object, key1, key2) => {
+    const array = [];
+    for (let i = 0; i < object.length; i++) {
+        let obj = new Map;
+        obj.set("value", object[i][key1]);
+        obj.set("label", object[i][key2]);
+        array.push(Object.fromEntries(obj))
+    }
     return array;
 }

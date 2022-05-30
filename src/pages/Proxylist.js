@@ -24,7 +24,7 @@ const Proxylist = () => {
 
     useEffect(() => {
         /** users[5] - админ */
-        setLoggedUser(users[5]);
+        setLoggedUser(users[0]);
     }, [])
 
     return (

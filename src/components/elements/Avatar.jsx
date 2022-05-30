@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import {AvatarBasic} from "./AvatarBasic";
 import {AvatarCircularWithPlaceholderInitials} from "./AvatarCircularWithPlaceholderInitials";
 
-export const Avatar = ({item, size, classname}) => {
+export const Avatar = ({item, size, className}) => {
 
     return (
         item.avatar ?
-            <AvatarBasic size={size} item={item} className={classname}/> :
+            <AvatarBasic size={size} item={item} className={className}/> :
             <AvatarCircularWithPlaceholderInitials item={item} size={size} color={item.color || "indigo"}
-                                                   className={classname}/>
+                                                   className={className}/>
     );
 };
 

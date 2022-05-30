@@ -29,7 +29,7 @@ export const updateFilter = createAsyncThunk("appCalendar/updateFilter", async (
 
 export const updateAllFilters = createAsyncThunk("appCalendar/updateAllFilters", async (value, {dispatch}) => {
     if (value === true) {
-        await dispatch(fetchEvents(["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]));
+        await dispatch(fetchEvents(["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]));
     } else {
         await dispatch(fetchEvents([]));
     }
@@ -37,8 +37,8 @@ export const updateAllFilters = createAsyncThunk("appCalendar/updateAllFilters",
 })
 
 export const removeEvent = createAsyncThunk("appCalendar/removeEvent", async id => {
-    await axios.delete("/apps/calendar/remove-event", {id})
-    return id
+    await axios.delete("/apps/calendar/remove-event", {id});
+    return id;
 })
 
 export const appCalendarSlice = createSlice({
@@ -46,7 +46,7 @@ export const appCalendarSlice = createSlice({
     initialState: {
         events: [],
         selectedEvent: {},
-        selectedCalendars: ["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]
+        selectedCalendars: ["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]
     },
     reducers: {
         selectEvent: (state, action) => {
@@ -66,10 +66,10 @@ export const appCalendarSlice = createSlice({
                 }
             })
             .addCase(updateAllFilters.fulfilled, (state, action) => {
-                const value = action.payload
-                let selected = []
+                const value = action.payload;
+                let selected = [];
                 if (value === true) {
-                    selected = ["primary", "success", "info", "warning", "danger", "pink", "blue", "orange", "teal", "azure"]
+                    selected = ["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]
                 } else {
                     selected = []
                 }
@@ -78,6 +78,6 @@ export const appCalendarSlice = createSlice({
     }
 })
 
-export const {selectEvent} = appCalendarSlice.actions
+export const {selectEvent} = appCalendarSlice.actions;
 
-export default appCalendarSlice.reducer
+export default appCalendarSlice.reducer;

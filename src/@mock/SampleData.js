@@ -1,3 +1,10 @@
+import img1 from "../assets/images/avatars/1-small.png";
+import img2 from "../assets/images/avatars/3-small.png";
+import img3 from "../assets/images/avatars/5-small.png";
+import img4 from "../assets/images/avatars/7-small.png";
+import img6 from "../assets/images/avatars/11-small.png";
+import img5 from "../assets/images/avatars/9-small.png";
+
 /** Навигация для сайдбара, для локального тестирования
  * @type {[{header: string},{name: string, icon: string, id: string, href: string},{name: string, icon: string, id: string, href: string},{badgeColor: string, name: string, icon: string, badgeClassName: string, id: string, href: string, badgeText: string},{children: [{name: string, icon: string, id: string, href: string}], name: string, icon: string, id: string},null,null,null,null,null]}
  */
@@ -179,7 +186,6 @@ export const users = [{
     site2: "https://site2.com",
     avatar: ""
 }
-
 ]
 
 export const messages = [{
@@ -371,12 +377,18 @@ export const events = [{
     display: "background"
 }];
 
+/** Группы каталога ссылок
+ * @type {{"0": {name: string, id: string}, "1": {name: string, id: string}, "2": {name: string, id: string}}}
+ */
 export const proxyListGroups = {
     0: {id: "1", name: "Сервисы"},
     1: {id: "2", name: "Судебная система, госслужба, адвокаты, нотариусы"},
     2: {id: "3", name: "Органы государственной власти"}
 }
 
+/** Элементы групп каталога ссылок
+ * @type {{"0": {children: {"0": {name: string, link: string, id: number}, "1": {name: string, link: string, id: number}}, groupID: string}, "1": {children: {"0": {name: string, link: string, id: number}, "1": {name: string, link: string, id: number}}, groupID: string}, "2": {children: {"0": {name: string, link: string, id: number}, "1": {name: string, link: string, id: number}}, groupID: string}}}
+ */
 export const proxyListLinks = {
     0: {
         groupID: "1", children: {
@@ -397,3 +409,35 @@ export const proxyListLinks = {
         }
     }
 }
+
+/** Объект с пользователями
+ * @type {[{label: string, avatar: *, value: string},{label: string, avatar: *, value: string},{label: string, avatar: *, value: string},{label: string, avatar: *, value: string},{label: string, avatar: *, value: string},null]}
+ */
+export const usersOptions = [
+    {
+        label: 'Судьи',
+        options: [
+            {value: 1, label: users[0].name, avatar: users[0].avatar, color: users[0].color}
+        ]
+    },
+    {
+        label: 'Помощники',
+        options: [
+            {value: 3, label: users[2].name, avatar: users[2].avatar, color: users[2].color}
+        ]
+    },
+    {
+        label: 'Секретари судебного заседания',
+        options: [
+            {value: 2, label: users[1].name, avatar: users[1].avatar, color: users[1].color}
+        ]
+    },
+    {
+        label: 'Канцелярия',
+        options: [
+            {value: 4, label: users[3].name, avatar: users[3].avatar, color: users[3].color},
+            {value: 5, label: users[4].name, avatar: users[4].avatar, color: users[4].color},
+            {value: 6, label: users[5].name, avatar: users[5].avatar, color: users[5].color}
+        ]
+    }
+]
