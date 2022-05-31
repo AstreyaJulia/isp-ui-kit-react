@@ -1,10 +1,3 @@
-import img1 from "../assets/images/avatars/1-small.png";
-import img2 from "../assets/images/avatars/3-small.png";
-import img3 from "../assets/images/avatars/5-small.png";
-import img4 from "../assets/images/avatars/7-small.png";
-import img6 from "../assets/images/avatars/11-small.png";
-import img5 from "../assets/images/avatars/9-small.png";
-
 /** Навигация для сайдбара, для локального тестирования
  * @type {[{header: string},{name: string, icon: string, id: string, href: string},{name: string, icon: string, id: string, href: string},{badgeColor: string, name: string, icon: string, badgeClassName: string, id: string, href: string, badgeText: string},{children: [{name: string, icon: string, id: string, href: string}], name: string, icon: string, id: string},null,null,null,null,null]}
  */
@@ -198,76 +191,116 @@ export const messages = [{
 export const birthdaysToday = [{user: users[5], age: "36"}, {user: users[3], age: "24"}]
 
 export const events = [{
-    title: "event",
-    date: "2022-05-11",
-    end: "2022-05-12",
+    title: "Длинное событие на несколько дней",
+    date: "2022-05-04",
+    end: "2022-05-07",
     allDay: true,
     calendar: "indigo",
     users: [1, 3]
 }, {
-    title: "event", start: "2022-05-11", end: "2022-05-12", allDay: false, calendar: "indigo"
+    title: "Совещание",
+    start: "2022-05-27 11:00:00",
+    end: "2022-05-27 11:30:00",
+    allDay: false,
+    calendar: "indigo"
 }, {
-    title: "event",
-    date: "2022-05-12",
-    end: "2022-05-13",
+    title: "Дежурство",
+    date: "2022-05-16 00:00:00",
+    end: "2022-05-22 23:59:00",
     allDay: true,
     calendar: "cyan",
     users: [2, 3, 4]
-}, {title: "event", date: "2022-05-12", end: "2022-05-13", allDay: false, calendar: "cyan"}, {
-    title: "event",
+}, {
+    title: "Дежурство",
+    date: "2022-05-31 09:00:00",
+    end: "2022-05-31 18:00:00",
+    allDay: false,
+    calendar: "cyan"
+}, {
+    title: "День победы",
     start: "2022-05-09",
     end: "2022-05-09",
     allDay: true,
     calendar: "red"
-}, {title: "event", start: "2022-05-09", end: "2022-05-09", allDay: false, calendar: "red"}, {
-    title: "event",
-    start: "2022-05-05",
-    end: "2022-05-07",
+}, {
+    title: "Праздник труда",
+    start: "2022-05-01",
+    end: "2022-05-01",
     allDay: true,
+    calendar: "red"
+}, {
+    title: "Отчёт по срокам",
+    start: "2022-05-17 09:00:00",
+    end: "2022-05-17 09:00:00",
+    allDay: false,
     calendar: "yellow"
-}, {title: "event", start: "2022-05-05", end: "2022-05-07", allDay: false, calendar: "yellow"}, {
+}, {
+    title: "Отчёт по количеству и качеству",
+    start: "2022-06-03 09:00:00",
+    end: "2022-06-03 09:00:00",
+    allDay: false,
+    calendar: "yellow"
+}, {
     title: "event",
     start: "2022-05-01",
     end: "2022-05-02",
     allDay: true,
     calendar: "pink"
-}, {title: "event", start: "2022-05-01", end: "2022-05-02", allDay: false, calendar: "pink"}, {
+}, {
+    title: "event",
+    start: "2022-05-01",
+    end: "2022-05-02",
+    allDay: false,
+    calendar: "pink"
+}, {
     title: "event",
     start: "2022-05-21",
     end: "2022-05-22",
     allDay: true,
     calendar: "teal"
-}, {title: "event", start: "2022-05-21", end: "2022-05-22", allDay: false, calendar: "teal"}, {
+}, {
+    title: "event",
+    start: "2022-05-21",
+    end: "2022-05-22",
+    allDay: false,
+    calendar: "teal"
+}, {
     title: "event",
     start: "2022-05-03",
     end: "2022-05-04",
     allDay: true,
     calendar: "orange"
-}, {title: "event", start: "2022-05-03", end: "2022-05-04", allDay: false, calendar: "orange"}, {
+}, {
     title: "event",
-    start: "2022-05-13",
-    end: "2022-05-14",
-    allDay: true,
-    calendar: "sky"
-}, {title: "event", start: "2022-05-13", end: "2022-05-14", allDay: false, calendar: "sky"}, {
+    start: "2022-05-03",
+    end: "2022-05-04",
+    allDay: false,
+    calendar: "orange"
+}, {
     title: "event",
     start: "2022-05-14",
     end: "2022-05-15",
     allDay: true,
     calendar: "blue"
-}, {title: "event", start: "2022-05-14", end: "2022-05-15", allDay: false, calendar: "blue"}, {
+}, {
     title: "event",
-    start: "2022-05-16",
-    end: "2022-05-17",
-    allDay: true,
-    calendar: "cyan"
-}, {title: "event", start: "2022-05-16", end: "2022-05-17", allDay: false, calendar: "cyan"}, {
+    start: "2022-05-14",
+    end: "2022-05-15",
+    allDay: false,
+    calendar: "blue"
+}, {
     title: "event",
     start: "2022-05-17",
     end: "2022-05-18",
     allDay: true,
     calendar: "green"
-}, {title: "event", start: "2022-05-17", end: "2022-05-18", allDay: false, calendar: "green"}, {
+}, {
+    title: "event",
+    start: "2022-05-17",
+    end: "2022-05-18",
+    allDay: false,
+    calendar: "green"
+}, {
     title: "",
     start: "2022-06-04",
     end: "2022-06-04",
@@ -484,9 +517,5 @@ export const calendCat = [
     {
         color: "teal",
         name: "Категория 4"
-    },
-    {
-        color: "sky",
-        name: "Категория 5"
     }
 ]

@@ -5,7 +5,7 @@ import Flatpickr from "react-flatpickr";
 import Select, {components} from "react-select"; // eslint-disable-line
 import {Controller, useForm} from "react-hook-form";
 import {Form, Input, Label} from "reactstrap";
-import {isObjEmpty} from "../../../utils";
+import {getObjectValuesByKey, isObjEmpty} from "../../../utils";
 import PrimaryButton from "../../../components/elements/PrimaryButton";
 import DangerButton from "../../../components/elements/DangerButton";
 import {Dialog, Switch, Transition} from "@headlessui/react";
@@ -13,7 +13,7 @@ import {XIcon} from "@heroicons/react/outline";
 import classNames from "classnames";
 import CardHeader from "../../../components/elements/CardHeader";
 import Dot from "../../../components/elements/Dot";
-import {usersOptions} from "../../../@mock/SampleData";
+import {usersOptions, calendCat} from "../../../@mock/SampleData";
 
 const AddEventSidebar = props => {
 
@@ -52,8 +52,7 @@ const AddEventSidebar = props => {
         {value: "pink", label: "Категория 1", color: "pink"},
         {value: "blue", label: "Категория 2", color: "blue"},
         {value: "orange", label: "Категория 3", color: "orange"},
-        {value: "teal", label: "Категория 4", color: "teal"},
-        {value: "sky", label: "Категория 5", color: "sky"}
+        {value: "teal", label: "Категория 4", color: "teal"}
     ];
 
     //const [owner, setOwner] = useState(0); // owner

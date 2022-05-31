@@ -12,8 +12,7 @@ const filters = [
     {label: 'Категория 1', color: 'pink', className: ''},
     {label: 'Категория 2', color: 'blue', className: ''},
     {label: 'Категория 3', color: 'orange', className: ''},
-    {label: 'Категория 4', color: 'teal', className: ''},
-    {label: 'Категория 5', color: 'sky', className: ''}
+    {label: 'Категория 4', color: 'teal', className: ''}
 ];
 
 /** Сайдбар слева календаря

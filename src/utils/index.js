@@ -50,7 +50,13 @@ export const makeArrayKeyValue = (object, key1, key2) => {
     return (Object.fromEntries(array));
 }
 
-
+/** FIXME черновик для создания селектов
+ *
+ * @param object
+ * @param key1
+ * @param key2
+ * @returns {*[]}
+ */
 export const makeOptionsForReactSelect = (object, key1, key2) => {
     const array = [];
     for (let i = 0; i < object.length; i++) {
@@ -59,6 +65,19 @@ export const makeOptionsForReactSelect = (object, key1, key2) => {
         obj.set("value", object[i][key1]);
         obj.set("label", object[i][key2]);
         array.push(Object.fromEntries(obj))
+    }
+    return array;
+}
+
+/** Получает значения объекта по ключу
+ * @param object - объект
+ * @param key - имя ключа
+ * @returns {*[]}
+ */
+export const getObjectValuesByKey = (object, key) => {
+    const array = [];
+    for (let i = 0; i < object.length; i++) {
+        array.push(object[i][key]);
     }
     return array;
 }

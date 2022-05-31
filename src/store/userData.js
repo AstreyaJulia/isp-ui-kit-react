@@ -1,9 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
 import {fetch, setAuthorization} from "../utils/Helpers/api_helper";
 
+if (localStorage.getItem("jwt")) {
+    setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
+}
+
 export const fetchUserData = createAsyncThunk("userData/fetchUserData", async calendars => {
-    const response = await axios.get("api/v1/sidebar", "");
+    const response = await fetch.get("api/v1/sidebar", "");
     return response;
 });
 
@@ -14,14 +17,6 @@ const initialMenuCollapsed = () => {
     const item = window.localStorage.getItem("menuCollapsed")
     /** Парсинг сохраненного json, если его нет, возвращает initialValue */
     return item ? JSON.parse(item) : false
-}
-
-const initialLoggedUser = () => {
-
-}
-
-const initialSidebarMenu = () => {
-
 }
 
 /** Тема
@@ -36,9 +31,8 @@ const initialSkin = () => {
 export const userDataSlice = createSlice({
     name: "userdata",
     initialState: {
-        loggedUser: initialLoggedUser(),
-        sidebarMenu: initialSidebarMenu(),
-        menuCollapsed: initialMenuCollapsed(),
-        skin: initialSkin(),
+        loggedUser: {},
+        sidebarMenu: [],
+        userSettings: {}
     },
 })

@@ -1,5 +1,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+import {getObjectValuesByKey} from "../../../../utils";
+import {calendCat} from "../../../../@mock/SampleData";
+
+const calendarColors = getObjectValuesByKey(calendCat, "color");
 
 export const fetchEvents = createAsyncThunk("appCalendar/fetchEvents", async calendars => {
     const response = await axios.get("/apps/calendar/events", {calendars});
@@ -29,7 +33,7 @@ export const updateFilter = createAsyncThunk("appCalendar/updateFilter", async (
 
 export const updateAllFilters = createAsyncThunk("appCalendar/updateAllFilters", async (value, {dispatch}) => {
     if (value === true) {
-        await dispatch(fetchEvents(["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]));
+        await dispatch(fetchEvents(calendarColors));
     } else {
         await dispatch(fetchEvents([]));
     }
@@ -46,7 +50,7 @@ export const appCalendarSlice = createSlice({
     initialState: {
         events: [],
         selectedEvent: {},
-        selectedCalendars: ["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]
+        selectedCalendars: calendarColors
     },
     reducers: {
         selectEvent: (state, action) => {
@@ -67,9 +71,9 @@ export const appCalendarSlice = createSlice({
             })
             .addCase(updateAllFilters.fulfilled, (state, action) => {
                 const value = action.payload;
-                let selected = [];
+                let selected;
                 if (value === true) {
-                    selected = ["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]
+                    selected = calendarColors
                 } else {
                     selected = [];
                 }
