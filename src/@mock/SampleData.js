@@ -202,13 +202,17 @@ export const events = [{
     date: "2022-05-11",
     end: "2022-05-12",
     allDay: true,
-    calendar: "indigo"
-}, {title: "event", start: "2022-05-11", end: "2022-05-11", allDay: false, calendar: "indigo"}, {
+    calendar: "indigo",
+    users: [1, 3]
+}, {
+    title: "event", start: "2022-05-11", end: "2022-05-12", allDay: false, calendar: "indigo"
+}, {
     title: "event",
     date: "2022-05-12",
     end: "2022-05-13",
     allDay: true,
-    calendar: "cyan"
+    calendar: "cyan",
+    users: [2, 3, 4]
 }, {title: "event", date: "2022-05-12", end: "2022-05-13", allDay: false, calendar: "cyan"}, {
     title: "event",
     start: "2022-05-09",

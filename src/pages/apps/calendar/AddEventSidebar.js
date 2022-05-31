@@ -58,7 +58,7 @@ const AddEventSidebar = props => {
 
     //const [owner, setOwner] = useState(0); // owner
     const [desc, setDesc] = useState(""); // description
-    const [users, setUsers] = useState({}); // users
+    const [users, setUsers] = useState([]); // users
     const [allDay, setAllDay] = useState(false); // allDay
     const [endPicker, setEndPicker] = useState(new Date()); // end
     const [startPicker, setStartPicker] = useState(new Date()); // start
@@ -91,8 +91,8 @@ const AddEventSidebar = props => {
         return (
             <components.Option {...props}>
                 <div className="flex flex-wrap items-center">
-                    <Avatar size="6" item={data} className="mr-3"/>
-                    <span>{data.label.split(" ").slice(0, 1)} {data.label.split(" ").slice(1).map((n) => n[0]).join(". ").toUpperCase()}</span>
+                    <Avatar size="6" item={data}/>
+                    <span className="ml-3">{data.label.split(" ").slice(0, 1)} {data.label.split(" ").slice(1).map((n) => n[0]).join(". ").toUpperCase()}</span>
                 </div>
             </components.Option>
         )
@@ -114,7 +114,7 @@ const AddEventSidebar = props => {
         };
         dispatch(addEvent(obj));
         refetchEvents();
-        handleAddEventSidebar();
+        handleCloseSidebar();
         toast.success("Событие успешно добавлено");
     }
 
@@ -124,11 +124,16 @@ const AddEventSidebar = props => {
         setValue("title", "");
         setAllDay(false);
         setDesc("");
-        setUsers({});
+        setUsers([]);
         setCalendarLabel(options[0]);
         setStartPicker(new Date());
         setEndPicker(new Date());
     };
+
+    const handleCloseSidebar = () => {
+        handleAddEventSidebar();
+        handleResetInputValues();
+    }
 
     /** Установить поля сайдбара  */
     const handleSelectedEvent = () => {
@@ -143,10 +148,31 @@ const AddEventSidebar = props => {
                     return options[0];
                 }
             }
+
+            /** Ищет пользователей из списка по id пользователя
+             * @returns {[]} - массив значений для селекта
+             */
+            const resolveUsers = () => {
+                const array = [];
+                if (selectedEvent.extendedProps.users) {
+                    const userList = selectedEvent.extendedProps.users.length;
+                    if (userList > 0) {
+                        for (let i = 0; i < usersOptions.length; i++) {
+                            let opt = usersOptions[i]['options'];
+                            const filter = opt.filter(ob => selectedEvent.extendedProps.users.includes(ob.value));
+                            if (filter.length > 0) {
+                                Array.prototype.push.apply(array, filter)
+                            }
+                        }
+                    }
+                }
+                return array;
+            }
+
             setValue("title", selectedEvent.title || getValues("title"));
             setAllDay(selectedEvent.allDay || allDay);
             setDesc(selectedEvent.extendedProps.description || desc);
-            setUsers(selectedEvent.extendedProps.users || users);
+            setUsers(resolveUsers());
             setStartPicker(new Date(selectedEvent.start));
             setEndPicker(selectedEvent.allDay ? new Date(selectedEvent.start) : new Date(selectedEvent.end));
             setCalendarLabel([resolveLabel()]);
@@ -208,7 +234,7 @@ const AddEventSidebar = props => {
             dispatch(updateEvent(eventToUpdate));
             updateEventInCalendar(eventToUpdate, propsToUpdate, extendedPropsToUpdate);
 
-            handleAddEventSidebar();
+            handleCloseSidebar();
             toast.success("Событие обновлено");
         } else {
             setError("title", {
@@ -229,7 +255,7 @@ const AddEventSidebar = props => {
     const handleDeleteEvent = () => {
         dispatch(removeEvent(selectedEvent.id))
         removeEventInCalendar(selectedEvent.id)
-        handleAddEventSidebar()
+        handleCloseSidebar()
         toast.error("Событие удалено")
     }
 
@@ -242,7 +268,7 @@ const AddEventSidebar = props => {
             return (
                 <Fragment>
                     <PrimaryButton type="submit" label="Добавить"/>
-                    <DangerButton type="reset" label="Отмена" onClick={handleAddEventSidebar}/>
+                    <DangerButton type="reset" label="Отмена" onClick={handleCloseSidebar}/>
                 </Fragment>
             )
         } else {
@@ -304,7 +330,7 @@ const AddEventSidebar = props => {
                                         <button
                                             type="button"
                                             className="rounded-md text-gray-700 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                            onClick={handleAddEventSidebar}
+                                            onClick={handleCloseSidebar}
                                         >
                                             <span className="sr-only">Закрыть</span>
                                             <XIcon className="h-6 w-6" aria-hidden="true"/>
@@ -325,7 +351,7 @@ const AddEventSidebar = props => {
                                                         } else {
                                                             handleUpdateEvent()
                                                         }
-                                                        handleAddEventSidebar()
+                                                        handleCloseSidebar()
                                                     }
                                                 } else {
                                                     setError("title", {

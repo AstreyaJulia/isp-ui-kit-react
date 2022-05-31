@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-/** Начальное состояние пользователя
+/** Начальное состояние пользователя из localstorage
  * @returns {any}
  */
 const initialUser = () => {
@@ -33,4 +33,4 @@ export const authSlice = createSlice({
 
 export const {handleLogin, handleLogout} = authSlice.actions;
 
-export default authSlice.reducer
+export default authSlice.reducer;

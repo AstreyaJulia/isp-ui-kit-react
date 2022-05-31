@@ -50,19 +50,19 @@ export const appCalendarSlice = createSlice({
     },
     reducers: {
         selectEvent: (state, action) => {
-            state.selectedEvent = action.payload
+            state.selectedEvent = action.payload;
         }
     },
     extraReducers: builder => {
         builder
             .addCase(fetchEvents.fulfilled, (state, action) => {
-                state.events = action.payload
+                state.events = action.payload;
             })
             .addCase(updateFilter.fulfilled, (state, action) => {
                 if (state.selectedCalendars.includes(action.payload)) {
-                    state.selectedCalendars.splice(state.selectedCalendars.indexOf(action.payload), 1)
+                    state.selectedCalendars.splice(state.selectedCalendars.indexOf(action.payload), 1);
                 } else {
-                    state.selectedCalendars.push(action.payload)
+                    state.selectedCalendars.push(action.payload);
                 }
             })
             .addCase(updateAllFilters.fulfilled, (state, action) => {
@@ -71,9 +71,9 @@ export const appCalendarSlice = createSlice({
                 if (value === true) {
                     selected = ["indigo", "green", "cyan", "yellow", "red", "pink", "blue", "orange", "teal", "sky"]
                 } else {
-                    selected = []
+                    selected = [];
                 }
-                state.selectedCalendars = selected
+                state.selectedCalendars = selected;
             })
     }
 })

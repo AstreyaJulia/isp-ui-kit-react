@@ -35,6 +35,8 @@ const MainLayout = (props) => {
     /** Для серверной навигации */
     const [menuData, setMenuData] = useState([]);
 
+    const [userData, setUserData] = useState({});
+
     /** Переменные */
     const dispatch = useDispatch();
     const layoutStore = useSelector((state) => state.layout);
@@ -47,11 +49,18 @@ const MainLayout = (props) => {
 
     /** Для серверной навигации */
     useEffect(() => {
+
         setMenuData(navigation);
+        setUserData(users[0]);
+
+        
         /*fetch.get("api/v1/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {
                     setMenuData(makeArrayFromObj(response.data))
+                }
+                if (response.user || response.user !== []) {
+                    setUserData(makeArrayFromObj(response.user))
                 }
             })*/
     }, [])
@@ -85,7 +94,7 @@ const MainLayout = (props) => {
             >
                 {/* Заголовок */}
                 <NavBar
-                    user={users[0]}
+                    user={userData}
                     menuCollapsed={menuCollapsed}
                     setMenuVisibility={setMenuVisibility}
                 />

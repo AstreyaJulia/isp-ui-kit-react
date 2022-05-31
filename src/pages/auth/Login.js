@@ -2,7 +2,7 @@ import {Link, useNavigate} from "react-router-dom";
 import InputPasswordToggle from "../../components/elements/PasswordShow";
 import {Button, Form, Input, Label} from "reactstrap";
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
-import {Fragment} from "react";
+import React, {Fragment} from "react";
 import toast from "react-hot-toast";
 import {useDispatch} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
