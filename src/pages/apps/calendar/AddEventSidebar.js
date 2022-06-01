@@ -5,7 +5,7 @@ import Flatpickr from "react-flatpickr";
 import Select, {components} from "react-select"; // eslint-disable-line
 import {Controller, useForm} from "react-hook-form";
 import {Form, Input, Label} from "reactstrap";
-import {getObjectValuesByKey, isObjEmpty} from "../../../utils";
+import {isObjEmpty} from "../../../utils";
 import PrimaryButton from "../../../components/elements/PrimaryButton";
 import DangerButton from "../../../components/elements/DangerButton";
 import {Dialog, Switch, Transition} from "@headlessui/react";
@@ -43,17 +43,26 @@ const AddEventSidebar = props => {
             defaultValues: {title: ""}
         });
 
-    const options = [
-        {value: "indigo", label: "События", color: "indigo"},
-        {value: "green", label: "Отпуск", color: "green"},
-        {value: "cyan", label: "Дежурство", color: "cyan"},
-        {value: "yellow", label: "Важно", color: "yellow"},
-        {value: "red", label: "Праздники", color: "red"},
-        {value: "pink", label: "Категория 1", color: "pink"},
-        {value: "blue", label: "Категория 2", color: "blue"},
-        {value: "orange", label: "Категория 3", color: "orange"},
-        {value: "teal", label: "Категория 4", color: "teal"}
-    ];
+
+    /** Создает селект с метками событий из настроек
+     * @param object - объект
+     * @param key1 - имя ключа для значения
+     * @param key2 - имя ключа для метки
+     * @returns {*[]}
+     */
+    const makeColorOptionsForReactSelect = (object, key1, key2) => {
+        const array = [];
+        for (let i = 0; i < object.length; i++) {
+            // eslint-disable-next-line
+            let obj = new Map;
+            obj.set("value", object[i][key1]);
+            obj.set("label", object[i][key2]);
+            array.push(Object.fromEntries(obj))
+        }
+        return array;
+    }
+
+    const colorOptions = makeColorOptionsForReactSelect(calendCat, "color", "name");
 
     //const [owner, setOwner] = useState(0); // owner
     const [desc, setDesc] = useState(""); // description
@@ -61,7 +70,7 @@ const AddEventSidebar = props => {
     const [allDay, setAllDay] = useState(false); // allDay
     const [endPicker, setEndPicker] = useState(new Date()); // end
     const [startPicker, setStartPicker] = useState(new Date()); // start
-    const [calendarLabel, setCalendarLabel] = useState(options[0]); // calendar
+    const [calendarLabel, setCalendarLabel] = useState(colorOptions[0]); // calendar
 
     /** Конструктор компонента Option
      * @param data - данные, из к-рых берутся значения по ключу color
@@ -73,7 +82,7 @@ const AddEventSidebar = props => {
         return (
             <components.Option {...props}>
                 <div className="flex flex-wrap items-center">
-                    <Dot className="mr-3" color={data.color} size="3"/>
+                    <Dot className="mr-3" color={data.value} size="3"/>
                     <span>{data.label}</span>
                 </div>
             </components.Option>
@@ -91,7 +100,8 @@ const AddEventSidebar = props => {
             <components.Option {...props}>
                 <div className="flex flex-wrap items-center">
                     <Avatar size="6" item={data}/>
-                    <span className="ml-3">{data.label.split(" ").slice(0, 1)} {data.label.split(" ").slice(1).map((n) => n[0]).join(". ").toUpperCase()}</span>
+                    <span
+                        className="ml-3">{data.label.split(" ").slice(0, 1)} {data.label.split(" ").slice(1).map((n) => n[0]).join(". ").toUpperCase()}</span>
                 </div>
             </components.Option>
         )
@@ -124,7 +134,7 @@ const AddEventSidebar = props => {
         setAllDay(false);
         setDesc("");
         setUsers([]);
-        setCalendarLabel(options[0]);
+        setCalendarLabel(colorOptions[0]);
         setStartPicker(new Date());
         setEndPicker(new Date());
     };
@@ -144,7 +154,7 @@ const AddEventSidebar = props => {
                 if (calendar.length) {
                     return {label: calendarsColor[calendar], value: calendar, color: calendar};
                 } else {
-                    return options[0];
+                    return colorOptions[0];
                 }
             }
 
@@ -217,14 +227,13 @@ const AddEventSidebar = props => {
             const eventToUpdate = {
                 id: selectedEvent.id,
                 title: getValues("title"),
-                allDay,
+                allDay: allDay,
                 start: startPicker,
                 end: endPicker,
-                display: allDay === false ? "block" : undefined,
                 extendedProps: {
                     description: desc,
-                    users,
-                    calendar: calendarLabel[0].label
+                    users: users,
+                    calendar: calendarLabel[0].value
                 }
             }
 
@@ -284,6 +293,7 @@ const AddEventSidebar = props => {
         if (open && selectEvent) {
             handleSelectedEvent()
         }
+        // eslint-disable-next-line
     }, [open])
 
     return (
@@ -386,7 +396,7 @@ const AddEventSidebar = props => {
                                                     <Select
                                                         id="label"
                                                         value={calendarLabel}
-                                                        options={options}
+                                                        options={colorOptions}
                                                         className="mt-1 react-select bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 sm:text-sm"
                                                         classNamePrefix="select"
                                                         isClearable={false}

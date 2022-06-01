@@ -191,6 +191,7 @@ export const messages = [{
 export const birthdaysToday = [{user: users[5], age: "36"}, {user: users[3], age: "24"}]
 
 export const events = [{
+    id: "1",
     title: "Длинное событие на несколько дней",
     date: "2022-05-04",
     end: "2022-05-07",
@@ -198,12 +199,14 @@ export const events = [{
     calendar: "indigo",
     users: [1, 3]
 }, {
+    id: "2",
     title: "Совещание",
     start: "2022-05-27 11:00:00",
     end: "2022-05-27 11:30:00",
     allDay: false,
     calendar: "indigo"
 }, {
+    id: "3",
     title: "Дежурство",
     date: "2022-05-16 00:00:00",
     end: "2022-05-22 23:59:00",
@@ -211,93 +214,108 @@ export const events = [{
     calendar: "cyan",
     users: [2, 3, 4]
 }, {
+    id: "4",
     title: "Дежурство",
     date: "2022-05-31 09:00:00",
     end: "2022-05-31 18:00:00",
     allDay: false,
     calendar: "cyan"
 }, {
+    id: "5",
     title: "День победы",
     start: "2022-05-09",
     end: "2022-05-09",
     allDay: true,
     calendar: "red"
 }, {
+    id: "6",
     title: "Праздник труда",
     start: "2022-05-01",
     end: "2022-05-01",
     allDay: true,
     calendar: "red"
 }, {
+    id: "7",
     title: "Отчёт по срокам",
     start: "2022-05-17 09:00:00",
     end: "2022-05-17 09:00:00",
     allDay: false,
     calendar: "yellow"
 }, {
+    id: "8",
     title: "Отчёт по количеству и качеству",
     start: "2022-06-03 09:00:00",
     end: "2022-06-03 09:00:00",
     allDay: false,
     calendar: "yellow"
 }, {
+    id: "9",
     title: "event",
     start: "2022-05-01",
     end: "2022-05-02",
     allDay: true,
     calendar: "pink"
 }, {
-    title: "event",
-    start: "2022-05-01",
-    end: "2022-05-02",
+    id: "10",
+    title: "Событие",
+    start: "2022-06-01",
+    end: "2022-06-02",
     allDay: false,
     calendar: "pink"
 }, {
-    title: "event",
-    start: "2022-05-21",
-    end: "2022-05-22",
+    id: "11",
+    title: "Событие",
+    start: "2022-06-21",
+    end: "2022-06-22",
     allDay: true,
     calendar: "teal"
 }, {
-    title: "event",
+    id: "12",
+    title: "Событие",
     start: "2022-05-21",
     end: "2022-05-22",
     allDay: false,
     calendar: "teal"
 }, {
+    id: "13",
     title: "event",
     start: "2022-05-03",
     end: "2022-05-04",
     allDay: true,
     calendar: "orange"
 }, {
-    title: "event",
-    start: "2022-05-03",
-    end: "2022-05-04",
+    id: "14",
+    title: "Событие",
+    start: "2022-06-03",
+    end: "2022-06-04",
     allDay: false,
     calendar: "orange"
 }, {
-    title: "event",
+    id: "15",
+    title: "Событие",
     start: "2022-05-14",
     end: "2022-05-15",
     allDay: true,
     calendar: "blue"
 }, {
-    title: "event",
-    start: "2022-05-14",
-    end: "2022-05-15",
+    id: "16",
+    title: "Событие",
+    start: "2022-06-14",
+    end: "2022-06-15",
     allDay: false,
     calendar: "blue"
 }, {
-    title: "event",
-    start: "2022-05-17",
-    end: "2022-05-18",
+    id: "17",
+    title: "Отпуск",
+    start: "2022-06-06",
+    end: "2022-06-24",
     allDay: true,
     calendar: "green"
 }, {
-    title: "event",
-    start: "2022-05-17",
-    end: "2022-05-18",
+    id: "18",
+    title: "Выохдной",
+    start: "2022-06-11",
+    end: "2022-06-11",
     allDay: false,
     calendar: "green"
 }, {
