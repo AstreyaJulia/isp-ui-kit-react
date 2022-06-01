@@ -40,7 +40,7 @@ const MessageDropdown = () => {
                             <Menu.Item key={message.id}>
                                 {({active}) => (
                                     <div className="flex space-x-3 p-3">
-                                        <Avatar size="6" item={message.user}/>
+                                        <Avatar size="6" avatar={message.user.avatar} name={message.user.name} color={message.user.color} />
                                         <div className="flex-1 space-y-1">
                                             <div className="flex items-center justify-between">
                                                 <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200">{getInitials(message.user.name)}</h3>

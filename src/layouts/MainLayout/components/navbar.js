@@ -148,13 +148,13 @@ const NavBar = (props) => {
                         <div>
                             <Menu.Button
                                 className="user-dropdown max-w-xs bg-white dark:bg-gray-900 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 lg:p-1 lg:rounded-md lg:hover:bg-gray-50 dark:lg:hover:bg-gray-800">
-                                <Avatar size="10" item={user}/>
+                                <Avatar size="10" name={user.fullname} avatar={user.avatar}/>
                                 <span
                                     className="hidden ml-3 text-gray-700 dark:text-gray-300 text-sm font-medium lg:block">
                                                 <span className="sr-only">
                                                     Открыть меню пользователя
                                                 </span>
-                                    {getInitials(user.name)}
+                                    {getInitials(user.fullname)}
                                             </span>
                                 <ChevronDownIcon
                                     className="hidden flex-shrink-0 ml-1 h-5 w-5 text-gray-400 dark:text-gray-500 lg:block"
@@ -175,7 +175,7 @@ const NavBar = (props) => {
                                 className="dark:border dark:border-gray-700 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-gray-900 ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-100 dark:divide-gray-800">
                                 <div className="px-4 py-3">
                                     <p className="text-sm text-gray-700 dark:text-gray-400">Выполнен вход</p>
-                                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50 truncate">{user.login}</p>
+                                    <p className="text-sm font-medium text-gray-900 dark:text-gray-50 truncate">{user.username}</p>
                                 </div>
                                 <div className="py-1">
                                     <Menu.Item>

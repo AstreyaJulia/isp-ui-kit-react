@@ -26,13 +26,13 @@ export const navigation = [{header: "Главное меню"}, {
 }]
 
 /** Пользователи, для локального тестирования
- * @type {[{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, login: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, login: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, login: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, login: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string}]}
+ * @type {[{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, username: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, username: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, username: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string},{profession: string, birthday: string, role: string, address: string, color: string, gender: string, ip: string, facebook: string, work_phone: string, instagram: string, avatar: string, username: string, site1: string, site2: string, odnoklassniki: string, mobile_phone: string, name: string, vkontakte: string, id: string, sudo: string, judge: string, place: string, cabinet: string, email: string}]}
  */
 export const users = [{
     id: "1",
     sudo: "0",
-    login: "Petrov_PP",
-    name: "Петров Петр Петрович",
+    username: "Petrov_PP",
+    fullname: "Петров Петр Петрович",
     color: "green",
     gender: "male",
     profession: "Судья",
@@ -56,8 +56,8 @@ export const users = [{
 }, {
     id: "2",
     sudo: "0",
-    login: "Ivanov_NN",
-    name: "Иванов Николай Николаевич",
+    username: "Ivanov_NN",
+    fullname: "Иванов Николай Николаевич",
     color: "blue",
     gender: "male",
     profession: "Секретарь судебных заседаний",
@@ -81,8 +81,8 @@ export const users = [{
 }, {
     id: "3",
     sudo: "0",
-    login: "Smirnov_II",
-    name: "Смирнов Иван Иванович",
+    username: "Smirnov_II",
+    fullname: "Смирнов Иван Иванович",
     color: "indigo",
     gender: "male",
     profession: "Помощник судьи",
@@ -106,8 +106,8 @@ export const users = [{
 }, {
     id: "4",
     sudo: "0",
-    login: "Vasechkina_MI",
-    name: "Васечкина Мария Ивановна",
+    username: "Vasechkina_MI",
+    fullname: "Васечкина Мария Ивановна",
     color: "rose",
     gender: "female",
     profession: "Секретарь суда",
@@ -131,8 +131,8 @@ export const users = [{
 }, {
     id: "5",
     sudo: "0",
-    login: "Belosheikina_OL",
-    name: "Белошейкина Олеся Леонидовна",
+    username: "Belosheikina_OL",
+    fullname: "Белошейкина Олеся Леонидовна",
     color: "orange",
     gender: "female",
     profession: "Консультант",
@@ -156,8 +156,8 @@ export const users = [{
 }, {
     id: "6",
     sudo: "1",
-    login: "Chainikov_OV",
-    name: "Чайников Олег Васильевич",
+    username: "Chainikov_OV",
+    fullname: "Чайников Олег Васильевич",
     color: "blue",
     gender: "male",
     profession: "Администратор",
@@ -472,27 +472,27 @@ export const usersOptions = [
     {
         label: 'Судьи',
         options: [
-            {value: 1, label: users[0].name, avatar: users[0].avatar, color: users[0].color}
+            {value: 1, label: users[0].fullname, avatar: users[0].avatar, color: users[0].color}
         ]
     },
     {
         label: 'Помощники',
         options: [
-            {value: 3, label: users[2].name, avatar: users[2].avatar, color: users[2].color}
+            {value: 3, label: users[2].fullname, avatar: users[2].avatar, color: users[2].color}
         ]
     },
     {
         label: 'Секретари судебного заседания',
         options: [
-            {value: 2, label: users[1].name, avatar: users[1].avatar, color: users[1].color}
+            {value: 2, label: users[1].fullname, avatar: users[1].avatar, color: users[1].color}
         ]
     },
     {
         label: 'Канцелярия',
         options: [
-            {value: 4, label: users[3].name, avatar: users[3].avatar, color: users[3].color},
-            {value: 5, label: users[4].name, avatar: users[4].avatar, color: users[4].color},
-            {value: 6, label: users[5].name, avatar: users[5].avatar, color: users[5].color}
+            {value: 4, label: users[3].fullname, avatar: users[3].avatar, color: users[3].color},
+            {value: 5, label: users[4].fullname, avatar: users[4].avatar, color: users[4].color},
+            {value: 6, label: users[5].fullname, avatar: users[5].avatar, color: users[5].color}
         ]
     }
 ]

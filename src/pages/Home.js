@@ -268,7 +268,7 @@ const Home = () => {
                 </div>
             </ContentLayoutColWithSecondaryCol.MainCol>
             <ContentLayoutColWithSecondaryCol.SecondaryCol>
-                <UserWelcome birthDayDate={users[0].birthday} userName={users[0].name}
+                <UserWelcome birthDayDate={users[0].birthday} userName={users[0].fullname}
                              className="mb-4"/>
                 <CalendarWidget/>
                 <TodayBirthdays birthdays={birthdaysToday}/>

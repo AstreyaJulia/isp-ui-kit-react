@@ -1,7 +1,8 @@
 import {combineReducers} from "redux";
 import layout from "./layout";
-import auth from './authentication'
-import calendar from '../pages/apps/calendar/store'
+import auth from "./authentication";
+import userData from "./userData";
+import calendar from "../pages/apps/calendar/store";
 
 /** Корневое хранилище, объединяем все хранилища
  * FIXME добавлять новые хранилища сюда
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     /** Публичные */
     layout,
     auth,
+    userData,
     calendar
 });
 

@@ -10,7 +10,7 @@ import {getInitialsOnly} from "../../utils";
  * @returns {JSX.Element}
  * @constructor
  */
-export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classname}) => {
+export const AvatarCircularWithPlaceholderInitials = ({size, color, classname, name}) => {
 
     /** Размеры аватаров
      * @type {{"12": {nameFont: string, size: string}, "14": {nameFont: string, size: string}, "6": {nameFont: string, size: string}, "8": {nameFont: string, size: string}, "10": {nameFont: string, size: string}}}
@@ -84,7 +84,7 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
         <span
             className={["font-medium leading-none", AvatarGroupSize[size].nameFont, AvatarColor[color || "indigo"].text].join(" ")}
         >
-            {getInitialsOnly(item.name || item.label)}
+            {getInitialsOnly(name)}
         </span>
       </span>
     </>);
@@ -93,7 +93,7 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
 /** Типы свойств */
 AvatarCircularWithPlaceholderInitials.propTypes = {
     /**  Данные */
-    item: PropTypes.shape({}).isRequired,
+    name: PropTypes.string.isRequired,
     /**  Размер аватара */
     size: PropTypes.oneOf(["6", "8", "10", "12", "14"]).isRequired,
     /**  Цвет аватара */
@@ -106,6 +106,6 @@ AvatarCircularWithPlaceholderInitials.propTypes = {
 AvatarCircularWithPlaceholderInitials.defaultProps = {
     size: "10",
     color: "red",
-    item: null,
+    name: null,
     className: ""
 };

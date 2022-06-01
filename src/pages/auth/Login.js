@@ -54,7 +54,7 @@ const Login = () => {
 
     const onSubmit = userData => {
         if (Object.values(userData).every(field => field.length > 0)) {
-            fetch.create("api/v1/authorization", userData)
+            fetch.create("/authorization", userData)
                 .then(res => {
                     if (res.data && res.data.jwt) {
                         const data = {
