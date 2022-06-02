@@ -13,6 +13,7 @@ import {fetch, setAuthorization} from "../../utils/Helpers/api_helper";
 import {users} from "../../@mock/SampleData";
 import {navigation} from "../../@mock/SampleData"; // FIXME sample
 import config from "../../config";
+import {fetchUserData, userData} from "../../store/userData";
 
 /** Основная раскладка с меню и заголовком
  * @param props
@@ -35,11 +36,12 @@ const MainLayout = (props) => {
     /** Для серверной навигации */
     const [menuData, setMenuData] = useState([]);
 
-    const [userData, setUserData] = useState({});
-
     /** Переменные */
     const dispatch = useDispatch();
     const layoutStore = useSelector((state) => state.layout);
+
+    const userdataStore = useSelector((state) => state.userData);
+    const loginData = userdataStore.userData;
 
     /** Состояние меню - узкое/широкое*/
     const menuCollapsed = layoutStore.menuCollapsed;
@@ -47,23 +49,19 @@ const MainLayout = (props) => {
     /** Включает сворачивание меню */
     const setMenuCollapsed = (val) => dispatch(handleMenuCollapsed(val));
 
-    /** Для серверной навигации */
     useEffect(() => {
-
         setMenuData(navigation);
-        setUserData(users[0]);
+        /*setUserData(users[0]);*/
 
-        
-        /*fetch.get("api/v1/sidebar", "")
+        /** Для серверной навигации */
+        dispatch(fetchUserData());
+        /*fetch.get("/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {
                     setMenuData(makeArrayFromObj(response.data))
                 }
-                if (response.user || response.user !== []) {
-                    setUserData(makeArrayFromObj(response.user))
-                }
             })*/
-    }, [])
+    }, [dispatch]);
 
     /** ComponentDidMount */
     useEffect(() => {
@@ -94,7 +92,7 @@ const MainLayout = (props) => {
             >
                 {/* Заголовок */}
                 <NavBar
-                    user={userData}
+                    user={loginData}
                     menuCollapsed={menuCollapsed}
                     setMenuVisibility={setMenuVisibility}
                 />

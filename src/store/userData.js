@@ -1,25 +1,19 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {fetch, setAuthorization} from "../utils/Helpers/api_helper";
-import axios from "axios";
 
 if (localStorage.getItem("jwt")) {
     setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
 }
 
 export const fetchUserData = createAsyncThunk("userData/fetchUserData", async () => {
-    const response = await axios.get("users/login-data");
-    return response.data;
+    const response = await fetch.get("users/login-data");
+    return await response.data;
 });
-
-const initialUser = async () => {
-    const response = await axios.get("users/login-data");
-    return response.data;
-}
 
 export const userDataSlice = createSlice({
     name: "userdata",
     initialState: {
-        userData: {}
+        userData: fetchUserData(),
     },
     extraReducers: builder => {
         builder

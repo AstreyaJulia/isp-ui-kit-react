@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import UserWelcome from "../components/widgets/UserWelcome";
 import CalendarWidget from "../components/widgets/CalendarWidget";
 //import WeatherWidget from "../components/widgets/WeatherWidget";
@@ -7,6 +7,10 @@ import TodayBirthdays from "../components/widgets/TodayBirthdays";
 import {ShepherdTour, ShepherdTourContext} from "react-shepherd";
 import PrimaryButton from "../components/elements/PrimaryButton";
 import ContentLayoutColWithSecondaryCol from "../layouts/ContentLayouts/ContentLayoutColWithSecondaryCol";
+import {useSelector} from "react-redux";
+import {fetchUserData} from "../store/userData";
+import {fetch} from "../utils/Helpers/api_helper";
+import {makeArrayFromObj} from "../utils";
 
 let instance = null;
 
@@ -250,6 +254,9 @@ const Content = () => {
 }
 
 const Home = () => {
+    const userdataStore = useSelector((state) => state.userData);
+    const loginData = userdataStore.userData;
+
     return (
         <ContentLayoutColWithSecondaryCol title="Главная" boxed={true}>
             <ContentLayoutColWithSecondaryCol.MainCol>
@@ -268,7 +275,7 @@ const Home = () => {
                 </div>
             </ContentLayoutColWithSecondaryCol.MainCol>
             <ContentLayoutColWithSecondaryCol.SecondaryCol>
-                <UserWelcome birthDayDate={users[0].birthday} userName={users[0].fullname}
+                <UserWelcome birthDayDate={users[0].birthday} userName={loginData.fullname}
                              className="mb-4"/>
                 <CalendarWidget/>
                 <TodayBirthdays birthdays={birthdaysToday}/>
