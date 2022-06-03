@@ -1,6 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/** Точка (bullet)
+ * @param size - размер
+ * @param color - цвет
+ * @param className - класс
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Dot = ({size, color, className}) => {
 
     const dotSize = {
@@ -26,8 +33,23 @@ const Dot = ({size, color, className}) => {
     }
 
     return (
-        <span className={["rounded-full", className, dotColor[color], dotSize[size]].join(" ")}/>
+        <span className={["rounded-full", className || "", dotColor[color], dotSize[size]].join(" ")}/>
     );
+};
+
+Dot.propTypes = {
+    /** Размер точки */
+    size: PropTypes.oneOf(["2", "3", "4", "5", "6"]).isRequired,
+    /** Цвет */
+    color: PropTypes.oneOf(["red", "orange", "yellow", "green", "cyan", "blue", "indigo", "pink", "gray", "sky", "teal"]).isRequired,
+    /** Доп. класс для точки */
+    className: PropTypes.string
+};
+
+Dot.defaultProps = {
+    size: "2",
+    color: "red",
+    classname: ""
 };
 
 export default Dot;

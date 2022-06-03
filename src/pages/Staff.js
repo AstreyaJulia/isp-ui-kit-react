@@ -23,8 +23,8 @@ const tabs = [{name: "Зарегистрировано", href: "#", count: "51",
 
 const columns = [
     {label: "ID", accessor: "id", sortable: true},
-    {label: "Логин", accessor: "login", sortable: true},
-    {label: "Имя", accessor: "name", sortable: true},
+    {label: "Логин", accessor: "username", sortable: true},
+    {label: "Имя", accessor: "fullname", sortable: true},
     {label: "День рождения", accessor: "birthday", sortable: true},
     {label: "Должность", accessor: "profession", sortable: true},
     {label: "IP", accessor: "ip", sortable: true},

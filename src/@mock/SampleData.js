@@ -250,7 +250,7 @@ export const events = [{
     calendar: "yellow"
 }, {
     id: "9",
-    title: "event",
+    title: "Событие",
     start: "2022-05-01",
     end: "2022-05-02",
     allDay: true,
@@ -278,7 +278,7 @@ export const events = [{
     calendar: "teal"
 }, {
     id: "13",
-    title: "event",
+    title: "Событие",
     start: "2022-05-03",
     end: "2022-05-04",
     allDay: true,

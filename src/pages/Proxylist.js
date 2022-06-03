@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {proxyListGroups, proxyListLinks, users} from "../@mock/SampleData";
 import {makeArrayFromObj} from "../utils";
 import BasicButton from "../components/elements/BasicButton";
-import {Menu} from '@headlessui/react';
+import {Menu} from "@headlessui/react";
 import {useSelector} from "react-redux";
 
 const breadcrumbs = [{name: "Каталог ссылок", href: "#", current: true}];
@@ -84,7 +84,7 @@ const Proxylist = () => {
                                                         {({active}) => (
                                                             <button
                                                                 className={`${
-                                                                    active ? 'bg-indigo-500 text-white' : 'text-gray-900 dark:text-gray-100'
+                                                                    active ? "bg-indigo-500 text-white" : "text-gray-900 dark:text-gray-100"
                                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                                             >
                                                                 Редактировать
@@ -97,7 +97,7 @@ const Proxylist = () => {
                                                         {({active}) => (
                                                             <button
                                                                 className={`${
-                                                                    active ? 'bg-indigo-500 text-white' : 'text-gray-900 dark:text-gray-100'
+                                                                    active ? "bg-indigo-500 text-white" : "text-gray-900 dark:text-gray-100"
                                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                                             >
                                                                 Удалить
@@ -178,7 +178,7 @@ const Proxylist = () => {
                                                     {({active}) => (
                                                         <button
                                                             className={`${
-                                                                active ? 'bg-indigo-500 text-white' : 'text-gray-900 dark:text-gray-100'
+                                                                active ? "bg-indigo-500 text-white" : "text-gray-900 dark:text-gray-100"
                                                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                                         >
                                                             Редактировать
@@ -191,7 +191,7 @@ const Proxylist = () => {
                                                     {({active}) => (
                                                         <button
                                                             className={`${
-                                                                active ? 'bg-indigo-500 text-white' : 'text-gray-900 dark:text-gray-100'
+                                                                active ? "bg-indigo-500 text-white" : "text-gray-900 dark:text-gray-100"
                                                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                                         >
                                                             Удалить

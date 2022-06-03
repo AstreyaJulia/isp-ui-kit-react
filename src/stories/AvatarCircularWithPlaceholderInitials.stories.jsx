@@ -1,13 +1,13 @@
-import React from 'react';
-import {AvatarCircularWithPlaceholderInitials} from '../components/elements/AvatarCircularWithPlaceholderInitials';
+import React from "react";
+import {AvatarCircularWithPlaceholderInitials} from "../components/elements/AvatarCircularWithPlaceholderInitials";
 import {users} from "../@mock/SampleData";
 
 export default {
-    title: 'Elements/Avatar',
+    title: "Elements/Avatar",
     component: AvatarCircularWithPlaceholderInitials,
     argTypes: {
-        size: {control: 'radio'},
-        color: {control: 'select'},
+        size: {control: "radio"},
+        color: {control: "select"},
     },
 };
 

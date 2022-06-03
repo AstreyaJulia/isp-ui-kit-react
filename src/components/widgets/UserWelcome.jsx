@@ -66,8 +66,8 @@ const UserWelcome = ({userName, birthDayDate, className}) => {
                         <div className={classnames(isBirthDay ? "text-gray-900" : "text-white", "text-sm")}>
                             <p className="font-bold uppercase">{isBirthDay ? "С Днём рождения," : "С возвращением,"}</p>
                             {userName ? <p className="font-medium mb-2">{getInitials(userName) || <Skeleton/>}</p> :
-                                <Skeleton count="5"
-                                          className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
+                                <Skeleton count="2"
+                                          className="bg-gray-200/30 after:bg-gradient-to-r from-gray-100/10 via-gray-200/10 to-gray-100/10"/>}
                             {isBirthDay ? (
                                 <p className="font-size-15">Желаем долгой и прекрасной жизни в кругу любящих людей!
                                     Профессиональных успехов

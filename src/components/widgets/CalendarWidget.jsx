@@ -2,83 +2,23 @@ import React, {useEffect, useRef, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import ruLocale from "@fullcalendar/core/locales/ru";
-import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";
-import {events as SampleEvents} from "../../@mock/SampleData";
+/*import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";*/
+import {events as SampleEvents, calendCat} from "../../@mock/SampleData";
 import {fetchEvents} from "../../pages/apps/calendar/store";
 import {useDispatch, useSelector} from "react-redux";
+import {makeArrayKeyValue} from "../../utils";
 
-const fetch = new APIClient();
+/*const fetch = new APIClient();
 if (localStorage.getItem("jwt")) {
     setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
-}
+}*/
 
 const CalendarWidget = () => {
 
-    /** Цвета для Fullcalendar */
-    /** Цвета событий, названия менять в разметке, в js менять не надо */
-    const calendCat = [
-        {
-            color: "indigo",
-            name: "События"
-        },
-        {
-            color: "green",
-            name: "Отпуск"
-        },
-        {
-            color: "cyan",
-            name: "Дежурство"
-        },
-        {
-            color: "yellow",
-            name: "Важно"
-        },
-        {
-            color: "red",
-            name: "Праздники"
-        },
-        {
-            color: "pink",
-            name: "Категория 1"
-        },
-        {
-            color: "blue",
-            name: "Категория 2"
-        },
-        {
-            color: "orange",
-            name: "Категория 3"
-        },
-        {
-            color: "teal",
-            name: "Категория 4"
-        },
-        {
-            color: "sky",
-            name: "Категория 5"
-        }
-    ]
-
-    /** Из объекта с цветами событий и именами категорий возвращает объект с цветом
-     * @returns {{[p: string]: any}}
-     */
-    function araycal() {
-        const array = new Map();
-        for (let i = 0; i < calendCat.length; i++) {
-            array.set(calendCat[i].color, calendCat[i].color);
-        }
-        return (Object.fromEntries(array));
-    }
-
-    /** Для использования в Fullcalendar */
-    const calendarsColor = araycal();
-
     const calendarRef = useRef(null);
-
     const dispatch = useDispatch();
     const store = useSelector(state => state.calendar);
 
-    /** Стейты погоды и даты */
     const [events, setEvents] = useState({});
 
     const getEvents = () => {
@@ -96,7 +36,8 @@ const CalendarWidget = () => {
 
     useEffect(() => {
         dispatch(fetchEvents(store.selectedCalendars))
-    }, [])
+        // eslint-disable-next-line
+    }, [dispatch])
 
     useEffect(() => {
         getEvents();
@@ -121,7 +62,7 @@ const CalendarWidget = () => {
         navLinks: false,
         locale: ruLocale,
         eventClassNames({event: calendarEvent}) {
-            const colorName = calendarsColor[calendarEvent._def.extendedProps.calendar]
+            const colorName = calendarEvent._def.extendedProps.calendar
 
             return [
                 // Фоновый цвет событий

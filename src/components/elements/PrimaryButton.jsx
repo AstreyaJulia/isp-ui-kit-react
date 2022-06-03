@@ -37,6 +37,8 @@ PrimaryButton.propTypes = {
     size: PropTypes.oneOf(["small", "medium", "large"]).isRequired,
     /** Лейбл (надпись) кнопки */
     label: PropTypes.string.isRequired,
+    /** Доп. класс */
+    className: PropTypes.string,
     /** Тип кнопки */
     type: PropTypes.oneOf(["button", "submit", "reset"]),
     /** Обработчик клика */
@@ -46,6 +48,7 @@ PrimaryButton.propTypes = {
 PrimaryButton.defaultProps = {
     size: "medium",
     type: "button",
+    className: "",
     label: "button",
     onClick: undefined,
 };

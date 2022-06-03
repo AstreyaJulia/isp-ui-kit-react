@@ -5,7 +5,7 @@ import astronautConfuse from "../../assets/images/pages/astronaut-confuse.svg";
 const Error = () => {
     return (
         <div className="p-4 w-full h-full flex justify-center items-center flex-col flex-grow m-y-auto">
-            <img className='w-52' src={astronautConfuse} alt='Not authorized page'/>
+            <img className="w-52" src={astronautConfuse} alt="Not authorized page"/>
             <div className="max-w-max mx-auto">
                 <main className="sm:flex">
                     <p className="text-4xl font-extrabold text-indigo-600 sm:text-5xl">404</p>

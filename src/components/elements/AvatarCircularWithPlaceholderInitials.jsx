@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {getInitialsOnly} from "../../utils";
 
 /** Круглый аватар с инициалами (без изображения)
- * @param item - объект с данными {avatar: аватар, name: имя пользователя}
+ * @param name - полное имя (ФИО)
  * @param size - размер аватара
  * @param color - цвет аватара
  * @param classname - доп. класс/ы
@@ -79,7 +79,7 @@ export const AvatarCircularWithPlaceholderInitials = ({size, color, classname, n
     return (<>
         <span
             className={
-                ["inline-flex items-center justify-center rounded-full", AvatarGroupSize[size].size, AvatarColor[color || "indigo"].bg, classname].join(" ")}
+                ["inline-flex items-center justify-center rounded-full", AvatarGroupSize[size].size, AvatarColor[color || "indigo"].bg, classname || ""].join(" ")}
         >
         <span
             className={["font-medium leading-none", AvatarGroupSize[size].nameFont, AvatarColor[color || "indigo"].text].join(" ")}
@@ -106,6 +106,6 @@ AvatarCircularWithPlaceholderInitials.propTypes = {
 AvatarCircularWithPlaceholderInitials.defaultProps = {
     size: "10",
     color: "red",
-    name: null,
+    name: "Иванов Иван Иванович",
     className: ""
 };

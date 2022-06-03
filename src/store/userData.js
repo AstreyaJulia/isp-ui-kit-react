@@ -5,9 +5,16 @@ if (localStorage.getItem("jwt")) {
     setAuthorization(localStorage.getItem("jwt").replace(/['"]+/g, '').toString())
 }
 
-export const fetchUserData = createAsyncThunk("userData/fetchUserData", async () => {
-    const response = await fetch.get("users/login-data");
-    return await response.data;
+export const fetchUserData = createAsyncThunk("userData/fetchUserData", async (data, {rejectWithValue}) => {
+    try {
+        const response = await fetch.get("users/login-data");
+        return await response.data
+    } catch (err) {
+        if (!err.response) {
+            throw err
+        }
+        return rejectWithValue(err.response.data)
+    }
 });
 
 export const userDataSlice = createSlice({
@@ -19,6 +26,15 @@ export const userDataSlice = createSlice({
         builder
             .addCase(fetchUserData.fulfilled, (state, action) => {
                 state.userData = action.payload;
+            })
+            .addCase(fetchUserData.rejected, (state, action) => {
+                if (action.error.message.toString() === "Request failed with status code 401") {
+                    state.authUser = {};
+                    state["jwt"] = null;
+                    /** Удалить пользователя, токен из localStorage */
+                    localStorage.removeItem("authUser");
+                    localStorage.removeItem("jwt");
+                }
             })
     }
 })

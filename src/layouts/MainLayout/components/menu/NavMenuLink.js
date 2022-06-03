@@ -25,8 +25,8 @@ const NavMenuLink = ({item, menuCollapsed}) => {
             <Link
                 to={item.alias}
                 className={classNames(item.alias === activeItem || "/" + item.alias === activeItem
-                        ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
-                        : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
+                    ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
+                    : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
                     "group flex items-center py-4 text-base leading-6 rounded-md",
                     menuCollapsed
                         ? "justify-center"

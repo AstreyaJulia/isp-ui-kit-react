@@ -168,14 +168,14 @@ const NavMenuGroup = ({
             <>
                 <div className="w-full">
                     <a className={classNames({open: openClassCondition(item.id)},
-                           groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
-                               ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
-                               : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
-                           "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
-                           menuCollapsed
-                               ? "justify-end pr-1"
-                               : "px-2 justify-between"
-                       )}
+                        groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
+                            ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
+                            : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
+                        "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
+                        menuCollapsed
+                            ? "justify-end pr-1"
+                            : "px-2 justify-between"
+                    )}
                        aria-current={
                            groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "page" : undefined
                        }
