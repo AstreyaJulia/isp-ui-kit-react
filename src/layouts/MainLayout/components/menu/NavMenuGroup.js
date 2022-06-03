@@ -26,9 +26,9 @@ export const hasActiveChild = (item, currentUrl) => {
         /** Проверяет, если ли у потомка ссылка, и активна ли она */
         if (
             child &&
-            child.href &&
+            child.alias &&
             currentUrl &&
-            (child.href === currentUrl || currentUrl.includes(child.href))
+            (child.alias === currentUrl || currentUrl.includes(child.alias))
         ) {
             return true;
         }
@@ -167,8 +167,7 @@ const NavMenuGroup = ({
         <div key={item.id} className="space-y-1 w-full">
             <>
                 <div className="w-full">
-                    <a href="/"
-                       className={classNames({open: openClassCondition(item.id)},
+                    <a className={classNames({open: openClassCondition(item.id)},
                            groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
                                ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
                                : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",

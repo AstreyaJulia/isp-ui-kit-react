@@ -1,5 +1,5 @@
 /** Навигация для сайдбара, для локального тестирования
- * @type {[{header: string},{name: string, icon: string, id: string, href: string},{name: string, icon: string, id: string, href: string},{badgeColor: string, name: string, icon: string, badgeClassName: string, id: string, href: string, badgeText: string},{children: [{name: string, icon: string, id: string, href: string}], name: string, icon: string, id: string},null,null,null,null,null]}
+ * @type {[{header: string},{icon: string, alias: string, id: string, pagetitle: string},{icon: string, alias: string, id: string, pagetitle: string},{badgeColor: string, icon: string, alias: string, id: string, pagetitle: string},{children: [{icon: string, alias: string, id: string, pagetitle: string}], icon: string, id: string, pagetitle: string},null,null,null,null]}
  */
 export const navigation = [{header: "Главное меню"}, {
     id: "1", pagetitle: "Главная", icon: "mdi-apps", alias: "/home",

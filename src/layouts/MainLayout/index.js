@@ -50,17 +50,17 @@ const MainLayout = (props) => {
     const setMenuCollapsed = (val) => dispatch(handleMenuCollapsed(val));
 
     useEffect(() => {
-        setMenuData(navigation);
+        /*setMenuData(navigation);*/
         /*setUserData(users[0]);*/
 
         /** Для серверной навигации */
         dispatch(fetchUserData());
-        /*fetch.get("/sidebar", "")
+        fetch.get("/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {
                     setMenuData(makeArrayFromObj(response.data))
                 }
-            })*/
+            })
     }, [dispatch]);
 
     /** ComponentDidMount */
