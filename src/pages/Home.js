@@ -1,18 +1,15 @@
-import React, {useContext, useEffect} from "react";
+import React from "react";
 import UserWelcome from "../components/widgets/UserWelcome";
 import CalendarWidget from "../components/widgets/CalendarWidget";
 //import WeatherWidget from "../components/widgets/WeatherWidget";
 import {birthdaysToday, users} from "../@mock/SampleData"
 import TodayBirthdays from "../components/widgets/TodayBirthdays";
-import {ShepherdTour, ShepherdTourContext} from "react-shepherd";
-import PrimaryButton from "../components/elements/PrimaryButton";
+//import {ShepherdTour, ShepherdTourContext} from "react-shepherd";
+//import PrimaryButton from "../components/elements/PrimaryButton";
 import ContentLayoutColWithSecondaryCol from "../layouts/ContentLayouts/ContentLayoutColWithSecondaryCol";
 import {useSelector} from "react-redux";
-import {fetchUserData} from "../store/userData";
-import {fetch} from "../utils/Helpers/api_helper";
-import {makeArrayFromObj} from "../utils";
 
-let instance = null;
+/*let instance = null;
 
 const backBtnClass = "px-4 py-2 text-sm bg-indigo-600 border border-transparent rounded-md shadow-sm inline-flex justify-center font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500",
     nextBtnClass = "px-4 py-2 text-sm bg-indigo-600 border border-transparent rounded-md shadow-sm inline-flex justify-center font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 btn-next"
@@ -251,7 +248,7 @@ const Content = () => {
     return (
         <PrimaryButton onClick={() => tour.start()} label="Start Tour" />
     )
-}
+}*/
 
 const Home = () => {
     const userdataStore = useSelector((state) => state.userData);

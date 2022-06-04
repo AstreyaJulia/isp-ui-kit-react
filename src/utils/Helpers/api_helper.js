@@ -1,6 +1,5 @@
 import axios from "axios";
 import config from "../../config";
-import React from "react";
 
 /** URL сервера API
  * @type {string} */

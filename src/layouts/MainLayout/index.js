@@ -77,6 +77,7 @@ const MainLayout = (props) => {
                 /* Показываем всплывашку с ошибкой */
                 toast(t => (<Toast t={t} message={err} type="error"/>), {className: toastStyles})
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     /** ComponentDidMount */

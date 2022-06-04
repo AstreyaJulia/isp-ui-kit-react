@@ -4,7 +4,6 @@ import listPlugin from "@fullcalendar/list";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import toast from "react-hot-toast";
 import ruLocale from "@fullcalendar/core/locales/ru";
 import {events} from "../../../@mock/SampleData";
 
@@ -14,13 +13,11 @@ const CalendarModule = props => {
     const {
         store,
         dispatch,
-        calendarsColor,
         calendarApi,
         setCalendarApi,
         handleAddEventSidebar,
         blankEvent,
         selectEvent,
-        updateEvent
     } = props;
 
     useEffect(() => {

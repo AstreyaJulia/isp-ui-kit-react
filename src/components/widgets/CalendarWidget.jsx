@@ -3,10 +3,9 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import ruLocale from "@fullcalendar/core/locales/ru";
 /*import {APIClient, setAuthorization} from "../../utils/Helpers/api_helper";*/
-import {events as SampleEvents, calendCat} from "../../@mock/SampleData";
+import {events as SampleEvents} from "../../@mock/SampleData";
 import {fetchEvents} from "../../pages/apps/calendar/store";
 import {useDispatch, useSelector} from "react-redux";
-import {makeArrayKeyValue} from "../../utils";
 
 /*const fetch = new APIClient();
 if (localStorage.getItem("jwt")) {

@@ -29,7 +29,7 @@ const MyInfo = () => {
     }
 
     /** Стейт пользовательских данных */
-    const [userData, setUserData] = useState(users[0]);
+    const [userData] = useState(users[0]);
 
     return (
         <Fragment>

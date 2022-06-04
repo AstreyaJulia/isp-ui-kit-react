@@ -1,6 +1,6 @@
 import ContentLayoutWithSidebar from "../layouts/ContentLayouts/ContentLayoutWithSidebar";
 import React, {useEffect, useState} from "react";
-import {proxyListGroups, proxyListLinks, users} from "../@mock/SampleData";
+import {proxyListGroups, proxyListLinks} from "../@mock/SampleData";
 import {makeArrayFromObj} from "../utils";
 import BasicButton from "../components/elements/BasicButton";
 import {Menu} from "@headlessui/react";
@@ -52,7 +52,7 @@ const Proxylist = () => {
                                         </span>
                                         </div>
                                         <div className="flex min-w-0">
-                                            <a
+                                            <a href="/"
                                                 className="focus:outline-none"
                                             >
                                                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
@@ -126,12 +126,13 @@ const Proxylist = () => {
                     </div>
                     <div className={[selectedGroup != null ? "" : "h-full", "grid grid-cols-1 gap-2"].join(" ")}>
                         {selectedGroup != null
-                            ? makeArrayFromObj(proxyListLinks[selectedGroup].children).map((link, key) => {
+                            ? makeArrayFromObj(proxyListLinks[selectedGroup].children).map((link) => {
                                 return (
                                     <div key={link.id} className="w-full flex flex-shrink-0 items-center">
                                     <a
                                         href={link.link}
                                         target="_blank"
+                                        rel="noreferrer"
                                         className="flex items-center flex-grow">
                                         <div
                                             className={["rounded-lg flex-grow border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 shadow-sm flex items-center space-x-3 hover:border-gray-400 dark:hover:border-gray-600"].join(" ")}>

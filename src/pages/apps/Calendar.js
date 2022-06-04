@@ -14,7 +14,7 @@ import {
     updateFilter
 } from "./calendar/store";
 import classnames from "classnames";
-import {makeArrayKeyValue, makeOptionsForReactSelect} from "../../utils";
+import {makeArrayKeyValue} from "../../utils";
 import {calendCat} from "../../@mock/SampleData";
 
 const breadcrumbs = [{name: "Календарь", href: "#", current: true}];
@@ -66,7 +66,8 @@ const Calendar = () => {
     // получаем события при монтировании
     useEffect(() => {
         dispatch(fetchEvents(store.selectedCalendars))
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch])
 
     return (
         <Fragment>
