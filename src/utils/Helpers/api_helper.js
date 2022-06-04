@@ -1,9 +1,5 @@
 import axios from "axios";
 import config from "../../config";
-import {fetchUserData} from "../../store/userData";
-import {handleLogout} from "../../store/authentication";
-import toast from "react-hot-toast";
-import Toast, {toastStyles} from "../../components/ui/Toast";
 import React from "react";
 
 /** URL сервера API
