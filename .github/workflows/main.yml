@@ -5,7 +5,7 @@ env:
 
 on:
   push:
-    branches: [ main ] # Configure the branchs which you want to run this workflow
+    branches: [ master ] # Configure the branchs which you want to run this workflow
 
 jobs:
   build-push:
