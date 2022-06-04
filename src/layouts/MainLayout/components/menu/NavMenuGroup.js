@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import classnames from "classnames";
-import MenuNavItems from "./NavMenuItems";
 import classNames from "classnames";
+import MenuNavItems from "./NavMenuItems";
+import {makeArrayFromObj} from "../../../../utils";
 
 /** Проверяет, есть ли у потомков элемента текущий url
  * @param item - элемент
@@ -16,7 +16,7 @@ export const hasActiveChild = (item, currentUrl) => {
         return false;
     }
 
-    for (const child of children) {
+    for (const child of makeArrayFromObj(children)) {
         if (child.children) {
             if (hasActiveChild(child, currentUrl)) {
                 return true;
@@ -26,9 +26,9 @@ export const hasActiveChild = (item, currentUrl) => {
         /** Проверяет, если ли у потомка ссылка, и активна ли она */
         if (
             child &&
-            child.href &&
+            child.alias &&
             currentUrl &&
-            (child.href === currentUrl || currentUrl.includes(child.href))
+            (child.alias === currentUrl || currentUrl.includes(child.alias))
         ) {
             return true;
         }
@@ -167,25 +167,24 @@ const NavMenuGroup = ({
         <div key={item.id} className="space-y-1 w-full">
             <>
                 <div className="w-full">
-                    <a href="/"
-                       className={classNames({open: openClassCondition(item.id)},
-                           groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
-                               ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
-                               : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
-                           "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
-                           menuCollapsed
-                               ? "justify-end pr-1"
-                               : "px-2 justify-between"
-                       )}
+                    <a href="/" className={classNames({open: openClassCondition(item.id)},
+                        groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id)
+                            ? "bg-indigo-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 flex"
+                            : "flex text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700",
+                        "group flex items-center py-4 text-base leading-6 rounded-md  w-full hover:cursor-pointer",
+                        menuCollapsed
+                            ? "justify-end pr-1"
+                            : "px-2 justify-between"
+                    )}
                        aria-current={
                            groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? "page" : undefined
                        }
                        onClick={e => onCollapseClick(e, item)}
                     >
                         <div className="flex items-center">
-                            <i className={classnames(menuCollapsed ? "" : "mr-4",
+                            <i className={classNames(menuCollapsed ? "" : "mr-4",
                                 "flex-shrink-0 flex items-center text-2xl mdi", item.icon)}/>
-                            {!menuCollapsed ? item.name : ""}
+                            {!menuCollapsed ? item.pagetitle : ""}
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg"
                              className={classNames(
@@ -204,7 +203,7 @@ const NavMenuGroup = ({
                     {groupActive.includes(item.id) || groupOpen.includes(item.id) || currentActiveGroup.includes(item.id) ? (
                         <MenuNavItems
                             {...rest}
-                            items={item.children}
+                            items={makeArrayFromObj(item.children)}
                             groupActive={groupActive}
                             setGroupActive={setGroupActive}
                             currentActiveGroup={currentActiveGroup}

@@ -30,18 +30,20 @@ export const layoutSlice = createSlice({
     },
     reducers: {
         handleSkin: (state, action) => {
-            state.skin = action.payload
-            window.localStorage.setItem("skin", JSON.stringify(action.payload))
+            state.skin = action.payload;
+            window.localStorage.setItem("skin", JSON.stringify(action.payload));
+            /* FIXME сюда добавить отправку на сервер настройки */
         },
         handleMenuCollapsed: (state, action) => {
-            state.menuCollapsed = action.payload
-            window.localStorage.setItem("menuCollapsed", JSON.stringify(action.payload))
+            state.menuCollapsed = action.payload;
+            window.localStorage.setItem("menuCollapsed", JSON.stringify(action.payload));
+            /* FIXME сюда добавить отправку на сервер настройки */
         },
         handleLastLayout: (state, action) => {
-            state.lastLayout = action.payload
+            state.lastLayout = action.payload;
         },
         handleLayout: (state, action) => {
-            state.layout = action.payload
+            state.layout = action.payload;
         }
     }
 })
@@ -53,4 +55,4 @@ export const {
     handleLayout
 } = layoutSlice.actions
 
-export default layoutSlice.reducer
+export default layoutSlice.reducer;

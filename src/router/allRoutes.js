@@ -1,7 +1,6 @@
 import React, {Fragment, lazy} from "react";
 import {Navigate} from "react-router-dom";
 import LayoutWrapper from "../layouts/layout-wrapper";
-import {getLoggedinUser} from "../utils/Helpers/api_helper";
 
 /** Раскладки */
 import BlankLayout from "../layouts/BlankLayout";
@@ -9,10 +8,8 @@ import MainLayout from "../layouts/MainLayout";
 
 /** Роутинг */
 import PublicRoute from "./PublicRoute";
-import PrivateRoute from './PrivateRoute'
+import PrivateRoute from "./PrivateRoute";
 import {isObjEmpty} from "../utils";
-
-/* Узкое содержимое<main className="max-w-7xl mx-auto md:px-8 xl:px-0 lg:p-4 px-0 py-4">*/
 
 const getLayout = {
     blank: <BlankLayout/>,
@@ -21,13 +18,13 @@ const getLayout = {
 
 /** Дефолтный роут */
 const DefaultRoute = () => {
-    const user = getLoggedinUser()
+    const user = localStorage.getItem("jwt");
     if (user) {
-        return '/home'
+        return "/home"
     } else {
-        return '/auth'
+        return "/auth"
     }
-}
+};
 
 /** Импорт страниц */
 const Home = lazy(() => import("../pages/Home"));
@@ -170,12 +167,12 @@ const Routes = [
 const getRouteMeta = route => {
     if (isObjEmpty(route.element.props)) {
         if (route.meta) {
-            return {routeMeta: route.meta}
+            return {routeMeta: route.meta};
         } else {
-            return {}
+            return {};
         }
     }
-}
+};
 
 /** Возвращает отфильтрованный объект роутов и путей */
 const MergeLayoutRoutes = (layout, defaultLayout) => {
@@ -213,13 +210,13 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
                 }
 
                 /** Запись роута в LayoutRoutes */
-                LayoutRoutes.push(route)
+                LayoutRoutes.push(route);
             }
-            return LayoutRoutes
+            return LayoutRoutes;
         })
     }
-    return LayoutRoutes
-}
+    return LayoutRoutes;
+};
 
 const getRoutes = layout => {
     const defaultLayout = layout || "main";
@@ -236,7 +233,7 @@ const getRoutes = layout => {
             children: LayoutRoutes
         })
     })
-    return AllRoutes
+    return AllRoutes;
 }
 
-export {DefaultRoute, Routes, getRoutes}
+export {DefaultRoute, Routes, getRoutes};

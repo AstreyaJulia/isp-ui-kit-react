@@ -1,8 +1,8 @@
-import React from 'react';
-import UserWelcome from '../components/widgets/UserWelcome';
+import React from "react";
+import UserWelcome from "../components/widgets/UserWelcome";
 
 export default {
-    title: 'Widgets/UserWelcome',
+    title: "Widgets/UserWelcome",
     component: UserWelcome,
     argTypes: {}
 };

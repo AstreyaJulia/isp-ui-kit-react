@@ -13,7 +13,7 @@ const MessageDropdown = () => {
         <Menu as="div" className="relative inline-block text-left ml-4">
             <div>
                 <Menu.Button
-                    className="bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    className="messages-dropdown-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <MessageSquare className="h-6 w-6" aria-hidden="true"/>
                 </Menu.Button>
             </div>
@@ -40,10 +40,10 @@ const MessageDropdown = () => {
                             <Menu.Item key={message.id}>
                                 {({active}) => (
                                     <div className="flex space-x-3 p-3">
-                                        <Avatar size="6" item={message.user}/>
+                                        <Avatar size="6" avatar={message.user.avatar} name={message.user.fullname} color={message.user.color} />
                                         <div className="flex-1 space-y-1">
                                             <div className="flex items-center justify-between">
-                                                <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200">{getInitials(message.user.name)}</h3>
+                                                <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200">{getInitials(message.user.fullname)}</h3>
                                                 <p className="text-sm text-gray-500">{moment(message.time).fromNow()}</p>
                                             </div>
                                             <p className="text-sm text-gray-500 line-clamp-2">

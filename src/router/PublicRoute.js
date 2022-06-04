@@ -1,9 +1,8 @@
-/** React Imports */
-import React, {Suspense} from "react";
+import {Suspense} from "react";
 import {Navigate} from "react-router-dom";
 
 const PublicRoute = ({children, route}) => {
-    const user = JSON.parse(localStorage.getItem("authUser"));
+    const user = JSON.parse(localStorage.getItem("jwt"));
 
     if (route) {
 

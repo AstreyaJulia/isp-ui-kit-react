@@ -4,7 +4,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import logo from "../../../../assets/images/logo/isp-logo.svg";
 import classNames from "classnames";
-import {Disc, Circle} from "react-feather";
+import {Circle, Disc} from "react-feather";
 import config from "../../../../config";
 import NavMenuItems from "./NavMenuItems";
 
@@ -26,17 +26,22 @@ const Sidebar = (props) => {
     const MenuToggler = () => {
         if (menuCollapsed) {
             return (
-                <Circle
-                    className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
+                <button
+                    className="sidebar-collapse-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     onClick={() => setMenuCollapsed(false)}
-                />
+                >
+
+                    <Circle/>
+                </button>
             );
         } else {
             return (
-                <Disc
-                    className="text-gray-500 dark:border-gray-600 focus:ring-indigo-500"
+                <button
+                    className="sidebar-collapse-button bg-white dark:bg-gray-900 p-1 rounded-full text-gray-400 dark:text-gray-500 dark:hover:text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     onClick={() => setMenuCollapsed(true)}
-                />
+                >
+                    <Disc/>
+                </button>
             );
         }
     };
@@ -71,7 +76,7 @@ const Sidebar = (props) => {
                         leaveTo="-translate-x-full"
                     >
                         <div
-                            className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700">
+                            className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white dark:bg-gray-900 shadow border-r border-gray-200">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-in-out duration-300"
@@ -138,7 +143,7 @@ const Sidebar = (props) => {
             <div
                 className={classNames(
                     menuCollapsed ? "lg:w-20" : "lg:w-64",
-                    "relative hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0"
+                    "sidebar-menu relative hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0"
                 )}
             >
                 <div className="absolute top-0 right-0 mr-4 pt-4">
@@ -146,7 +151,7 @@ const Sidebar = (props) => {
                 </div>
 
                 <div
-                    className="flex flex-col flex-grow shadow-sm bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 pt-5 pb-4 overflow-y-auto">
+                    className="flex flex-col flex-grow shadow bg-white dark:bg-gray-900 pt-5 pb-4 overflow-y-auto border-r border-gray-200 dark:border-gray-600">
                     <div
                         className={classNames(
                             "flex items-center content-center flex-shrink-0 px-4 h-8"

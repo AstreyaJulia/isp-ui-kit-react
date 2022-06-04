@@ -39,7 +39,7 @@ axios.interceptors.response.use(
  * @param token - токен
  */
 const setAuthorization = (token) => {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 };
 
 /** API-клиент */
@@ -96,16 +96,6 @@ class APIClient {
     };
 }
 
-/** Получение данных залогиненного пользователя
- * @returns {null|any} - null / данные пользователя
- * FIXME переделать с localStorage */
-const getLoggedinUser = () => {
-    const user = localStorage.getItem("authUser");
-    if (!user) {
-        return null;
-    } else {
-        return JSON.parse(user);
-    }
-};
+const fetch = new APIClient();
 
-export {APIClient, setAuthorization, getLoggedinUser};
+export {APIClient, setAuthorization, fetch};

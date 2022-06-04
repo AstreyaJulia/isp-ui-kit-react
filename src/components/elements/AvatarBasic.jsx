@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element}
  * @constructor
  */
-export const AvatarBasic = ({item, size, classname}) => {
+export const AvatarBasic = ({size, classname, name, avatar}) => {
 
     /** Размеры аватаров
      * @type {{"12": string, "14": string, "6": string, "8": string, "10": string}}
@@ -24,8 +24,8 @@ export const AvatarBasic = ({item, size, classname}) => {
     return (<>
         <img
             className={["inline-block rounded-full", AvatarGroupSize[size], classname].join(" ")}
-            src={item.avatar}
-            alt={item.name}
+            src={avatar}
+            alt={name}
         />
     </>);
 };
@@ -33,7 +33,8 @@ export const AvatarBasic = ({item, size, classname}) => {
 /** Типы свойств */
 AvatarBasic.propTypes = {
     /** Данные */
-    item: PropTypes.shape({}).isRequired,
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
     /** Размер аватара */
     size: PropTypes.oneOf(["6", "8", "10", "12", "14"]).isRequired,
     /** Доп. класс для аватара */
@@ -43,6 +44,7 @@ AvatarBasic.propTypes = {
 /** Дефолтные свойства */
 AvatarBasic.defaultProps = {
     size: "10",
-    item: null,
+    name: null,
+    avatar: null,
     className: ""
 };

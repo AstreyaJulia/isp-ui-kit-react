@@ -28,7 +28,9 @@ const ScrollTop = props => {
 
     return (
         visible && (
-            <button className="flex fixed px-3 py-2 w-12 h-12 rounded-lg z-50 bottom-6 right-6 items-center justify-center hover:bg-indigo-700" onClick={handleScrollToTop} {...rest}>
+            <button
+                className="flex fixed px-3 py-2 w-12 h-12 rounded-lg z-50 bottom-6 right-6 items-center justify-center hover:bg-indigo-700"
+                onClick={handleScrollToTop} {...rest}>
                 <ArrowUp size={14}/>
             </button>
         )

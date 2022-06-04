@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState, Fragment} from "react";
 import {users} from "../@mock/SampleData";
 import {Helmet} from "react-helmet";
 import config from "../config";
@@ -13,7 +13,6 @@ import blue from "../assets/images/backgrounds/profile/blue-bg.jpg";
 import cyan from "../assets/images/backgrounds/profile/cyan-bg.jpg";
 import indigo from "../assets/images/backgrounds/profile/indigo-bg.jpg";
 import pink from "../assets/images/backgrounds/profile/pink-bg.jpg";
-import CardSubHeader from "../components/elements/CardSubHeader";
 import CardHeader from "../components/elements/CardHeader";
 
 const MyInfo = () => {
@@ -30,14 +29,14 @@ const MyInfo = () => {
     }
 
     /** Стейт пользовательских данных */
-    const [userData, setUserData] = useState(users[0]);
+    const [userData] = useState(users[0]);
 
     return (
-        <React.Fragment>
+        <Fragment>
             <Helmet>
                 <title>{config.APP_NAME} - Мой Профиль</title>
             </Helmet>
-            <article className="bg-white dark:bg-gray-900 h-full">
+            <article className=" h-full">
                 {/* Profile header */}
                 <div className="border-b border-gray-200 pb-4">
                     <div>
@@ -54,8 +53,10 @@ const MyInfo = () => {
                                         alt=""
                                     />
                                     :
-                                    <svg className="h-24 w-24 bg-white text-gray-300 dark:text-gray-500 rounded-full ring-4 ring-white sm:h-32 sm:w-32" fill="currentColor"
-                                         viewBox="0 0 24 24">
+                                    <svg
+                                        className="h-24 w-24 bg-white text-gray-300 dark:text-gray-500 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path
                                             d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/>
                                     </svg>}
@@ -94,7 +95,7 @@ const MyInfo = () => {
                             </dd>
                         </div>
                     </dl>
-                    <CardHeader title="Персональная Информация" className="mb-4" />
+                    <CardHeader title="Персональная Информация" className="mb-4"/>
 
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 mb-6">
 
@@ -109,7 +110,7 @@ const MyInfo = () => {
 
                     </dl>
 
-                    <CardHeader title="Контактная информация" className="mb-4" />
+                    <CardHeader title="Контактная информация" className="mb-4"/>
 
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 mb-6">
 
@@ -143,7 +144,7 @@ const MyInfo = () => {
                     </dl>
                 </div>
             </article>
-        </React.Fragment>
+        </Fragment>
     );
 };
 

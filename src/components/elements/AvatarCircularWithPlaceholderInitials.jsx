@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import {getInitialsOnly} from "../../utils";
 
 /** Круглый аватар с инициалами (без изображения)
- * @param item - объект с данными {avatar: аватар, name: имя пользователя}
+ * @param name - полное имя (ФИО)
  * @param size - размер аватара
  * @param color - цвет аватара
  * @param classname - доп. класс/ы
  * @returns {JSX.Element}
  * @constructor
  */
-export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classname}) => {
+export const AvatarCircularWithPlaceholderInitials = ({size, color, classname, name}) => {
 
     /** Размеры аватаров
      * @type {{"12": {nameFont: string, size: string}, "14": {nameFont: string, size: string}, "6": {nameFont: string, size: string}, "8": {nameFont: string, size: string}, "10": {nameFont: string, size: string}}}
@@ -79,12 +79,12 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
     return (<>
         <span
             className={
-                ["inline-flex items-center justify-center rounded-full", AvatarGroupSize[size].size, AvatarColor[color || "indigo"].bg, classname].join(" ")}
+                ["inline-flex items-center justify-center rounded-full", AvatarGroupSize[size].size, AvatarColor[color || "indigo"].bg, classname || ""].join(" ")}
         >
         <span
             className={["font-medium leading-none", AvatarGroupSize[size].nameFont, AvatarColor[color || "indigo"].text].join(" ")}
         >
-            {getInitialsOnly(item.name)}
+            {getInitialsOnly(name)}
         </span>
       </span>
     </>);
@@ -93,7 +93,7 @@ export const AvatarCircularWithPlaceholderInitials = ({item, size, color, classn
 /** Типы свойств */
 AvatarCircularWithPlaceholderInitials.propTypes = {
     /**  Данные */
-    item: PropTypes.shape({}).isRequired,
+    name: PropTypes.string.isRequired,
     /**  Размер аватара */
     size: PropTypes.oneOf(["6", "8", "10", "12", "14"]).isRequired,
     /**  Цвет аватара */
@@ -106,6 +106,6 @@ AvatarCircularWithPlaceholderInitials.propTypes = {
 AvatarCircularWithPlaceholderInitials.defaultProps = {
     size: "10",
     color: "red",
-    item: null,
+    name: "Иванов Иван Иванович",
     className: ""
 };

@@ -10,7 +10,7 @@ import classNames from "classnames";
  */
 export const CardSubHeader = ({title, className}) => {
     return (
-        <p className={classNames("mt-1 text-sm text-gray-500", className)}>{title}</p>
+        <p className={classNames("mt-1 text-sm text-gray-500", className || "")}>{title}</p>
     );
 };
 

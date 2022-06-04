@@ -154,19 +154,21 @@ const WeatherWidget = ({apiKey, cityID, className}) => {
 
     return (
         <div
-            className={classnames(weather.bg || "bg-indigo-700/50", "rounded-md drop-shadow-md overflow-hidden relative h-28 w-80", className)}>
+            className={classnames(weather.bg || "bg-indigo-700/50", "widget rounded-md drop-shadow-md overflow-hidden relative h-28 w-80", className)}>
             <div className="p-3 flex flex-col justify-between">
                 <p className="text-gray-700 dark:text-gray-200 relative z-10 mb-1"><span
                     className="capitalize text-base mr-4">{date.dayOfWeek}</span><span
                     className="text-sm">{date.day}</span></p>
                 {weather.temp_max
-                ? <><p className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max}<span
+                    ? <><p
+                        className="text-2xl font-bold leading-7 text-gray-700 dark:text-gray-200 sm:leading-9 relative z-10">{weather.temp_max}<span
                         className="font-medium">C</span></p>
-                    <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
-                        <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity}%</span>
-                        <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind} м/с</span>
-                    </p></>
-                : <Skeleton count="2" className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10" />}
+                        <p className="flex items-center text-sm text-gray-700 dark:text-gray-200 relative z-10 mt-1">
+                            <Droplet size={16}/><span className="ml-2 mr-3" title="Влажность">{weather.humidity}%</span>
+                            <Wind size={16}/><span className="ml-2" title="Скорость ветра">{weather.wind} м/с</span>
+                        </p></>
+                    : <Skeleton count="2"
+                                className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
             </div>
             <img src={weather.icon} alt={weather.description} title={weather.description}
                  className="absolute bottom-2 right-1 h-16"/>

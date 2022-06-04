@@ -1,4 +1,4 @@
-import {Fragment, useEffect, memo} from "react";
+import {Fragment, memo, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {handleMenuCollapsed} from "../store/layout";
 
@@ -13,7 +13,7 @@ const LayoutWrapper = props => {
 
     /** Переменные */
     const appLayoutCondition =
-        (layoutStored.layout !=="main" && !routeMeta) ||
+        (layoutStored.layout !== "main" && !routeMeta) ||
         (layoutStored.layout !== "main" && routeMeta && !routeMeta.appLayout);
 
     const Tag = appLayoutCondition ? "div" : Fragment;
@@ -35,7 +35,7 @@ const LayoutWrapper = props => {
             }
         }
         return () => cleanUp();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [routeMeta]);
 
     return (

@@ -1,24 +1,19 @@
-import React from "react";
-import {Helmet} from "react-helmet";
-import PageHeader from "../components/PageHeader";
-import config from "../config";
+import ContentLayoutBlank from "../layouts/ContentLayouts/ContentLayoutBlank";
 
-const breadcrumbs = [{ name: "Графики", href: "#", current: true }];
+const breadcrumbs = [{name: "Графики", href: "#", current: true}];
 
 const Stat = () => {
     return (
-        <React.Fragment>
-            <Helmet>
-                <title>{config.APP_NAME} - Графики</title>
-            </Helmet>
-
-            <div className="flex flex-col p-4 justify-self-stretch justify-center">
-                <PageHeader pages={breadcrumbs} />
-                <div className="flex-1 flex mt-4">
-
+        <ContentLayoutBlank header="Графики" breadcrumbs={breadcrumbs} title="Графики" boxed={false} >
+            <ContentLayoutBlank.Header>
+                {/* Содержимое заголовка: кнопки и т.д. */}
+            </ContentLayoutBlank.Header>
+            <ContentLayoutBlank.Body>
+                <div className="p-4">
+                    {/* Содержимое страницы */}
                 </div>
-            </div>
-        </React.Fragment>
+            </ContentLayoutBlank.Body>
+        </ContentLayoutBlank>
     );
 };
 

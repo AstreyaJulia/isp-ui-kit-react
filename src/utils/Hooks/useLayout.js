@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {handleLayout, handleLastLayout} from "../../store/layout";
+import {handleLastLayout, handleLayout} from "../../store/layout";
 
 export const useLayout = () => {
     const dispatch = useDispatch();

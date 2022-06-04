@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
  */
 const CardWithFooter = ({children, className}) => {
     return (
-        <div className={classNames("shadow sm:rounded-md sm:overflow-hidden", className)}>
+        <div className={classNames("shadow sm:rounded-md sm:overflow-hidden", className || "")}>
             {children}
         </div>
     );
