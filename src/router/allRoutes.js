@@ -1,7 +1,6 @@
 import React, {Fragment, lazy} from "react";
 import {Navigate} from "react-router-dom";
 import LayoutWrapper from "../layouts/layout-wrapper";
-import {getLoggedinUser} from "../utils/Helpers/api_helper";
 
 /** Раскладки */
 import BlankLayout from "../layouts/BlankLayout";
@@ -19,7 +18,7 @@ const getLayout = {
 
 /** Дефолтный роут */
 const DefaultRoute = () => {
-    const user = getLoggedinUser()
+    const user = localStorage.getItem("jwt");
     if (user) {
         return "/home"
     } else {

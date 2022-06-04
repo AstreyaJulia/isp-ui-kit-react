@@ -1,10 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-/** Начальное состояние пользователя из localstorage
+/** Начальное состояние JWT из localstorage
  * @returns {any}
  */
-const initialUser = () => {
-    const item = window.localStorage.getItem("authUser");
+const initialJWT = () => {
+    const item = window.localStorage.getItem("jwt");
     /** Парсинг сохраненного json или возвратить initialValue */
     return item ? JSON.parse(item) : {};
 }
@@ -12,20 +12,16 @@ const initialUser = () => {
 export const authSlice = createSlice({
     name: "authentication",
     initialState: {
-        authUser: initialUser()
+        jwt: initialJWT()
     },
     reducers: {
         handleLogin: (state, action) => {
-            state.authUser = action.payload["authUser"];
             state["jwt"] = action.payload["jwt"];
-            localStorage.setItem("authUser", JSON.stringify(action.payload.authUser));
             localStorage.setItem("jwt", JSON.stringify(action.payload.jwt));
         },
         handleLogout: state => {
-            state.authUser = {};
             state["jwt"] = null;
-            /** Удалить пользователя, токен из localStorage */
-            localStorage.removeItem("authUser");
+            /** Удалить токен из localStorage */
             localStorage.removeItem("jwt");
         }
     }

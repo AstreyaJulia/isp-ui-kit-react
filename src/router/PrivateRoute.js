@@ -2,7 +2,7 @@ import {Navigate} from "react-router-dom";
 import {Suspense} from "react";
 
 const PrivateRoute = ({children, route}) => {
-    const user = JSON.parse(localStorage.getItem("authUser"));
+    const user = JSON.parse(localStorage.getItem("jwt"));
 
     if (route) {
 

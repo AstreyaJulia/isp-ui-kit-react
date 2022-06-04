@@ -1,5 +1,10 @@
 import axios from "axios";
 import config from "../../config";
+import {fetchUserData} from "../../store/userData";
+import {handleLogout} from "../../store/authentication";
+import toast from "react-hot-toast";
+import Toast, {toastStyles} from "../../components/ui/Toast";
+import React from "react";
 
 /** URL сервера API
  * @type {string} */
@@ -96,18 +101,6 @@ class APIClient {
     };
 }
 
-/** Получение данных залогиненного пользователя
- * @returns {null|any} - null / данные пользователя
- * FIXME переделать с localStorage */
-const getLoggedinUser = () => {
-    const user = localStorage.getItem("authUser");
-    if (!user) {
-        return null;
-    } else {
-        return JSON.parse(user);
-    }
-};
-
 const fetch = new APIClient();
 
-export {APIClient, setAuthorization, getLoggedinUser, fetch};
+export {APIClient, setAuthorization, fetch};

@@ -34,7 +34,6 @@ const Login = () => {
                 .then(res => {
                     if (res.data && res.data.jwt) {
                         const data = {
-                            authUser: userData.login,
                             jwt: res.data.jwt,
                         }
                         dispatch(handleLogin(data))
