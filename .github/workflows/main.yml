@@ -54,7 +54,7 @@ jobs:
           
           mkdir BUILD
           cp -r api BUILD/api
-          mv build BUILD/build
+          mv build/* BUILD/
 
       # Synchronize & push BUILD directory to deployment branch
       - name: Configure Git informations
