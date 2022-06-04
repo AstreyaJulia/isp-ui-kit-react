@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {handleMenuCollapsed} from "../../store/layout";
 import ScrollToTop from "./components/scrolltop";
@@ -9,11 +9,10 @@ import NavBar from "./components/navbar";
 import Skeleton from "react-loading-skeleton";
 import {makeArrayFromObj} from "../../utils";
 import {fetch, setAuthorization} from "../../utils/Helpers/api_helper";
-
-import {users} from "../../@mock/SampleData";
-import {navigation} from "../../@mock/SampleData"; // FIXME sample
-import config from "../../config";
-import {fetchUserData, userData} from "../../store/userData";
+import {fetchUserData} from "../../store/userData";
+import {handleLogout} from "../../store/authentication";
+import toast from "react-hot-toast";
+import Toast, {toastStyles} from "../../components/ui/Toast";
 
 /** Основная раскладка с меню и заголовком
  * @param props
@@ -49,12 +48,22 @@ const MainLayout = (props) => {
     /** Включает сворачивание меню */
     const setMenuCollapsed = (val) => dispatch(handleMenuCollapsed(val));
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         /*setMenuData(navigation);*/
         /*setUserData(users[0]);*/
 
         /** Для серверной навигации */
-        dispatch(fetchUserData());
+        dispatch(fetchUserData()).catch(err => {
+            if (err === "Request failed with status code 401") {
+                dispatch(handleLogout());
+                navigate("/auth")
+            }
+            toast(t => (
+                <Toast t={t} message={err} type="error"/>
+            ), {className: toastStyles})
+        });
         fetch.get("/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {

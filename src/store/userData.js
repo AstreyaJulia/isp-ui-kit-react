@@ -28,13 +28,7 @@ export const userDataSlice = createSlice({
                 state.userData = action.payload;
             })
             .addCase(fetchUserData.rejected, (state, action) => {
-                if (action.error.message.toString() === "Request failed with status code 401") {
-                    state.authUser = {};
-                    state["jwt"] = null;
-                    /** Удалить пользователя, токен из localStorage */
-                    localStorage.removeItem("authUser");
-                    localStorage.removeItem("jwt");
-                }
+                throw action.error.message
             })
     }
 })

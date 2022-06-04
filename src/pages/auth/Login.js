@@ -3,42 +3,18 @@ import InputPasswordToggle from "../../components/elements/PasswordShow";
 import {Button, Form, Input, Label} from "reactstrap";
 import rocket from "../../assets/images/pages/cosmonaut-rocket.svg";
 import React, {Fragment} from "react";
-import toast from "react-hot-toast";
 import {useDispatch} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
 import {handleLogin} from "../../store/authentication";
-import {CheckCircleIcon, ExclamationCircleIcon, XIcon} from "@heroicons/react/outline";
 import {Helmet} from "react-helmet";
 import config from "../../config";
 import {fetch} from "../../utils/Helpers/api_helper";
+import toast from "react-hot-toast";
+import Toast, {toastStyles} from "../../components/ui/Toast";
 
 const defaultValues = {
     login: "chainik",
     password: "qwer"
-}
-
-const ToastContent = ({t, message, type}) => {
-    return (
-        <div className="flex items-start">
-            <div className="flex-shrink-0">
-                {type === "success"
-                    ? <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true"/>
-                    : <ExclamationCircleIcon className="h-6 w-6 text-red-400" aria-hidden="true"/>}
-            </div>
-            <div className="ml-3 flex-1 pt-0.5">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{message}</p>
-            </div>
-            <div className="ml-4 flex-shrink-0 flex">
-                <button
-                    className="bg-white dark:bg-gray-900 rounded-md inline-flex text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    onClick={() => toast.dismiss(t.id)}
-                >
-                    <span className="sr-only">Закрыть</span>
-                    <XIcon className="h-5 w-5" aria-hidden="true"/>
-                </button>
-            </div>
-        </div>
-    )
 }
 
 const Login = () => {
@@ -64,19 +40,22 @@ const Login = () => {
                         dispatch(handleLogin(data))
                         navigate("/home")
                         toast(t => (
-                            <ToastContent t={t} message="Вы успешно вошли в систему." type="success"/>
-                        ), {className: "bg-white dark:bg-gray-800 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-5 overflow-hidden"});
+                            <Toast t={t} message="Вы успешно вошли в систему." type="success"/>
+                        ), {className: toastStyles});
                     } else {
                         let message = "";
                         if (res.error) {
                             message = res.error.message;
                         }
                         toast(t => (
-                            <ToastContent t={t} type="error" message={message || "Ошибка входа в систему."}/>
-                        ), {className: "bg-white dark:bg-gray-800 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-5 overflow-hidden"});
+                            <Toast t={t} message={message || "Ошибка входа в систему."} type="error"/>
+                        ), {className: toastStyles});
                     }
                 })
-                .catch(err => console.log(err))
+                .catch(err => toast(t => (
+                        <Toast t={t} message={err} type="error"/>
+                    ), {className: toastStyles})
+                )
         } else {
             for (const key in userData) {
                 if (userData[key].length === 0) {
