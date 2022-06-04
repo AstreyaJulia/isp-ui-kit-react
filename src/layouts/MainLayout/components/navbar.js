@@ -12,6 +12,8 @@ import MessageDropdown from "./menu/MessageDropdown";
 import {useDispatch} from 'react-redux'
 import {handleLogout} from '../../../store/authentication';
 import Skeleton from "react-loading-skeleton";
+import toast from "react-hot-toast";
+import Toast, {toastStyles} from "../../../components/ui/Toast";
 
 const NavBar = (props) => {
 
@@ -204,7 +206,10 @@ const NavBar = (props) => {
                                         {({active}) => (
                                             <Link
                                                 to="/auth"
-                                                onClick={() => dispatch(handleLogout())}
+                                                onClick={() => {
+                                                    dispatch(handleLogout())
+                                                    toast(t => (<Toast t={t} message="Вы вышли из системы." type="success"/>), {className: toastStyles})
+                                                }}
                                                 className={classNames(active ? "bg-gray-100 dark:bg-gray-700" : "", "block px-4 py-2 text-sm text-gray-700 dark:text-gray-400")}
                                             >
                                                 Выход

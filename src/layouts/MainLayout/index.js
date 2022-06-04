@@ -54,21 +54,27 @@ const MainLayout = (props) => {
         /*setMenuData(navigation);*/
         /*setUserData(users[0]);*/
 
-        /** Для серверной навигации */
-        dispatch(fetchUserData()).catch(err => {
-            if (err === "Request failed with status code 401") {
-                dispatch(handleLogout());
-                navigate("/auth")
-            }
-            toast(t => (
-                <Toast t={t} message={err} type="error"/>
-            ), {className: toastStyles})
-        });
+        /* Получаем данные вошедшего пользователя */
+        dispatch(fetchUserData())
+            .catch(err => {
+                /** Если получили ошибку 401 - токен невалиден, выкидваем на страницу входа */
+                if (err === "Request failed with status code 401") {
+                    dispatch(handleLogout());
+                    navigate("/auth")
+                }
+                /* Показываем всплывашку с ошибкой */
+                toast(t => (<Toast t={t} message={err} type="error"/>), {className: toastStyles})
+            });
+        /* Для серверной навигации - боковое меню */
         fetch.get("/sidebar", "")
             .then(response => {
                 if (response.data || response.data !== []) {
                     setMenuData(makeArrayFromObj(response.data))
                 }
+            })
+            .catch(err => {
+                /* Показываем всплывашку с ошибкой */
+                toast(t => (<Toast t={t} message={err} type="error"/>), {className: toastStyles})
             })
     }, [dispatch]);
 
@@ -85,16 +91,14 @@ const MainLayout = (props) => {
     return (<>
         <div className="h-full">
             {/* Сайдбар меню */}
-            {menuData !== []
-                ? <Sidebar
-                    menuVisibility={menuVisibility}
-                    menuData={menuData}
-                    setMenuVisibility={setMenuVisibility}
-                    menuCollapsed={menuCollapsed}
-                    setMenuCollapsed={setMenuCollapsed}
-                />
-                : <Skeleton count="5"
-                            className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
+            {menuData !== [] ? <Sidebar
+                menuVisibility={menuVisibility}
+                menuData={menuData}
+                setMenuVisibility={setMenuVisibility}
+                menuCollapsed={menuCollapsed}
+                setMenuCollapsed={setMenuCollapsed}
+            /> : <Skeleton count="5"
+                           className="bg-gray-500/30 after:bg-gradient-to-r from-gray-400/10 via-gray-500/10 to-gray-400/10"/>}
 
             <div
                 className={classNames(menuCollapsed ? "lg:pl-20 pl-0" : "lg:pl-64", "h-screen")}
